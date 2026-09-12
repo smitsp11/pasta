@@ -14,6 +14,9 @@ Hackathon: Battle of the Schools — **Steel.dev Web Agents track**. Goal: 1st p
 **The 30-second version:**
 Real products are tested by a handful of engineers on their own laptops, in one language, from one country, on one clean browser. Real *users* are thousands of different people, on different devices, in different countries, some confused, some malicious. Crucible closes that gap: it spins up a swarm of AI "users" in real cloud browsers (via Steel), each a distinct **persona** — a returning mobile shopper in Germany, a first-timer in Brazil, a fraudster probing your checkout — and turns them loose on your live product at the same time. You watch them work in a live grid, and when they get stuck, abandon, or break something, Crucible catches it and shows you the exact moment it happened.
 
+**Product spine (decided): red-team + realistic-crowd baseline.**
+Crucible is primarily a **red-teaming / vulnerability product**: adversarial agents probe the product for abuse and breakage (promo/coupon farming, signup & bot abuse, broken auth/access control, rate-limit gaps) and produce a findings report with jump-to-failure replays. The **cooperative personas play a supporting role** — they form the realistic "normal traffic" the attackers hide inside, and they showcase Steel's geo + persistent-identity diversity. The headline question this frames: **does your product catch the fraudster without breaking for the grandma?** You can't answer that without both populations in the same run.
+
 **Why it's not just "AI QA":**
 Two things make it new and make Steel irreplaceable:
 1. **Real diversity, not imagined.** Personas run as **persistent identities** (they remember past visits) across **real geographies** (real residential IPs in different countries) and **devices**. You cannot fake "a returning user in Germany on mobile" from a laptop — that needs Steel's Profiles + geo proxies.
@@ -96,8 +99,8 @@ Two lists. **A** = vocabulary we must be able to *say* to explain/pitch the idea
 
 ---
 
-## Open questions before build
-- Solo or team? (affects scope)
-- Cooperative-heavy (UX/geo) vs. adversarial-heavy (red-team) balance for the demo?
-- Confirm Steel Computer beta scope at the 1:00 PM workshop (only if we want the $500 bonus).
-- Secure elevated concurrency / proxy credits from the Steel booth.
+## Decisions & open items
+- **Team:** 4 devs, parallel work (see design doc for module split). ✅
+- **Demo balance:** red-team spine + realistic-crowd baseline. ✅
+- **Full design:** `docs/superpowers/specs/2026-09-12-crucible-design.md`
+- Still to do at the event: confirm Steel Computer beta scope at the 1:00 PM workshop (only if we chase the $500 bonus); secure elevated concurrency / proxy credits from the Steel booth.
