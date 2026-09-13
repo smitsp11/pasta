@@ -13,7 +13,7 @@ const pill = (status: Feed["status"]): React.CSSProperties => ({ display: "flex"
 const LABEL: Record<Feed["status"], string> = { running: "RUNNING", completed: "✓ DONE", stalled: "STALLED", harness_error: "ERROR" };
 export function FeedCard({ feed, persona, focused, index, scanSeconds }: { feed: Feed; persona: Persona | undefined; focused: boolean; index: number; scanSeconds: number }) {
   const err = feed.status === "harness_error"; const muted = err ? "#8A8580" : "#141414";
-  const url = (feed.last_observation || `https://northwindoutfitters.com`).replace(/^https?:\/\//, "");
+  const url = (feed.last_observation || "").replace(/^https?:\/\//, "") || "connecting…";
   const chips = persona ? [persona.config.device, persona.config.country, persona.config.identity === "fresh" ? "new" : "returning"] : [];
   return (
     <motion.div layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.08, duration: 0.3 }}

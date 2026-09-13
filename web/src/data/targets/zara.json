@@ -1,0 +1,109 @@
+{
+  "url": "https://www.zara.com/us/",
+  "site_model": {
+    "url": "https://www.zara.com/us/", "brand": "Zara", "category": "ecommerce / fast fashion",
+    "description": "Inditex flagship store. Full-screen video slider home, hamburger-only navigation on every viewport, three stacked dialogs on first paint (privacy-policy popup, geolocation modal, OneTrust banner), search on a separate page, sizes hidden behind an ADD button, and an Akamai bot gate that also guards the cart-add API.",
+    "audience_guess": ["trend-driven women 18-35 shopping on mobile", "returning shoppers re-finding an item they saw earlier", "cross-border shoppers landing on the wrong country site"],
+    "journeys": [
+      {"id": "find_product", "name": "Find a jacket and pick a size", "goal": "From the home page open Woman > Jackets, open the Polka Dot Bomber Jacket product page, press ADD to reveal the sizes and select size M.", "entry_url": "https://www.zara.com/us/"},
+      {"id": "search", "name": "Search for a linen blazer", "goal": "Use the site search to look for a women's linen blazer and open the first product in the results.", "entry_url": "https://www.zara.com/us/en/search/home"},
+      {"id": "reach_checkout", "name": "Reach checkout", "goal": "Add the Polka Dot Bomber Jacket in size M to the bag, open the bag page, confirm it lists 1 item and reach the checkout step; stop before payment.", "entry_url": "https://www.zara.com/us/en/polka-dot-bomber-jacket-p08372236.html"}
+    ]
+  },
+  "nodes": [
+    {"path": "/us/", "parent": null, "journey": null},
+    {"path": "/us/en/woman-jackets-l1114.html", "parent": "/us/", "journey": 1},
+    {"path": "/us/en/polka-dot-bomber-jacket-p08372236.html", "parent": "/us/en/woman-jackets-l1114.html", "journey": 3},
+    {"path": "/us/en/search/home", "parent": "/us/", "journey": 2},
+    {"path": "/us/en/search?searchTerm=linen%20blazer&section=WOMAN", "parent": "/us/en/search/home", "journey": null},
+    {"path": "/us/en/shop/cart", "parent": "/us/en/polka-dot-bomber-jacket-p08372236.html", "journey": null},
+    {"path": "/us/en/logon", "parent": "/us/", "journey": null},
+    {"path": "/us/en/help-center", "parent": "/us/", "journey": null}
+  ],
+  "sources": [
+    {"id": "trustpilot", "name": "Trustpilot", "kind": "reviews", "pastel": 2, "thumbnail": null},
+    {"id": "mumsnet", "name": "Mumsnet Talk", "kind": "forum", "pastel": 1, "thumbnail": null},
+    {"id": "reddit", "name": "Reddit r/Zara", "kind": "forum", "pastel": 3, "thumbnail": null},
+    {"id": "sitejabber", "name": "Sitejabber", "kind": "reviews", "pastel": 4, "thumbnail": null},
+    {"id": "appstore", "name": "App Store", "kind": "appstore", "pastel": 3, "thumbnail": null},
+    {"id": "ux_audit", "name": "UXmatters usability audit", "kind": "audit", "pastel": 4, "thumbnail": null},
+    {"id": "tiktok", "name": "TikTok via Stylist", "kind": "social", "pastel": 1, "thumbnail": null},
+    {"id": "threads", "name": "Threads", "kind": "social", "pastel": 2, "thumbnail": null},
+    {"id": "help", "name": "Zara Help Centre", "kind": "help", "pastel": 3, "thumbnail": null}
+  ],
+  "reads": [
+    {"source_id": "trustpilot", "quotes": [
+      {"source_id": "trustpilot", "text": "it's very user-unfriendly, it gives me a headache just by looking at the videos, flashing signs", "date": "Sep 2026", "url": "https://www.trustpilot.com/review/www.zara.com"}]},
+    {"source_id": "mumsnet", "quotes": [
+      {"source_id": "mumsnet", "text": "God forbid you see something you like and don't buy it there and then because I can never find an item if I try looking for it again.", "date": "Sep 2022", "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/4626037-or-is-the-zara-website-virtually-unusable"},
+      {"source_id": "mumsnet", "text": "All the giant pictures and sorted by looks rather than categories, plus half the pictures don't load. It's useless.", "date": "Sep 2022", "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/4626037-or-is-the-zara-website-virtually-unusable"},
+      {"source_id": "mumsnet", "text": "Never know if something has loaded then click back and lose all my filters", "date": "Apr 2021", "url": "https://www.mumsnet.com/talk/style_and_beauty/4211289-zara-website"},
+      {"source_id": "mumsnet", "text": "Had a whole bunch of items in my basket for my holiday and on checkout, half are gone !!", "date": "Jun 2024", "url": "https://www.mumsnet.com/talk/style_and_beauty/2553564-Has-anyone-else-had-a-problem-with-Zara-online-shopping-Items-going-from-in-stock-to-out-of-stock-whilst-they-are-in-my-basket"},
+      {"source_id": "mumsnet", "text": "I want to be able to see the item clearly and also filters that work and short list a sensible amount", "date": "Sep 2024", "url": "https://www.mumsnet.com/talk/_chat/5155247-is-the-zara-website-impossible-or-am-i-just-an-old-fogey-now"}]},
+    {"source_id": "reddit", "quotes": []},
+    {"source_id": "sitejabber", "quotes": [
+      {"source_id": "sitejabber", "text": "The chat window constantly froze and un-typable", "date": "Jan 2025", "url": "https://www.smartcustomer.com/reviews/zara.com"}]},
+    {"source_id": "appstore", "quotes": [
+      {"source_id": "appstore", "text": "There is no way of deleting/moving your address on the app", "date": "May 2024", "url": "https://apps.apple.com/us/app/zara/id547951480?see-all=reviews"},
+      {"source_id": "appstore", "text": "the app is not very friendly and does not feel natural the way it is categorized", "date": "Oct 2020", "url": "https://apps.apple.com/us/app/zara/id547951480?see-all=reviews"}]},
+    {"source_id": "ux_audit", "quotes": [
+      {"source_id": "ux_audit", "text": "Why use the + symbol to indicate available sizes? It is not clear and appears more like an Add to Cart.", "date": "Sep 2023", "url": "https://www.uxmatters.com/mt/archives/2023/09/usability-audit-of-the-zara-web-site.php"},
+      {"source_id": "ux_audit", "text": "the accessibility assistance button overlaps the price slider", "date": "Sep 2023", "url": "https://www.uxmatters.com/mt/archives/2023/09/usability-audit-of-the-zara-web-site.php"},
+      {"source_id": "ux_audit", "text": "No Back button on the Web site to return to the previous step", "date": "Sep 2023", "url": "https://www.uxmatters.com/mt/archives/2023/09/usability-audit-of-the-zara-web-site.php"}]},
+    {"source_id": "tiktok", "quotes": [
+      {"source_id": "tiktok", "text": "just why is this website so hard to navigate?", "date": "Jan 2022", "url": "https://www.stylist.co.uk/fashion/zara-website-tiktok-hack/610358"}]},
+    {"source_id": "threads", "quotes": [
+      {"source_id": "threads", "text": "why is it so hard to shop on the zara's website? their layout is so confusing!", "date": "Aug 2025", "url": "https://www.threads.com/@_thisisclaire/post/DM_GKuwIwex"}]},
+    {"source_id": "help", "quotes": []}
+  ],
+  "personas": [
+    {"id": "p1", "segment": "First-time mobile browser, United States", "config": {"device": "mobile", "identity": "fresh", "country": "US", "engine": "browser_use", "label": "mobile"}, "journey_id": "find_product", "goal": "Find a bomber jacket and pick a size without getting lost in the video slider.", "evidence": {"source_id": "trustpilot", "text": "it's very user-unfriendly, it gives me a headache just by looking at the videos, flashing signs", "date": "Sep 2026", "url": "https://www.trustpilot.com/review/www.zara.com"}, "pastel": 2, "run_id": "r1", "pair_id": null},
+    {"id": "p2", "segment": "Cross-border desktop shopper, Germany", "config": {"device": "desktop", "identity": "returning", "country": "DE", "engine": "claude_cu", "label": "country:DE"}, "journey_id": "find_product", "goal": "Open the jacket on the US site from Germany and pick a size.", "evidence": {"source_id": "threads", "text": "why is it so hard to shop on the zara's website? their layout is so confusing!", "date": "Aug 2025", "url": "https://www.threads.com/@_thisisclaire/post/DM_GKuwIwex"}, "pastel": 1, "run_id": "r2", "pair_id": null},
+    {"id": "p3", "segment": "Returning shopper re-finding an item, United Kingdom", "config": {"device": "desktop", "identity": "returning", "country": "GB", "engine": "browser_use", "label": "engine:browser_use"}, "journey_id": "search", "goal": "Search for the linen blazer I saw last week and open it.", "evidence": {"source_id": "mumsnet", "text": "God forbid you see something you like and don't buy it there and then because I can never find an item if I try looking for it again.", "date": "Sep 2022", "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/4626037-or-is-the-zara-website-virtually-unusable"}, "pastel": 3, "run_id": "r3", "pair_id": "p4"},
+    {"id": "p4", "segment": "Returning shopper re-finding an item, United Kingdom", "config": {"device": "desktop", "identity": "returning", "country": "GB", "engine": "claude_cu", "label": "engine:claude_cu"}, "journey_id": "search", "goal": "Search for the linen blazer I saw last week and open it.", "evidence": {"source_id": "mumsnet", "text": "God forbid you see something you like and don't buy it there and then because I can never find an item if I try looking for it again.", "date": "Sep 2022", "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/4626037-or-is-the-zara-website-virtually-unusable"}, "pastel": 3, "run_id": "r4", "pair_id": "p3"},
+    {"id": "p5", "segment": "Filter-heavy mobile browser, Canada", "config": {"device": "mobile", "identity": "returning", "country": "CA", "engine": "browser_use", "label": "country:CA"}, "journey_id": "find_product", "goal": "Filter jackets on my phone, open one and pick a size.", "evidence": {"source_id": "mumsnet", "text": "Never know if something has loaded then click back and lose all my filters", "date": "Apr 2021", "url": "https://www.mumsnet.com/talk/style_and_beauty/4211289-zara-website"}, "pastel": 1, "run_id": "r5", "pair_id": null},
+    {"id": "p6", "segment": "Image-frustrated mobile searcher, Spain", "config": {"device": "mobile", "identity": "fresh", "country": "ES", "engine": "claude_cu", "label": "country:ES"}, "journey_id": "search", "goal": "Search for a linen blazer and find a photo that actually shows the garment.", "evidence": {"source_id": "mumsnet", "text": "All the giant pictures and sorted by looks rather than categories, plus half the pictures don't load. It's useless.", "date": "Sep 2022", "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/4626037-or-is-the-zara-website-virtually-unusable"}, "pastel": 4, "run_id": "r6", "pair_id": null},
+    {"id": "p7", "segment": "Desktop buyer confused by the + control, United States", "config": {"device": "desktop", "identity": "returning", "country": "US", "engine": "browser_use", "label": "returning"}, "journey_id": "reach_checkout", "goal": "Add the jacket in size M to the bag and get to checkout.", "evidence": {"source_id": "ux_audit", "text": "Why use the + symbol to indicate available sizes? It is not clear and appears more like an Add to Cart.", "date": "Sep 2023", "url": "https://www.uxmatters.com/mt/archives/2023/09/usability-audit-of-the-zara-web-site.php"}, "pastel": 4, "run_id": "r7", "pair_id": null},
+    {"id": "p8", "segment": "Mobile buyer worried the bag will empty, United States", "config": {"device": "mobile", "identity": "fresh", "country": "US", "engine": "claude_cu", "label": "mobile"}, "journey_id": "reach_checkout", "goal": "Add the jacket, check the bag still lists it, reach checkout.", "evidence": {"source_id": "mumsnet", "text": "Had a whole bunch of items in my basket for my holiday and on checkout, half are gone !!", "date": "Jun 2024", "url": "https://www.mumsnet.com/talk/style_and_beauty/2553564-Has-anyone-else-had-a-problem-with-Zara-online-shopping-Items-going-from-in-stock-to-out-of-stock-whilst-they-are-in-my-basket"}, "pastel": 2, "run_id": "r8", "pair_id": null}
+  ],
+  "stress_tests": [
+    {"probe": "first-paint dialog stack", "why": "policy popup + geolocation modal + OneTrust banner cover the page", "source": "Live probe"},
+    {"probe": "search entry on desktop", "why": "home page DOM has no links or search input at load", "source": "Threads / Mumsnet"},
+    {"probe": "size selector behind ADD", "why": "the + / ADD control reads like add-to-cart", "source": "UXmatters"},
+    {"probe": "bag persistence", "why": "items vanish from the basket at checkout", "source": "Mumsnet"}
+  ],
+  "runs": [
+    {"run_id": "r1", "persona_id": "p1", "session_id": "sess-r1", "start_url": "https://www.zara.com/us/", "outcome": "completed", "failure_step_index": null,
+     "steps": [["closed the privacy popup and the geolocation dialog… full-screen video, no category links… tapping the Open Menu button", "/us/"], ["menu lists WOMAN > JACKETS… opening it", "/us/en/woman-jackets-l1114.html"], ["opened the polka dot bomber jacket… no sizes shown, only a button that says ADD… pressing it", "/us/en/polka-dot-bomber-jacket-p08372236.html"], ["sizes XS to XL appeared under ADD… selected M", "/us/en/polka-dot-bomber-jacket-p08372236.html"]]},
+    {"run_id": "r2", "persona_id": "p2", "session_id": "sess-r2", "start_url": "https://www.zara.com/us/", "outcome": "stalled", "failure_step_index": 2,
+     "steps": [["a dialog says HELLO, Yes, stay on United States… another says my personal data information was updated… a cookie banner underneath", "/us/"], ["clicked YES, STAY ON UNITED STATES… a grey backdrop still covers the page… clicking Open Menu does nothing… clicking again", "/us/"]]},
+    {"run_id": "r3", "persona_id": "p3", "session_id": "sess-r3", "start_url": "https://www.zara.com/us/en/search/home", "outcome": "stalled", "failure_step_index": 2,
+     "steps": [["search page has an input that asks What are you looking for?… typing linen blazer", "/us/en/search/home"], ["results loaded… every tile has an unlabelled button called Open size selector and the product links have no text… clicking the first button opened a size list instead of the product… backing out… no link to click", "/us/en/search?searchTerm=linen%20blazer&section=WOMAN"]]},
+    {"run_id": "r4", "persona_id": "p4", "session_id": "sess-r4", "start_url": "https://www.zara.com/us/en/search/home", "outcome": "completed", "failure_step_index": null,
+     "steps": [["search page asks What are you looking for?… typing linen blazer and pressing enter", "/us/en/search/home"], ["I can see a grid of blazers with names under the photos… clicking the first photo", "/us/en/search?searchTerm=linen%20blazer&section=WOMAN"], ["product page open… price and colour visible… done", "/us/en/polka-dot-bomber-jacket-p08372236.html"]]},
+    {"run_id": "r5", "persona_id": "p5", "session_id": "sess-r5", "start_url": "https://www.zara.com/us/", "outcome": "completed", "failure_step_index": null,
+     "steps": [["mobile home is a video… header has an unlabelled menu icon, a search icon and a 0… tapping the menu icon", "/us/"], ["opened jackets… tapped FILTERS… the page reloaded and the filter chips are gone… opening a jacket without filters", "/us/en/woman-jackets-l1114.html"], ["ADD button sits below a DESCRIPTION / COLOR / CONTENTS tab strip… first tap did nothing for 30 seconds… scrolled and tapped again… sizes appeared… selected M", "/us/en/polka-dot-bomber-jacket-p08372236.html"]]},
+    {"run_id": "r6", "persona_id": "p6", "session_id": "sess-r6", "start_url": "https://www.zara.com/us/en/search/home", "outcome": "completed", "failure_step_index": null,
+     "steps": [["typed linen blazer… picked the WOMAN section", "/us/en/search/home"], ["results are giant editorial photos… switched the zoom control to 3 to see more tiles… opening the first one", "/us/en/search?searchTerm=linen%20blazer&section=WOMAN"], ["product page shows the jacket on a plain background… done", "/us/en/polka-dot-bomber-jacket-p08372236.html"]]},
+    {"run_id": "r7", "persona_id": "p7", "session_id": "sess-r7", "start_url": "https://www.zara.com/us/en/polka-dot-bomber-jacket-p08372236.html", "outcome": "stalled", "failure_step_index": 3,
+     "steps": [["closed the policy popup and the geolocation dialog… there is no size list, only ADD… pressing ADD", "/us/en/polka-dot-bomber-jacket-p08372236.html"], ["sizes XS S M L XL appeared… selected M… no confirmation, the bag icon still says 0… selecting M again", "/us/en/polka-dot-bomber-jacket-p08372236.html"], ["opened the bag page… YOUR BAG IS EMPTY… no checkout button… going back to add again", "/us/en/shop/cart"]]},
+    {"run_id": "r8", "persona_id": "p8", "session_id": "sess-r8", "start_url": "https://www.zara.com/us/en/polka-dot-bomber-jacket-p08372236.html", "outcome": "harness_error", "failure_step_index": null,
+     "steps": [["page returned 403 Access Denied before the first step", "/us/en/polka-dot-bomber-jacket-p08372236.html"]]}
+  ],
+  "findings": [
+    {"id": "f1", "journey_id": "find_product", "config": {"device": "desktop", "identity": "returning", "country": "DE", "engine": "claude_cu", "label": "country:DE"}, "category": "cookie_wall", "description": "Three dialogs stack on first paint — the privacy-policy popup, the geolocation modal (\"YES, STAY ON UNITED STATES / NO, GO TO THE CANADA SITE\") and the OneTrust banner — and a div.zds-backdrop keeps intercepting clicks after the first one is closed. Visitors whose IP country differs from the site country get the extra geolocation modal.", "attributed_to": "country", "engine_consensus": false, "session_id": "sess-r2", "step_index": 2, "replay_url": "https://app.steel.dev/sessions/sess-r2", "replay_offset_s": 22, "proposed_fix": "Show at most one dialog on first paint; remove div.zds-backdrop when its dialog closes; give .geolocation-modal a single default action and role=\"dialog\" with aria-labelledby."},
+    {"id": "f2", "journey_id": "search", "config": {"device": "desktop", "identity": "returning", "country": "GB", "engine": "browser_use", "label": "engine:browser_use"}, "category": "icon_only_control", "description": "On the search results grid every tile exposes an unlabelled button.product-add-to-cart__button (aria-label \"Open size selector\", no visible text) and an anchor with no text; a DOM-driven agent has only the + button to act on and opens a size list instead of the product. A vision agent reads the product name under the photo and clicks it.", "attributed_to": "engine", "engine_consensus": false, "session_id": "sess-r3", "step_index": 2, "replay_url": "https://app.steel.dev/sessions/sess-r3", "replay_offset_s": 37, "proposed_fix": "Give the tile anchor (a[data-qa-action=\"product-click\"]) the product name as link text or aria-label, and change button.product-add-to-cart__button to visible text \"Select size\"."},
+    {"id": "f3", "journey_id": "reach_checkout", "config": {"device": "desktop", "identity": "returning", "country": "US", "engine": "browser_use", "label": "returning"}, "category": "other", "description": "Picking a size fires POST /us/en/shop/cart/add?ajax=true which the Akamai bot gate answers with 403; the page shows no error, the bag counter stays 0 and /us/en/shop/cart reads YOUR BAG IS EMPTY. Both engines hit it; no journey can reach checkout.", "attributed_to": "site", "engine_consensus": true, "session_id": "sess-r7", "step_index": 3, "replay_url": "https://app.steel.dev/sessions/sess-r7", "replay_offset_s": 48, "proposed_fix": "Apply the bot rule once at page level and let sessions that passed it call /shop/cart/add, or surface the 403 as a visible error on button[data-qa-action=\"add-to-cart\"] instead of failing silently."},
+    {"id": "f4", "journey_id": "find_product", "config": {"device": "mobile", "identity": "returning", "country": "CA", "engine": "browser_use", "label": "country:CA"}, "category": "timeout", "description": "On the mobile product page the ADD button sits under a swipeable DESCRIPTION / COLOR / CONTENTS / MEASUREMENTS tab carousel and behind the dialog backdrop; the first tap on button.product-detail-cart-buttons__button timed out at 30 s. On desktop the same button responds once the dialogs are closed.", "attributed_to": "device", "engine_consensus": false, "session_id": "sess-r5", "step_index": 3, "replay_url": "https://app.steel.dev/sessions/sess-r5", "replay_offset_s": 41, "proposed_fix": "Pin the ADD / size control above the tab carousel on mobile and make it a sticky bar; do not render the backdrop over it."}
+  ],
+  "affected": {
+    "f1": {"persona_ids": ["p2", "p6", "p3", "p4"], "share": 0.45},
+    "f2": {"persona_ids": ["p3", "p1", "p5", "p7"], "share": 0.38},
+    "f3": {"persona_ids": ["p7", "p8", "p1", "p2", "p5"], "share": 0.62},
+    "f4": {"persona_ids": ["p5", "p1", "p8"], "share": 0.24}
+  },
+  "scorecard": {"overall": 47, "static_score": null, "per_journey": [
+    {"journey_id": "find_product", "score": 66.7, "completed": 2, "stalled": 1, "harness_errors": 0},
+    {"journey_id": "search", "score": 66.7, "completed": 2, "stalled": 1, "harness_errors": 0},
+    {"journey_id": "reach_checkout", "score": 0.0, "completed": 0, "stalled": 1, "harness_errors": 1}]}
+}

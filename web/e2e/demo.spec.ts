@@ -4,6 +4,7 @@ test("the full show plays through and each stage renders", async ({ page }) => {
   await page.goto("/?speed=6");
   await expect(page.getByText("Send your customers in first.")).toBeVisible();
   await page.screenshot({ path: "e2e/screens/01-input.png" });
+  await page.getByRole("textbox").fill("https://northwindoutfitters.com");
   await page.getByRole("button", { name: "RUN IRIS →" }).click();
 
   await expect(page.getByText("Learning your customers and your site.")).toBeVisible();
@@ -34,3 +35,13 @@ test("seek to a stage renders it instantly (rehearsal / screenshot mode)", async
   await expect(page.getByText("What broke, for whom, and why.")).toBeVisible();
   await expect(page.getByText(/OF SHOPPERS/)).toHaveCount(4);
 });
+
+for (const id of ["ikea", "zara", "northwind"]) {
+  test(`target ${id}: seek to done renders its report`, async ({ page }) => {
+    const res = await page.goto(`/?target=${id}&stage=done`);
+    expect(res?.ok()).toBeTruthy();
+    await expect(page.getByText("What broke, for whom, and why.")).toBeVisible();
+    await expect(page.getByText("PROPOSED FIX")).toBeVisible();
+    await page.screenshot({ path: `e2e/screens/report-${id}.png`, fullPage: true });
+  });
+}

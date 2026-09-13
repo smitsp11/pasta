@@ -58,3 +58,12 @@ export interface RunState {
   focus: string | null;                    // run_id under the reticle in the swarm
   scorecard: ScoreCard | null; findings: Finding[]; affected: ResultItem["affected"];
 }
+
+// Authored demo show (one per target) ------------------------------------------
+export interface DemoRun { run_id: string; persona_id: string; session_id: string; start_url: string; outcome: TerminalOutcome;
+  failure_step_index: number | null; steps: [string, string][] }
+export interface DemoData {
+  url: string; site_model: SiteModel; nodes: SiteNode[]; sources: Source[];
+  reads: { source_id: string; quotes: Quote[] }[]; personas: Persona[]; stress_tests: StressTest[];
+  runs: DemoRun[]; findings: Finding[]; affected: ResultItem["affected"]; scorecard: ScoreCard;
+}
