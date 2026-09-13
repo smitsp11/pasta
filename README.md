@@ -12,10 +12,25 @@ Built for the Battle of the Schools hackathon, **Steel.dev Web Agents track**. L
 
 ## Why
 
-Companies pay for case studies and user research to learn how customers behave on their site. Agent-readiness
-checkers (Cloudflare, Apify) only inspect static signals like `robots.txt` and never run anything. Single-agent
-auditors send one generic agent to the homepage with fixed tasks. Iris learns who the customers are, then
-**measures** the site with a controlled population of real agents.
+**Agents are already the customer.** AI-referred traffic to US retail sites grew [393% year over year in Q1 2026](https://finance.yahoo.com/sectors/technology/articles/ai-traffic-us-retailers-jumps-160141756.html)
+and is up [more than 14× since October 2024](https://www.digitalcommerce360.com/2026/06/17/adobe-ai-referred-traffic-to-retail-sites-doubles-in-a-year/).
+Those visitors now convert 54% better than non-AI traffic, a reversal from a year earlier when they converted
+at half the rate (Adobe Analytics). McKinsey forecasts [$3 to 5 trillion in agentic commerce by 2030](https://www.digitalcommerce360.com/2025/10/20/mckinsey-forecast-5-trillion-agentic-commerce-sales-2030/).
+Yet Adobe finds 30 to 40% of content on retailers' highest-value pages is still invisible to AI, and no tool
+tells a site owner whether an agent can actually reach checkout.
+
+**The alternative is slow and expensive.** A moderated usability study with 5 to 10 users [starts at $40,000 at
+Nielsen Norman Group](https://www.nngroup.com/consulting/user-testing/), and $80,000 to $150,000 with multiple
+audiences or designs. Recruiting alone runs [about $171 per participant](https://www.nngroup.com/articles/recruiting-test-participants-for-usability-studies/),
+and a typical study takes [2 to 6 weeks end to end](https://cleverx.com/guides/how-long-does-user-research-take-timelines-by-method-and-industry/).
+Static agent-readiness checkers (Cloudflare, Apify) are free but never run anything. Single-agent auditors send
+one generic agent to the homepage with fixed tasks.
+
+**What Iris saves.** One run replaces the study: research, 8 personas across devices, countries and identities,
+and a ranked fix list, in minutes instead of weeks, for the price of eight cloud browser sessions and a few
+dozen model calls. Cheap enough to run on every deploy rather than once a quarter. And it measures the thing
+that matters: cart abandonment already [averages 70% and is worse on mobile](https://baymard.com/lists/cart-abandonment-rate);
+an agent that stalls on a cookie wall or an unlabelled cart button is the same failure, now at machine scale.
 
 ## How it works
 
