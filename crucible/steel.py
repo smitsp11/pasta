@@ -29,6 +29,7 @@ DEFAULT_TIMEOUT_MS = 12 * 60_000       # under Steel's 15-minute cap
 DEFAULT_INACTIVITY_MS = 120_000        # release a hung engine's session early
 HLS_URL = "https://api.steel.dev/v1/sessions/{id}/hls"
 RUNS_DIR = Path(os.environ.get("CRUCIBLE_RUNS_DIR", "runs"))
+CREDITS_LOG_ENABLED = True     # tests and fake runs switch this off
 
 
 class SteelUnavailable(Exception):
@@ -142,6 +143,8 @@ class SteelSession:
 
     async def _log_credits(self) -> None:
         """Append credits/proxy usage to runs/credits.log so the budget is visible during the event."""
+        if not CREDITS_LOG_ENABLED:
+            return
         try:
             s = await self._client.sessions.retrieve(self.session_id)
             line = (f"{datetime.now(timezone.utc).isoformat(timespec='seconds')} {self.session_id} "

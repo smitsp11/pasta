@@ -1,5 +1,7 @@
 import pytest
 
+import crucible.steel as steel_mod
+
 from crucible.schemas import Journey, SiteModel
 from crucible.testing import FakeSessionFactory, FakeSteelClient, no_connect, profile_ready, raw_session  # noqa: F401
 
@@ -15,3 +17,8 @@ def site() -> SiteModel:
 @pytest.fixture
 def factory() -> FakeSessionFactory:
     return FakeSessionFactory()
+
+
+@pytest.fixture(autouse=True)
+def _no_credits_log(monkeypatch):
+    monkeypatch.setattr(steel_mod, "CREDITS_LOG_ENABLED", False)

@@ -66,6 +66,10 @@ async def no_connect(_s: SteelSession) -> None:
     """Connector stub: no Playwright."""
 
 
+async def _noop_credits() -> None:
+    return None
+
+
 async def profile_ready(_pid: str) -> bool:
     await asyncio.sleep(0.01)
     return True
@@ -93,6 +97,7 @@ class FakeSessionFactory:
         raw = await self.client.sessions.create(**kw)
         s = SteelSession(self.client, raw, "test-key", connector=no_connect)
         s.screenshot_dir = self.screenshot_root / s.session_id
+        s._log_credits = _noop_credits   # fake sessions never touch runs/credits.log
         self.opened.append(s)
         self.open_now += 1
         self.max_open = max(self.max_open, self.open_now)
