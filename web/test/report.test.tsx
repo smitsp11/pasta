@@ -3,7 +3,8 @@ import { Report } from "../src/screens/Report";
 import demo from "../src/data/iris_demo.json";
 it("shows both scores, ranked flags, and switches detail on click", () => {
   render(<Report scorecard={demo.scorecard as any} findings={demo.findings as any} affected={demo.affected as any} personas={demo.personas as any} sources={demo.sources as any} instant />);
-  expect(screen.getByText("85")).toBeInTheDocument(); expect(screen.getByText("58")).toBeInTheDocument();
+  expect(screen.getByText("58")).toBeInTheDocument();
+  expect(screen.queryByText(/CLOUDFLARE/)).not.toBeInTheDocument();
   expect(screen.getByText("1 RUN EXCLUDED · TOOLING ERROR")).toBeInTheDocument();
   const rows = screen.getAllByRole("option");
   expect(rows).toHaveLength(4);
