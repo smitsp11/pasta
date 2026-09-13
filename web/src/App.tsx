@@ -21,18 +21,19 @@ function Stage({ id, children }: { id: string; children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { state, start } = usePlayer();
+  const { state, target, runNo, start } = usePlayer();
+  const run = `${target.id}:${runNo}`;   // re-keys the stages so a new run re-enters from the top
   const cached = new URLSearchParams(location.search).get("demo") === "cached";
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <TopBar stage={state.stage} sessions={counts(state).total} cached={cached} hasBrief={state.personas.length > 0 && state.stage === "explore"} />
       <main style={{ flex: 1 }}>
-        <Input onRun={start} collapsed={state.stage !== "idle"} />
+        <Input onRun={url => { window.scrollTo({ top: 0, behavior: "smooth" }); start(url); }} collapsed={state.stage !== "idle"} />
         <AnimatePresence>
-          {state.stage !== "idle" && <Stage key="learn" id="learn"><Learning state={state} /></Stage>}
-          {state.personas.length > 0 && <Stage key="brief" id="brief"><Brief personas={state.personas} stressTests={state.stress_tests} sources={state.sources} /></Stage>}
-          {Object.keys(state.feeds).length > 0 && <Stage key="swarm" id="swarm"><Swarm state={state} /></Stage>}
-          {state.scorecard && <Stage key="report" id="report"><Report scorecard={state.scorecard} findings={state.findings} affected={state.affected} personas={state.personas} feeds={state.feeds} sources={state.sources} /></Stage>}
+          {state.stage !== "idle" && <Stage key={`learn-${run}`} id="learn"><Learning state={state} /></Stage>}
+          {state.personas.length > 0 && <Stage key={`brief-${run}`} id="brief"><Brief personas={state.personas} stressTests={state.stress_tests} sources={state.sources} /></Stage>}
+          {Object.keys(state.feeds).length > 0 && <Stage key={`swarm-${run}`} id="swarm"><Swarm state={state} /></Stage>}
+          {state.scorecard && <Stage key={`report-${run}`} id="report"><Report scorecard={state.scorecard} findings={state.findings} affected={state.affected} personas={state.personas} feeds={state.feeds} sources={state.sources} /></Stage>}
         </AnimatePresence>
       </main>
     </div>);

@@ -14,6 +14,7 @@ export function usePlayer() {
   const params = useMemo(() => new URLSearchParams(location.search), []);
   const speed = Number(params.get("speed") ?? 1) || 1;
   const [target, setTarget] = useState<Target>(() => targetById(params.get("target")));
+  const [runNo, setRunNo] = useState(0);
   const [state, setState] = useState<RunState>(() => initialState(target.demo));
   const [playing, setPlaying] = useState(false);
   const player = useRef<Player | null>(null);
@@ -34,7 +35,7 @@ export function usePlayer() {
     return () => p.pause();
   }, [load, params]);
 
-  const start = useCallback((url: string) => { load(targetFor(url)).play(); setPlaying(true); }, [load]);
+  const start = useCallback((url: string) => { load(targetFor(url)).play(); setPlaying(true); setRunNo(n => n + 1); }, [load]);
   const pause = useCallback(() => { player.current?.pause(); setPlaying(false); }, []);
-  return { state, target, playing, start, pause };
+  return { state, target, playing, runNo, start, pause };
 }
