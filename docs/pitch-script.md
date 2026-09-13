@@ -4,7 +4,7 @@ Built from `README.md`, `docs/ui-flow.md`, and the IKEA Canada demo data the fro
 (`web/src/data/targets/ikea.json`). Every number spoken below is on screen at that moment. If the demo data
 changes, change the line.
 
-Spoken text is about 430 words, which is 3:00 at a calm pace. Two presenters: **Pitch** (talks) and
+Spoken text is about 470 words, which is 3:00 at a brisk pace and 3:10 at a calm one; the fallback table says what to cut. Two presenters: **Pitch** (talks) and
 **Driver** (types, scrolls, clicks). One presenter can do both; the stage bar scrolls for you.
 
 Before walking on: open `https://iris-tau-two.vercel.app/?target=ikea&speed=2` in a fresh tab, full screen,
@@ -14,82 +14,74 @@ browser zoom at 125%. Have the same URL with `&stage=run` in a second tab as the
 
 ## 0:00 — Hook (20 s) · Screen: Input, nothing typed yet
 
-> Last quarter, AI-referred traffic to US retail sites grew almost four hundred percent. Those visitors are
-> agents. They convert better than humans now. And not one site owner on earth can answer a simple question:
-> **when an agent tries to check out on my site, does it make it?**
->
-> The only way to find out today is a usability study. Forty thousand dollars, six weeks, five humans.
+> AI-referred traffic to US retail sites grew almost four hundred percent last quarter. Those visitors are
+> agents, and they now convert better than humans. Yet no site owner can answer one question: **when an
+> agent tries to check out on my site, does it make it?** Today the answer is a usability study. Forty
+> thousand dollars, six weeks, five humans.
 
 **Driver:** hands off the keyboard. Let the headline "Send your customers in first." sit on screen.
 
 ## 0:20 — The idea (15 s) · Screen: Input
 
-> Iris sends your customers in first. Give it a URL and nothing else. It finds out who your real customers
-> are, sends eight of them through your live site as AI agents on real cloud browsers, and shows you the
-> exact frame where each one gave up.
+> Iris sends your customers in first. Give it a URL, nothing else. It learns who your real customers are,
+> sends eight of them through your live site as agents on real cloud browsers, and shows you the frame
+> where each one gave up.
 
 **Driver:** type `ikea.ca`, press Run. Pixel-dissolve into Learning.
 
 ## 0:35 — Learning (20 s) · Screen: split screen, both halves live
 
-> Two things happen at once. On the left, a research agent is reading IKEA's help centre, Trustpilot, Reddit,
-> and the app store, and pulling real customer quotes. On the right, a crawler is mapping the site: beds,
-> the MALM bed frame, the cart, the checkout. Zero context. We told it nothing.
+> Two things at once. Left: a research agent reads IKEA's help centre, Trustpilot, and the app store, and
+> pulls real customer quotes. Right: a crawler maps the site. Beds, the MALM bed frame, the cart, the
+> checkout. We told it nothing.
 
 **Driver:** as the evidence counter ticks, point at one quote card. As the site map draws, point at the
 checkout node.
 
 ## 0:55 — Test brief (20 s) · Screen: eight persona cards
 
-> The evidence and the map become a test brief: eight personas, each one backed by a quote. A first-time
-> mobile shopper in Canada. A returning IKEA Family member in Toronto. A comparison shopper in Germany.
->
-> Two of them are a matched pair: identical shoppers, one variable different. That is how we prove a
-> failure is caused by the country and not by luck.
+> Evidence plus map becomes a test brief: eight personas, each backed by a quote. A first-time mobile
+> shopper in Canada. A returning IKEA Family member. A comparison shopper in Germany. Two are a matched
+> pair, identical except for one variable, so we can prove a failure is caused by the country, not luck.
 
 **Driver:** hover the linked pair (p3 and p4, Iqaluit, Canada vs Great Britain). Then scroll to the swarm.
 
 ## 1:15 — Swarm (30 s) · Screen: grid of eight live Steel viewers
 
-> Now the swarm. Eight Steel sessions at once. Each one is a real browser: this one is a real mobile device,
-> not a spoofed user agent. This one is coming from a residential IP in Germany. This one is a returning
-> visitor with a persistent profile, so it arrives with the cookies of someone who has been here before.
-> Half of them are DOM agents, half are vision agents looking at pixels.
+> The swarm: eight Steel sessions at once. This one is a real mobile device, not a spoofed user agent. This
+> one arrives from a residential IP in Germany. This one is a returning visitor with a persistent profile,
+> carrying the cookies of someone who has been here before. Half are DOM agents, half are vision agents.
 >
-> Watch the captions. That one is trying to add the bed frame to the cart. It just added a four hundred and
-> ninety-nine dollar mattress instead.
+> Watch the captions. That one tried to add the bed frame. It just added a four-hundred-dollar mattress.
 
 **Driver:** point at a MOBILE chip, a DE chip, a RETURNING chip, a VISION chip as each is named. When cards
 turn red, point at the first stalled one. Let the header reach "done".
 
 ## 1:45 — Report (35 s) · Screen: score, ranked flags
 
-> Readiness: sixty-one out of a hundred. The static checkers everyone uses score robots.txt. We score the
-> checkout.
+> Readiness: sixty-one. Static checkers score robots.txt. We score the checkout.
 >
-> Three flags, ranked by how many customers they hit. Number one: the product page has two Add to cart
-> buttons, and the first one adds the wrong product. Every kind of agent hit it, so it is the site, not the
-> bot. Fifty-two percent of the personas were affected. Here is the Trustpilot quote that predicted it, and
-> here is the replay, frozen on the click. And here is the fix: name the button.
+> Three flags, ranked by customers affected. Number one: two Add to cart buttons, and the first adds the
+> wrong product. Every kind of agent hit it, so it is the site, not the bot. Here is the customer quote
+> that predicted it, the replay frozen on the click, and the fix: name the button.
 >
-> Number three is the matched pair: a valid Canadian postal code that IKEA does not deliver to is accepted
-> silently. Fails only from Canada.
+> Number three is the matched pair: an unserved Canadian postal code accepted silently. Fails only from
+> Canada.
 
 **Driver:** click flag one. Point left at the quote, right at the replay, down at the green fix box. Click
 flag three. Point at the "fails only from" attribution line.
 
 ## 2:20 — Why this is real, and why Steel (20 s) · Screen: stay on the report
 
-> Three things here cannot be faked from a laptop: a real mobile fingerprint, a real residential IP in
-> another country, and a browser identity that remembers. Those are Steel primitives, and they are what
-> makes every failure attributable. When our tooling fails instead of the site, it is bucketed as a harness
-> error and excluded from the score. And no agent ever submits a payment.
+> Three things here cannot be faked from a laptop: a real mobile fingerprint, a residential IP in another
+> country, and a browser identity that remembers. Those are Steel primitives, and they are what makes every
+> failure attributable. Tooling failures are excluded from the score. No agent ever submits a payment.
 
 ## 2:40 — Business (12 s)
 
-> One run replaces a forty-thousand-dollar study. It costs eight browser sessions and a few dozen model
-> calls, so you run it on every deploy, not once a quarter. McKinsey puts agentic commerce at three to five
-> trillion dollars by 2030. Every one of those sites needs to know if the agent makes it to checkout.
+> One run replaces a forty-thousand-dollar study for the price of eight browser sessions, so you run it on
+> every deploy. Agentic commerce is heading to three to five trillion dollars by 2030. Every one of those
+> sites needs to know if the agent makes it to checkout.
 
 ## 2:52 — Close (8 s)
 
