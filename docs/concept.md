@@ -1,6 +1,6 @@
 # Crucible — concept, prior art & requirements
 
-> Working title: **Crucible** (a severe test that reveals what something is made of). Alternatives: *Populace, Proving Ground, Colosseum, Cohort*.
+> Working title: **Crucible** (a severe test that reveals what something is made of).
 
 Hackathon: Battle of the Schools — **Steel.dev Web Agents track**. Goal: 1st place (+ possibly the $500 Steel Computer bonus). Stack: **Python**.
 
@@ -9,20 +9,22 @@ Hackathon: Battle of the Schools — **Steel.dev Web Agents track**. Goal: 1st p
 ## 1. The pitch (simplified)
 
 **One-liner:**
-> Point Crucible at any website and it unleashes a population of AI users on it — some acting like real customers, some acting like adversaries — then hands you a report of exactly where your product breaks, with a video replay of each failure.
+> Lighthouse for AI agents, grounded in real customer complaints. Point Crucible at any website with zero context: it works out what the site is and who it serves, gathers real complaints about it from the web, turns them into hypotheses, runs a controlled population of AI agents through the site in real cloud browsers, and hands you a readiness score with the exact moment each agent got stuck, the customer quote it corroborates, and a proposed fix.
 
 **The 30-second version:**
-Real products are tested by a handful of engineers on their own laptops, in one language, from one country, on one clean browser. Real *users* are thousands of different people, on different devices, in different countries, some confused, some malicious. Crucible closes that gap: it spins up a swarm of AI "users" in real cloud browsers (via Steel), each a distinct **persona** — a returning mobile shopper in Germany, a first-timer in Brazil, a fraudster probing your checkout — and turns them loose on your live product at the same time. You watch them work in a live grid, and when they get stuck, abandon, or break something, Crucible catches it and shows you the exact moment it happened.
+Every company has customers complaining somewhere on the web — Trustpilot, Reddit, app-store reviews — and no cheap way to reproduce what they're describing. Meanwhile AI agents are starting to shop, book, and browse on their behalf, and nobody knows whether their site survives that. Crucible does both at once. It reads the site, reads the complaints, and then unleashes agents on real Steel browsers — on mobile, as a returning visitor, from Canada or Germany — one variable at a time, so every failure is attributable. When an agent hits the exact wall a customer described, you get the quote and the replay side by side.
 
-**Product spine (decided): red-team + realistic-crowd baseline.**
-Crucible is primarily a **red-teaming / vulnerability product**: adversarial agents probe the product for abuse and breakage (promo/coupon farming, signup & bot abuse, broken auth/access control, rate-limit gaps) and produce a findings report with jump-to-failure replays. The **cooperative personas play a supporting role** — they form the realistic "normal traffic" the attackers hide inside, and they showcase Steel's geo + persistent-identity diversity. The headline question this frames: **does your product catch the fraudster without breaking for the grandma?** You can't answer that without both populations in the same run.
+**Product spine (decided): agent-readiness, grounded in evidence-backed research.**
+- **Research gathers real complaints; agents test them.** Research never predicts behaviour — agents are not consumers. It produces *hypotheses* (journey + config + the complaint that motivated it), and the run stage tests them.
+- **The population is a controlled experiment.** Baseline (desktop, fresh, US) plus variants that change exactly one thing: mobile mode, a returning persistent Profile, another country. Those variables *are* Steel's differentiators, so the product cannot exist on plain Playwright.
+- **Two kinds of finding, both honest:** *corroborated* (a real complaint the agents reproduced) and *agent-readiness* (the site is hostile to agents specifically; the agents are the population being measured).
 
 **Why it's not just "AI QA":**
-Two things make it new and make Steel irreplaceable:
-1. **Real diversity, not imagined.** Personas run as **persistent identities** (they remember past visits) across **real geographies** (real residential IPs in different countries) and **devices**. You cannot fake "a returning user in Germany on mobile" from a laptop — that needs Steel's Profiles + geo proxies.
-2. **Adversaries, not just customers.** Alongside cooperative personas, adversarial agents probe for abuse and breakage (signup spam, promo-code abuse, broken auth, rate limits). This "agents vs. product" framing is the archetype that won the YC Web Agents hackathon (*Browser Brawl*).
+1. **Findings are grounded in real humans.** "Three customers said checkout breaks on mobile in Canada; here's our agent hitting it." That is not a synthetic-user guess.
+2. **Attributable, not noisy.** One-variable-at-a-time configs mean "fails only on mobile" is a fact, not an impression.
+3. **It is Steel's own thesis as a product.** The web is hostile to agents; reliability is diagnosis, not blind retries; agents run at fleet scale.
 
-**The demo moment:** run it live on the *judges' own* product and watch a population of AI users find its cracks in real time.
+**The demo moment:** a corroborated finding — customer quote on the left, the Steel replay frozen at the stall on the right. Stretch closer: a Steel Computer applies the proposed fix to our self-hosted store, re-runs, and the score climbs live.
 
 ---
 
@@ -30,77 +32,65 @@ Two things make it new and make Steel irreplaceable:
 
 | Name | What it is | How Crucible differs |
 |---|---|---|
-| **Browser Brawl** (YC Web Agents Hackathon winner) | Two agents on a live site: an attacker completes a task, a defender injects JS to block it; emits traces as fine-tuning data. [site](https://www.browser-brawl.com/) · [repo](https://github.com/RichardHruby/browser-brawl) | Same adversarial/self-play DNA, but aimed at **testing a real product** (not an abstract duel) and paired with **cooperative geo/persona users** + a usable report. |
-| **UXAgent** (Amazon, CHI 2025) | LLM agents as simulated usability-test participants; persona generator + browser connector; thousands of simulated users. [paper](https://arxiv.org/abs/2504.09407) | UXAgent uses a **plain Chrome connector** — no real geography, no persistent identity, no scale infra, no adversaries. We add all four via Steel. |
-| **Synthetic Users** (syntheticusers.io) | Commercial "synthetic user research" — mostly LLM *imagining* users / interviews; some browser onboarding runs. | We drive **real browsers at fleet scale across real geographies**, not an LLM imagining a user. |
-| **Generative Agents / "Smallville"** + **AI Town** | 25 LLM agents living in a simulated town (memory, planning, emergent behavior). [paper](https://arxiv.org/pdf/2304.03442) · [repo](https://github.com/joonspk-research/generative_agents) | The "agent society" idea, but ours acts **on a real product on the live web**, producing actionable QA/UX/abuse findings. |
-| **WebArena / WebVoyager** | Benchmarks for web agents on (mostly) sandboxed sites. [WebArena](https://github.com/web-arena-x/webarena) | Benchmarks *rate agents*; we use agents to *rate a product*. |
-| **Browser Use `qa-use`** | Open-source "QA-test your site with an agent." | The commoditized baseline we must out-class — via geo + persistent identity + adversarial + replay report. |
-| **HackWorld** | Research: evaluating computer-use agents at exploiting web-app vulnerabilities. [paper](https://arxiv.org/html/2510.12200v1) | Direct inspiration for the **adversarial** half; we productize it into a report. |
+| **UXAgent** (Amazon, CHI 2025) | LLM agents as simulated usability-test participants. [paper](https://arxiv.org/abs/2504.09407) | UXAgent *imagines* users and runs a plain Chrome connector. We ground hypotheses in real complaints and run a controlled matrix on real geo / device / identity via Steel. |
+| **Synthetic Users** (syntheticusers.io) | Commercial "synthetic user research" — mostly LLM-imagined interviews. | We never sell imagined behaviour; findings are reproduced complaints or measured agent failures. |
+| **Browser Use `qa-use`** | Open-source "QA-test your site with an agent." | The commoditised baseline. We add research grounding, a controlled population, attribution, a readiness score, and jump-to-failure replay. |
+| **Browser Brawl** (YC Web Agents Hackathon winner) | Attacker vs. defender agents on a live site. [site](https://www.browser-brawl.com/) | Same "agents vs. product" energy, but we diagnose a real product instead of staging a duel, and we don't depend on a defended target. |
+| **Lighthouse / axe** | Deterministic page audits for performance and accessibility. | We audit *task completion by agents*, not static page properties — and we show the failing moment. |
+| **WebArena / WebVoyager** | Benchmarks for web agents on sandboxed sites. [WebArena](https://github.com/web-arena-x/webarena) | Benchmarks rate agents; we use agents to rate a product. |
+| **Coframe** (on Browserbase) | Agents that A/B test and edit live pages. | Closest in spirit to our fix loop; we start from complaints and agent failures rather than conversion tuning. |
 
-**Positioning in one line:** *UXAgent's synthetic users + Browser Brawl's adversaries, run on Steel's real-world infrastructure (geo + persistent identity + scale + replay).*
+**Positioning in one line:** *Lighthouse for agents, with the customer's complaint and the replay side by side, on Steel's real mobile / identity / geo infrastructure.*
 
 ---
 
 ## 3. Requirements to read up on
 
-Two lists. **A** = vocabulary we must be able to *say* to explain/pitch the idea. **B** = concepts/tech we must *learn* to build it.
-
 ### A. Vocabulary to explain the idea
 
-- **Synthetic / simulated user** — an AI agent standing in for a real human user.
-- **Persona** — a defined user profile (goals, traits, device, location, patience) driving one agent's behavior.
-- **Agent** — an LLM-driven loop that perceives a page, decides an action, and acts (repeat).
-- **Cooperative vs. adversarial agent** — one tries to *use* the product normally; the other tries to *abuse/break* it.
-- **Self-play / agent arena** — agents interacting/competing in a shared environment (the winning hackathon archetype).
-- **Red-teaming** — deliberately attacking a system to find weaknesses before real attackers do.
-- **Conversion funnel** — the steps a user passes through (land → signup → checkout); each step loses some users.
-- **Drop-off / abandonment** — where and why users quit the funnel.
-- **UX / localization (i18n) conformance** — does the product behave correctly per language/currency/region/consent law.
-- **Dark pattern** — a deceptive UI trick (hidden costs, forced continuity); something adversarial agents can surface.
-- **Session replay** — a video/timeline reconstruction of what happened in a browser session.
-- **Jump-to-failure** — linking a detected failure straight to that moment in the replay.
-- **Eval / benchmark & traces** — structured records of agent behavior, usable to measure or to fine-tune models (judges love this).
-- **Digital twin** — a persistent simulated stand-in for a real returning user.
+- **Agent-readiness** — how well a site holds up when an AI agent, not a human, tries to complete a task on it.
+- **Site model** — the structured output of zero-context exploration: what the site is, who it's for, its key journeys.
+- **Journey** — a task a user (or agent) completes end to end: find product → add to cart → reach checkout.
+- **Hypothesis** — a journey + a config + the real complaint that motivated testing it.
+- **Corroborated finding** — a real complaint the agents reproduced, with quote and replay.
+- **Controlled population / one-variable-at-a-time** — every config differs from baseline in exactly one dimension, so failures are attributable.
+- **Persistent Profile / returning identity** — a Steel browser identity that remembers past visits.
+- **Mobile mode** — Steel's full mobile fingerprint (viewport, touch, UA), not a spoofed header.
+- **Failure taxonomy** — the fixed list of stall causes (cookie wall, CAPTCHA, hidden nav, icon-only control, geo-block, …).
+- **Harness error** — a failure caused by our tooling, not the site; kept out of the score.
+- **Session replay / jump-to-failure** — Steel Agent Traces linking a finding straight to the frame where it happened.
+- **Readiness score** — weighted journey completion across configs, 0–100.
+- **Fix loop** — proposed fix → applied on a Steel Computer → re-run → score delta.
 
 ### B. Tech to learn to build it
 
 **Steel (the core — read these first):**
 - Intro & overview — https://docs.steel.dev/overview/intro-to-steel
-- Sessions API (create/connect/release, the atomic unit) — https://docs.steel.dev/overview/sessions-api/overview
+- Sessions API — https://docs.steel.dev/overview/sessions-api/overview
 - Session lifecycle & limits (15-min free cap, timeouts) — https://docs.steel.dev/overview/sessions-api/session-lifecycle
-- Session configuration (viewport, device, proxy flags) — https://docs.steel.dev/overview/sessions-api/configuration
-- **Persistent Profiles** (returning identities) — https://docs.steel.dev/overview/profiles-api/overview
-- **Residential proxies + geolocation** (per-country IPs) — https://docs.steel.dev/overview/stealth/proxies
-- **Live session embed** (interactive viewer for the grid) — https://docs.steel.dev/overview/sessions-api/embed-sessions/live-sessions
-- **Agent Traces** (jump-to-failure replay) — https://docs.steel.dev/overview/agent-traces/overview
-- Credentials API (logged-in personas without leaking secrets) — https://docs.steel.dev/overview/credentials-api/overview
+- Session configuration (**mobile mode** via `device_config`, viewport) — https://docs.steel.dev/overview/sessions-api/configuration
+- **Persistent Profiles** (`persist_profile=True`, `profile_id=`) — https://docs.steel.dev/overview/profiles-api/overview
+- **Residential proxies + geolocation** (`use_proxy={"geolocation": {"country": ...}}`) — https://docs.steel.dev/overview/stealth/proxies
+- **Live session embed** (the grid) — https://docs.steel.dev/overview/sessions-api/embed-sessions/live-sessions
+- **Agent Traces** (jump-to-failure) — https://docs.steel.dev/overview/agent-traces/overview
 - Python + Playwright quickstart — https://docs.steel.dev/integrations/playwright · Cookbook — https://docs.steel.dev/cookbook
-- (Optional/bonus) Steel Computer beta — https://computers-preview.apidocumentation.com · activate: https://app.steel.dev/computer-access
+- (Stretch) Steel Computer beta — https://computers-preview.apidocumentation.com · activate: https://app.steel.dev/computer-access
 
-**Browser automation:**
-- **Playwright for Python** (driving the page) — https://playwright.dev/python/
-- **CDP** (Chrome DevTools Protocol) & `connect_over_cdp` — how Playwright attaches to a remote Steel browser.
-- DOM-based control (selectors, `get_by_role`) vs. **vision/computer-use** control (screenshot → click coordinates) — pick per agent.
-
-**LLM agents:**
-- The **agent loop**: observe (page/DOM/screenshot) → decide → act → repeat.
-- **Tool / function calling** and **structured output** (getting reliable actions + JSON findings out of an LLM).
-- **DOM-based agent frameworks** to consider: Browser Use, Stagehand (both run on Steel) — vs. rolling our own loop.
-- **Computer-use** models (Claude/OpenAI/Gemini) — screenshot-driven action; Steel has `sessions.computer()` + recipes.
-- **Persona prompting** — system prompts that make each agent behave like its persona (impatient, confused, malicious).
-- Claude API reference (models/pricing/tool use) — read via the `claude-api` skill before wiring the model.
+**Browser automation & agents:**
+- **Playwright for Python** + `connect_over_cdp` — https://playwright.dev/python/
+- **Browser Use** on Steel for journey execution (the observe → decide → act loop).
+- **Structured output** (Pydantic) for the site model, research brief, events, findings.
+- Claude API reference — read via the `claude-api` skill before wiring the model.
 
 **Supporting engineering:**
-- **Python `asyncio`** / concurrency — running many Steel sessions in parallel (respect the 10-session free cap; batch in waves).
-- **Secrets** — `STEEL_API_KEY` + model keys in `.env`, `.gitignore`'d (Steel's guide is explicit about this).
-- **A thin UI** to show the live grid + funnel + report — likely **FastAPI + a simple frontend** (or Streamlit for speed); embed Steel's live viewer iframes.
-- **Findings data model** — per-agent event log (step, action, screenshot/trace ref, outcome) → aggregate into funnel + report.
+- Python `asyncio` for parallel Steel sessions in waves under the 10-session cap.
+- Secrets in `.env`, gitignored.
+- FastAPI + React + Tailwind for the journey map, live grid, score card, finding detail.
 
 ---
 
 ## Decisions & open items
-- **Team:** 4 devs, parallel work (see design doc for module split). ✅
-- **Demo balance:** red-team spine + realistic-crowd baseline. ✅
+- **Team:** 4 devs, parallel work (module split in the design doc). ✅
+- **Spine:** agent-readiness + evidence-backed research (red-team and synthetic-consumer versions rejected). ✅
 - **Full design:** `docs/superpowers/specs/2026-09-12-crucible-design.md`
-- Still to do at the event: confirm Steel Computer beta scope at the 1:00 PM workshop (only if we chase the $500 bonus); secure elevated concurrency / proxy credits from the Steel booth.
+- At the event: confirm Steel Computer beta scope at the 1:00 PM workshop (fix loop is stretch-only); secure elevated concurrency / proxy credits from the Steel booth; pick the real demo target from 2–3 pre-scouted candidates.
