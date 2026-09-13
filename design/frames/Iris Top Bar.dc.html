@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: #FAF7F2;
+    background-image:
+      radial-gradient(ellipse 70% 40% at 50% 60%, #FAF7F2 0%, rgba(250,247,242,0.85) 50%, rgba(250,247,242,0) 80%),
+      url("assets/dot-field.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 55%, center top;
+    background-size: auto, 100% auto;
+    background-attachment: fixed, fixed;
+  }
+  a { color: #FF5A1F; text-decoration: none; }
+  a:hover { color: #141414; }
+</style>
+</helmet>
+
+<section style="display: flex; flex-direction: column; gap: 56px; padding: 48px 40px 80px; font-family: Inter, system-ui, sans-serif; color: #141414;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; color: #8A8580;">[ TURN 1 · PERSISTENT TOP BAR ]</div>
+    <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: 40px; line-height: 1;">Top bar on paper</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 56px;">
+
+    <div id="1a" style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: #FF5A1F; border: 1px solid #FF5A1F; padding: 3px 7px;">1a</span>
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; color: #8A8580;">BASE — SESSION COUNTER ONLY</span>
+      </div>
+
+      <div style="border-top: 1px solid rgba(20,20,20,0.1); border-bottom: 1px solid rgba(20,20,20,0.1); backdrop-filter: blur(2px);">
+        <div style="display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 0 28px; min-height: 64px;">
+
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="position: relative; width: 12px; height: 12px; display: block; flex-shrink: 0;"><span style="position: absolute; top: 0; left: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span><span style="position: absolute; top: 0; right: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span><span style="position: absolute; bottom: 0; left: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span><span style="position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span></span>
+            <span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1; letter-spacing: 0.01em;">Iris</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 2px; min-width: 0; overflow: hidden; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;">
+            <sc-for list="{{ steps }}" as="step" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 2px; flex-shrink: 0;">
+                <sc-if value="{{ step.divider }}" hint-placeholder-val="{{ true }}">
+                  <span style="color: rgba(20,20,20,0.22); padding: 0 2px;">·</span>
+                </sc-if>
+                <sc-if value="{{ step.done }}" hint-placeholder-val="{{ false }}">
+                  <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">
+                    <span style="color: #1F9D55; font-size: 11px;">✓</span>{{ step.label }}
+                  </span>
+                </sc-if>
+                <sc-if value="{{ step.current }}" hint-placeholder-val="{{ false }}">
+                  <span style="display: flex; align-items: center; gap: 6px; color: #FF5A1F; padding: 6px 8px; background: rgba(255,90,31,0.08); white-space: nowrap; flex-shrink: 0;">
+                    <span style="width: 5px; height: 5px; background: #FF5A1F; border-radius: 50%; display: block;"></span>{{ step.label }}
+                  </span>
+                </sc-if>
+                <sc-if value="{{ step.upcoming }}" hint-placeholder-val="{{ true }}">
+                  <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">{{ step.label }}</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: nowrap; gap: 10px; flex-shrink: 0;">
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 6px 10px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto; white-space: nowrap; flex-shrink: 0;">{{ counter }}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="1b" style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: #FF5A1F; border: 1px solid #FF5A1F; padding: 3px 7px;">1b</span>
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; color: #8A8580;">WITH MUTED [ CACHED ] PILL</span>
+      </div>
+
+      <div style="border-top: 1px solid rgba(20,20,20,0.1); border-bottom: 1px solid rgba(20,20,20,0.1); backdrop-filter: blur(2px);">
+        <div style="display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 0 28px; min-height: 64px;">
+
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="position: relative; width: 12px; height: 12px; display: block; flex-shrink: 0;"><span style="position: absolute; top: 0; left: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span><span style="position: absolute; top: 0; right: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span><span style="position: absolute; bottom: 0; left: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span><span style="position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span></span>
+            <span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1; letter-spacing: 0.01em;">Iris</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 2px; min-width: 0; overflow: hidden; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;">
+            <sc-for list="{{ steps }}" as="step" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 2px; flex-shrink: 0;">
+                <sc-if value="{{ step.divider }}" hint-placeholder-val="{{ true }}">
+                  <span style="color: rgba(20,20,20,0.22); padding: 0 2px;">·</span>
+                </sc-if>
+                <sc-if value="{{ step.done }}" hint-placeholder-val="{{ false }}">
+                  <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">
+                    <span style="color: #1F9D55; font-size: 11px;">✓</span>{{ step.label }}
+                  </span>
+                </sc-if>
+                <sc-if value="{{ step.current }}" hint-placeholder-val="{{ false }}">
+                  <span style="display: flex; align-items: center; gap: 6px; color: #FF5A1F; padding: 6px 8px; background: rgba(255,90,31,0.08); white-space: nowrap; flex-shrink: 0;">
+                    <span style="width: 5px; height: 5px; background: #FF5A1F; border-radius: 50%; display: block;"></span>{{ step.label }}
+                  </span>
+                </sc-if>
+                <sc-if value="{{ step.upcoming }}" hint-placeholder-val="{{ true }}">
+                  <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">{{ step.label }}</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: nowrap; gap: 8px; flex-shrink: 0;">
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: #8A8580; background: rgba(20,20,20,0.04); border-radius: 999px; padding: 6px 12px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto; white-space: nowrap; flex-shrink: 0;">[ CACHED ]</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 6px 10px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto; white-space: nowrap; flex-shrink: 0;">{{ counter }}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; color: #8A8580; max-width: 620px; line-height: 1.9;">
+    STAGE STATES — DONE: ink + green ✓ · CURRENT: orange, pulsing dot, 8% orange wash · UPCOMING: muted #8A8580. CHANGE THE ACTIVE STAGE IN TWEAKS.
+  </div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:560},&quot;currentStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;LEARN&quot;,&quot;BRIEF&quot;,&quot;SWARM&quot;,&quot;FINDINGS&quot;,&quot;REPORT&quot;],&quot;default&quot;:&quot;SWARM&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Stage&quot;},&quot;sessionCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:0,&quot;max&quot;:99,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Stage&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const labels = ["LEARN", "BRIEF", "SWARM", "FINDINGS", "REPORT"];
+    const current = this.props.currentStep ?? "SWARM";
+    const ci = Math.max(0, labels.indexOf(current));
+    const n = this.props.sessionCount ?? 8;
+    return {
+      counter: "[ " + n + " SESSION" + (n === 1 ? "" : "S") + " ]",
+      steps: labels.map((label, i) => ({
+        label,
+        divider: i > 0,
+        done: i < ci,
+        current: i === ci,
+        upcoming: i > ci
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

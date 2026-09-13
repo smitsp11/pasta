@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #FAF7F2;
+  --ink: #141414;
+  --scan: #FF5A1F;
+  --scan-soft: #FFE6DA;
+  --ok: #1F9D55;
+  --stall: #D93025;
+  --muted: #8A8580;
+  --line: rgba(20,20,20,0.18);
+  --line-soft: rgba(20,20,20,0.10);
+  --pastel-1: #FFD9CF; --pastel-2: #F3E9D2; --pastel-3: #E5DDF5; --pastel-4: #D8ECE3;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+html, body { margin: 0; padding: 0; }
+body {
+  color: var(--ink);
+  font-family: var(--font-sans);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse 72% 46% at 50% 58%, #FAF7F2 0%, rgba(250,247,242,0.9) 48%, rgba(250,247,242,0) 80%),
+    url("/assets/dot-field.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center 56%, center top;
+  background-size: auto, 100% auto;
+  background-attachment: fixed, fixed;
+}
+a { color: var(--scan); text-decoration: none; }
+a:hover { color: var(--ink); }
+
+@keyframes irisPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes irisScan  { 0% { top: 2%; } 100% { top: 96%; } }
+@keyframes irisScanPanel { 0% { top: 4%; } 100% { top: 94%; } }
+@keyframes irisBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes irisBlip { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.6; } }
+@keyframes irisFade { to { opacity: 0; } }
+
+.serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.015em; line-height: 0.96; }
+.mono  { font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; }
+.h1    { font-size: clamp(40px, 6vw, 76px); }
+
+.btn-primary:hover { background: #E44B12 !important; }
+.btn-secondary:hover { border-color: #141414 !important; }
+.btn-primary:active, .btn-secondary:active { transform: translateY(1px); }
