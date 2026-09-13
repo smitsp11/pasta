@@ -24,7 +24,7 @@ export function Report({ scorecard, findings, affected, personas, feeds = {}, so
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 28, borderTop: "1px solid rgba(20,20,20,0.16)", borderBottom: "1px solid rgba(20,20,20,0.16)", padding: "26px 0" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 8, minWidth: 0 }}>
             <span style={{ ...num, color: "#8A8580" }}>{scorecard.static_score == null ? "—" : <NumberTick value={scorecard.static_score} instant={instant} duration={1.0} />}</span>
-            <span style={{ ...cap, color: "#8A8580" }}>CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers</span></div>
+            <span style={{ ...cap, color: "#8A8580" }}>{scorecard.static_score == null ? "CLOUDFLARE STATIC SCORE · scanner blocked by the site" : "CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers"}</span></div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8, minWidth: 0 }}>
             <span style={{ ...num, color: "#FF5A1F" }}><NumberTick value={scorecard.overall} instant={instant} duration={1.2} /></span>
             <span style={{ ...cap, color: "#141414" }}>{`IRIS MEASURED · ${agents} real agents, ${journeys} journeys`}</span></div>
