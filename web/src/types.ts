@@ -45,7 +45,8 @@ export type StreamItem = StageMarker | SourceRead | SiteModelItem | BriefItem | 
 // Derived UI state ------------------------------------------------------------
 export type FeedStatus = "running" | "completed" | "stalled" | "harness_error";
 export interface Feed { run_id: string; session_id: string; persona_id: string; config: Config; journey_id: string;
-  viewer_url: string; last_action: string; last_observation: string; step: number; status: FeedStatus; final_screenshot_ref: string | null }
+  viewer_url: string; last_action: string; last_observation: string; step: number; status: FeedStatus; final_screenshot_ref: string | null;
+  events: { step: number; action: string; observation: string }[] }
 export interface RunState {
   stage: StageName | "idle";
   url: string;

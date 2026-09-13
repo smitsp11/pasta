@@ -35,7 +35,7 @@ export function Report({ scorecard, findings, affected, personas, feeds = {}, so
         <div style={{ display: "flex", flexDirection: "column", minWidth: 0, borderTop: "1px solid rgba(20,20,20,0.14)" }}>
           {ranked.map(x => <FlagRow key={x.id} f={x} selected={x.id === f?.id} share={affected[x.id]?.share ?? 0} people={(affected[x.id]?.persona_ids ?? []).map(id => byId[id]).filter(Boolean)} onSelect={() => setSel(x.id)} />)}
         </div>
-        {f && <FlagDetail f={f} persona={f.session_id ? bySession[f.session_id] : undefined} sources={sources} />}
+        {f && <FlagDetail f={f} persona={f.session_id ? bySession[f.session_id] : undefined} sources={sources} feed={Object.values(feeds).find(x => x.session_id === f.session_id)} />}
       </div>
     </section>);
 }
