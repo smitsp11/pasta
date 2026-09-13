@@ -11,5 +11,5 @@ it("shows read quotes, the focused source, and counts", () => {
   expect(screen.getByText("checkout resets on my phone every time")).toBeInTheDocument();
   expect(screen.getByText("2 PIECES OF EVIDENCE · 1 SOURCE")).toBeInTheDocument();
   expect(screen.getByText("3 PAGES · 1 JOURNEY")).toBeInTheDocument();
-  expect(screen.getByText("Trustpilot")).toHaveStyle({ color: "#FF5A1F" });
+  expect(screen.getByText("Trustpilot")).toHaveStyle({ color: "var(--scan-ink)" });
 });

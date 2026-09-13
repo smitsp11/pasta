@@ -33,7 +33,7 @@ export default function App() {
           {state.stage !== "idle" && <Stage key={`learn-${run}`} id="learn"><Learning state={state} /></Stage>}
           {state.personas.length > 0 && <Stage key={`brief-${run}`} id="brief"><Brief personas={state.personas} stressTests={state.stress_tests} sources={state.sources} /></Stage>}
           {Object.keys(state.feeds).length > 0 && <Stage key={`swarm-${run}`} id="swarm"><Swarm state={state} /></Stage>}
-          {state.scorecard && <Stage key={`report-${run}`} id="report"><Report scorecard={state.scorecard} findings={state.findings} affected={state.affected} personas={state.personas} feeds={state.feeds} sources={state.sources} /></Stage>}
+          {state.scorecard && <Stage key={`report-${run}`} id="report"><Report scorecard={state.scorecard} findings={state.findings} affected={state.affected} personas={state.personas} feeds={state.feeds} sources={state.sources} journeys={state.site?.journeys ?? []} /></Stage>}
         </AnimatePresence>
       </main>
     </div>);

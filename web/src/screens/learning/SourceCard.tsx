@@ -10,10 +10,10 @@ export function SourceCard({ source, quotes, focused, index }: { source: Source;
         <AsciiImage src={source.thumbnail} seed={source.id} cols={28} rows={8} fontSize={7} style={{ background: "transparent", padding: 5, color: quotes ? "rgba(20,20,20,0.45)" : "rgba(20,20,20,0.4)", lineHeight: "7px" }} />
         {focused && <Reticle layoutId="research-reticle" size={11} thickness={2} inset={5} />}
       </div>
-      <span className="mono" style={{ fontSize: 10, letterSpacing: "0.08em", lineHeight: 1.4, color: focused ? "#FF5A1F" : "#141414", textTransform: "uppercase" }}>{source.name}</span>
+      <span className="mono" style={{ fontSize: 10, letterSpacing: "0.08em", lineHeight: 1.4, color: focused ? "var(--scan-ink)" : "#141414", textTransform: "uppercase" }}>{source.name}</span>
       {quotes?.slice(0, 1).map(q => (
         <motion.div key={q.text} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} style={{ display: "flex", gap: 6, background: "rgba(255,90,31,0.1)", padding: "6px 7px" }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "#FF5A1F", flexShrink: 0 }}>&gt;</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--scan-ink)", flexShrink: 0 }}>&gt;</span>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, lineHeight: 1.45, color: "#141414" }}>{q.text}</span>
         </motion.div>))}
     </motion.div>);
