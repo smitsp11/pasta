@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { AsciiImage } from "../../texture/AsciiImage";
 import type { SiteNode } from "../../types";
 import { edgePath, layoutNodes } from "./layout";
+const short = (path: string) => { const segs = path.split("?")[0].replace(/\/$/, "").split("/").filter(Boolean); return segs.length === 0 ? "/" : segs.length === 1 ? `/${segs[0]}` : `…/${segs[segs.length - 1].slice(0, 28)}`; };
 export function SiteMap({ url, nodes, scanning }: { url: string; nodes: SiteNode[]; scanning: boolean }) {
   const pos = layoutNodes(nodes);
   const host = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -27,7 +28,7 @@ export function SiteMap({ url, nodes, scanning }: { url: string; nodes: SiteNode
           <motion.span key={n.path} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }}
             style={{ position: "absolute", left: `${pos[n.path].x}%`, top: `${pos[n.path].y}%`, transform: "translate(-50%, -50%)", display: "flex", alignItems: "center", gap: 7, fontFamily: "var(--font-mono)", fontSize: 10,
               color: n.journey ? "#FF5A1F" : "#141414", background: "#FAF7F2", border: `1px solid ${n.journey ? "#FF5A1F" : "rgba(20,20,20,0.2)"}`, padding: "4px 7px", whiteSpace: "nowrap" }}>
-            {n.path}{n.journey && <span style={{ fontSize: 8, letterSpacing: "0.1em", color: "#FF5A1F", opacity: 0.85 }}>JOURNEY {n.journey}</span>}
+            <span title={n.path}>{short(n.path)}</span>{n.journey && <span style={{ fontSize: 8, letterSpacing: "0.1em", color: "#FF5A1F", opacity: 0.85 }}>JOURNEY {n.journey}</span>}
           </motion.span>))}
       </div>
     </div>);

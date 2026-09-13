@@ -12,7 +12,7 @@ export const TARGETS: Target[] = [
   { id: "northwind", label: "Northwind Outfitters (fictional)", hosts: ["northwindoutfitters.com"], demo: northwind as unknown as DemoData },
 ];
 
-export const DEFAULT_TARGET = TARGETS[0];
+export const DEFAULT_TARGET = TARGETS.find(t => t.id === "northwind") ?? TARGETS[0];
 
 export function hostOf(input: string): string {
   const s = input.trim();

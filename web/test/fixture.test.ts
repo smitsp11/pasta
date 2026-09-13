@@ -9,6 +9,7 @@ it("matches typed urls to targets and falls back to the fictional store", () => 
   expect(hostOf("zara.com/us")).toBe("zara.com");
   expect(hostOf("https://www.ikea.com/ca/en/")).toBe("www.ikea.com");
   expect(targetFor("https://northwindoutfitters.com").id).toBe("northwind");
-  expect(targetFor("https://example.org").id).toBe(TARGETS[0].id);
-  expect(targetFor("").id).toBe(TARGETS[0].id);
+  expect(targetFor("https://example.org").id).toBe("northwind");
+  expect(targetFor("").id).toBe("northwind");
+  expect(targetFor("zara.com/us/").id).toBe("zara"); expect(targetFor("https://www.ikea.com/ca/en/").id).toBe("ikea");
 });
