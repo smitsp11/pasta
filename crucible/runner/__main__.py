@@ -105,7 +105,11 @@ def cli() -> int:
     logging.basicConfig(level=logging.DEBUG if a.verbose else logging.INFO,
                         format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     logging.getLogger("httpx").setLevel(logging.WARNING)
-    return asyncio.run(_main(a))
+    try:
+        return asyncio.run(_main(a))
+    except KeyboardInterrupt:
+        print("\ninterrupted: sessions released (verify with `python -m crucible.steel --list`)")
+        return 130
 
 
 if __name__ == "__main__":
