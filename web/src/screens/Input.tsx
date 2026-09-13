@@ -17,7 +17,7 @@ export function Input({ onRun, collapsed = false }: { onRun: (url: string) => vo
             style={{ flex: "1 1 300px", minWidth: 0, boxSizing: "border-box", fontFamily: "var(--font-mono)", fontSize: 16, color: "#141414", background: "#FFFFFF", border: "1px solid rgba(20,20,20,0.22)", padding: "15px 18px", outline: "none" }}
             onFocus={e => { e.currentTarget.style.borderColor = "var(--scan)"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,90,31,0.12)"; }}
             onBlur={e => { e.currentTarget.style.borderColor = "rgba(20,20,20,0.22)"; e.currentTarget.style.boxShadow = "none"; }} />
-          <button type="submit" disabled={!canRun} className="btn-primary" style={{ flex: "0 0 auto", fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500, letterSpacing: "0.14em", color: "#FFFFFF", background: canRun ? "var(--scan-deep)" : "var(--muted)", border: "none", padding: "15px 28px", cursor: canRun ? "pointer" : "not-allowed", whiteSpace: "nowrap" }}>{collapsed ? "RUN AGAIN →" : "RUN IRIS →"}</button>
+          <button type="submit" disabled={!canRun} className="btn-primary" style={{ flex: "0 0 auto", fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500, letterSpacing: "0.14em", color: "#FFFFFF", background: "var(--scan-deep)", border: "none", padding: "15px 28px", cursor: canRun ? "pointer" : "not-allowed", whiteSpace: "nowrap" }}>{collapsed ? "RUN AGAIN →" : "RUN IRIS →"}</button>
         </form>
       </div>
     </motion.section>);
