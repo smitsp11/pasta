@@ -4,9 +4,21 @@ Lighthouse for AI agents, measured with real agents on Steel. Docs: `docs/concep
 `docs/superpowers/specs/2026-09-12-crucible-design.md` (design), `docs/plan.md` (team plan),
 `docs/dev-a-plan.md` (Steel core plan).
 
+## Repo layout
+
+```
+backend/   Python: schemas, Steel core, engines, Runner, Scorer, fixtures, tests   (Devs A, B, C)
+web/       Vite + React + Tailwind front end                                        (Dev D)
+docs/      concept, design, plan, API contract, UI flow
+design/    design exports
+```
+
+All Python commands below run **from `backend/`**.
+
 ## Setup
 
 ```bash
+cd backend
 uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python -e ".[dev]"
 .venv/bin/python -m playwright install chromium     # only for local, credit-free work
@@ -28,20 +40,21 @@ through `.venv/bin/python`, never bare `python`.
 Tests, fixtures, the API stub, and the React views need **no keys**. Dev C and Dev D can work all day
 on `fixtures/` without a Steel or Anthropic account.
 
-## Layout
+## Backend layout (`backend/`)
 
 ```
 crucible/schemas.py      shared contracts (all devs)      fixtures/        example JSON for every schema + demo_run.json
 crucible/steel.py        Steel session lifecycle (A)      tests/           pytest, no credits needed
 crucible/engines/        browser_use, claude_cu (A)       scripts/         spikes + fixture generator
 crucible/runner/         matrix, scheduler, CLI (A)
+crucible/scorer/         classify, attribute, score (C)
 crucible/testing.py      fakes for tests / dry runs
 ```
 
-## Run
+## Run (from `backend/`)
 
 ```bash
-.venv/bin/python -m pytest -q                                   # 43 tests, ~1s
+.venv/bin/python -m pytest -q                                   # 102 tests, ~1s
 .venv/bin/python scripts/make_fixtures.py                       # regenerate fixtures/
 .venv/bin/python -m crucible.runner --url https://x --journey "Add a product to the cart" --fake --configs mvp
 .venv/bin/python -m crucible.runner --url https://x --journey "..." --configs baseline --step-cap 12   # M1, live
