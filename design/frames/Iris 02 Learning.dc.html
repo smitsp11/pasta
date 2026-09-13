@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: #FAF7F2;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% 62%, #FAF7F2 0%, rgba(250,247,242,0.9) 48%, rgba(250,247,242,0) 80%),
+      url("assets/dot-field.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 58%, center top;
+    background-size: auto, 100% auto;
+    background-attachment: fixed, fixed;
+  }
+  a { color: #FF5A1F; text-decoration: none; }
+  a:hover { color: #141414; }
+  @keyframes irisScan { 0% { top: 4%; } 100% { top: 94%; } }
+  @keyframes irisPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; color: #141414;">
+
+  <div style="position: sticky; top: 0; z-index: 5; backdrop-filter: blur(2px); border-bottom: 1px solid rgba(20,20,20,0.1);">
+    <div style="display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 0 28px; min-height: 64px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="position: relative; width: 12px; height: 12px; display: block; flex-shrink: 0;">
+          <span style="position: absolute; top: 0; left: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; top: 0; right: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; left: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+        </span>
+        <span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1;">Iris</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 2px; min-width: 0; overflow: hidden; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;">
+        <span style="display: flex; align-items: center; gap: 6px; color: #FF5A1F; background: rgba(255,90,31,0.08); padding: 6px 9px; white-space: nowrap; flex-shrink: 0;">
+          <span style="width: 5px; height: 5px; background: #FF5A1F; border-radius: 50%; display: block; animation: irisPulse 1.4s ease-in-out infinite;"></span>LEARN
+        </span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">BRIEF</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">SWARM</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">FINDINGS</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">REPORT</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: nowrap; gap: 10px; flex-shrink: 0;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 6px 10px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto;">{{ counter }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 40px; padding: 44px 32px 64px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto;">
+
+    <h1 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 68px); line-height: 0.98; letter-spacing: -0.015em; margin: 0; max-width: 900px; text-wrap: balance;">Learning your customers and your site.</h1>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 48px; align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #8A8580;">[ RESEARCH ]</span>
+
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #FFD9CF, #F3E9D2); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.45); white-space: pre;">;;iiLLffttii;;::,,..;;ii11ff
+LLff11;;::..,,;;11ttLLGG00CC
+ii;;,,..;;ttLLGG0088GGCCff11
+,,..;;11ffCC0088@@88GGLLff;;
+;;ttLLGG0088@@88GGCCff11;;..
+LLGG0088@@88GGCCLLff11;;::..
+0088@@88GGCCff11;;::..,,;;11
+@@88GGCCLLff11;;::..,,;;iiLL</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">TRUSTPILOT</span>
+            <div style="display: flex; gap: 6px; background: rgba(255,90,31,0.1); padding: 6px 7px;">
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #FF5A1F; flex-shrink: 0;">&gt;</span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">checkout resets on my phone every time</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #E5DDF5, #D8ECE3); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.45); white-space: pre;">::..,,;;ii11ttffLLCCGG0088@@
+,,;;ii11ttffLLCC0088@@8888GG
+ii11ttffLLCCGG0088@@88GGCCLL
+ttffLLCCGG0088@@88GGCCLLff11
+LLCCGG0088@@88GGCCLLff11ii;;
+GG0088@@8888GGCCLLff11ii;;,,
+88@@88GGCCLLff11ii;;,,..::;;
+GGCCLLff11ii;;,,..::;;ii11tt</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">GOOGLE REVIEWS</span>
+            <div style="display: flex; gap: 6px; background: rgba(255,90,31,0.1); padding: 6px 7px;">
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #FF5A1F; flex-shrink: 0;">&gt;</span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">sizing chart is buried three clicks deep</span>
+            </div>
+          </div>
+
+          <div style="position: relative; display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="position: relative; aspect-ratio: 4 / 3; background: linear-gradient(140deg, #D8ECE3, #FFD9CF); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.45); white-space: pre;">ffLLCC0088@@88GGCCLLff11ii;;
+11ttffLLCCGG0088@@88GGCCLLff
+;;ii11ttffLLCCGG0088@@88GGCC
+..::;;ii11ttffLLCCGG0088@@88
+,,..::;;ii11ttffLLCCGG008888
+;;,,..::;;ii11ttffLLCCGG0088
+ii;;,,..::;;ii11ttffLLCCGG00
+11ii;;,,..::;;ii11ttffLLCCGG</pre>
+              <span style="position: absolute; inset: 5px; pointer-events: none;">
+                <span style="position: absolute; top: 0; left: 0; width: 11px; height: 11px; border-top: 2px solid #FF5A1F; border-left: 2px solid #FF5A1F;"></span>
+                <span style="position: absolute; top: 0; right: 0; width: 11px; height: 11px; border-top: 2px solid #FF5A1F; border-right: 2px solid #FF5A1F;"></span>
+                <span style="position: absolute; bottom: 0; left: 0; width: 11px; height: 11px; border-bottom: 2px solid #FF5A1F; border-left: 2px solid #FF5A1F;"></span>
+                <span style="position: absolute; bottom: 0; right: 0; width: 11px; height: 11px; border-bottom: 2px solid #FF5A1F; border-right: 2px solid #FF5A1F;"></span>
+              </span>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #FF5A1F; white-space: normal; overflow-wrap: break-word;">REDDIT r/OUTDOORS</span>
+            <div style="display: flex; gap: 6px; background: rgba(255,90,31,0.1); padding: 6px 7px;">
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #FF5A1F; flex-shrink: 0;">&gt;</span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">nobody says which shell is actually waterproof</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #F3E9D2, #E5DDF5); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.4); white-space: pre;">GG0088@@88GGCCLLff11ii;;,,..
+CCGG0088@@88GGCCLLff11ii;;,,
+LLCCGG0088@@88GGCCLLff11ii;;
+ffLLCCGG0088@@88GGCCLLff11ii
+ttffLLCCGG0088@@88GGCCLLff11
+11ttffLLCCGG0088@@88GGCCLLff
+ii11ttffLLCCGG0088@@88GGCCLL
+;;ii11ttffLLCCGG0088@@88GGCC</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">APP STORE</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #D8ECE3, #E5DDF5); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.4); white-space: pre;">..,,::;;ii11ttffLLCC00888888
+::;;ii11ttffLLCCGG0088@@8888
+;;ii11ttffLLCCGG0088@@88GGCC
+11ttffLLCCGG0088@@88GGCCLLff
+ffLLCCGG0088@@88GGCCLLff11ii
+CCGG0088@@88GGCCLLff11ii;;,,
+0088@@88GGCCLLff11ii;;,,..::
+@@88GGCCLLff11ii;;,,..::;;ii</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">HELP CENTRE</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #FFD9CF, #E5DDF5); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.4); white-space: pre;">tt11ii;;::..,,;;iittLLCC0088
+LLff11ii;;::..,,;;iittLLCC00
+CCLLff11ii;;::..,,;;iittLLCC
+GGCCLLff11ii;;::..,,;;iittLL
+88GGCCLLff11ii;;::..,,;;iitt
+8888GGCCLLff11ii;;::..,,;;ii
+@@8888GGCCLLff11ii;;::..,,;;
+88@@8888GGCCLLff11ii;;::..,,</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">COMPETITOR: ARC'TERYX</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #F3E9D2, #D8ECE3); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.4); white-space: pre;">;;::..,,;;iittLLCCGG008888@@
+ii;;::..,,;;iittLLCCGG008888
+11ii;;::..,,;;iittLLCCGG0088
+ff11ii;;::..,,;;iittLLCCGG00
+LLff11ii;;::..,,;;iittLLCCGG
+CCLLff11ii;;::..,,;;iittLLCC
+GGCCLLff11ii;;::..,,;;iittLL
+88GGCCLLff11ii;;::..,,;;iitt</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">YOUTUBE REVIEWS</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #E5DDF5, #FFD9CF); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.4); white-space: pre;">LLCCGG0088@@88GGCCLLff11ii;;
+ffLLCCGG0088@@88GGCCLLff11ii
+ttffLLCCGG0088@@88GGCCLLff11
+11ttffLLCCGG0088@@88GGCCLLff
+ii11ttffLLCCGG0088@@88GGCCLL
+;;ii11ttffLLCCGG0088@@88GGCC
+::;;ii11ttffLLCCGG0088@@88GG
+..::;;ii11ttffLLCCGG0088@@88</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">SUPPORT TICKETS</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 7px; min-width: 0;">
+            <div style="aspect-ratio: 4 / 3; background: linear-gradient(140deg, #D8ECE3, #F3E9D2); border: 1px solid rgba(20,20,20,0.12); overflow: hidden;">
+              <pre style="margin: 0; padding: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 7px; color: rgba(20,20,20,0.4); white-space: pre;">@@8888GGCCLLff11ii;;::..,,;;
+88@@88GGCCLLff11ii;;::..,,;;
+GG0088@@88GGCCLLff11ii;;::..
+CCGG0088@@88GGCCLLff11ii;;::
+LLCCGG0088@@88GGCCLLff11ii;;
+ffLLCCGG0088@@88GGCCLLff11ii
+ttffLLCCGG0088@@88GGCCLLff11
+11ttffLLCCGG0088@@88GGCCLLff</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.08em; line-height: 1.4; color: #141414; white-space: normal; overflow-wrap: break-word;">INSTAGRAM COMMENTS</span>
+          </div>
+
+        </div>
+
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #8A8580;">14 PIECES OF EVIDENCE · 5 SOURCES</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: #8A8580;">[ SITE MAP ]</span>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch;">
+
+          <div style="border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; display: flex; flex-direction: column; min-width: 0;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid rgba(20,20,20,0.12);">
+              <span style="display: flex; gap: 4px;">
+                <span style="width: 6px; height: 6px; background: rgba(20,20,20,0.22); display: block;"></span>
+                <span style="width: 6px; height: 6px; background: rgba(20,20,20,0.22); display: block;"></span>
+                <span style="width: 6px; height: 6px; background: rgba(20,20,20,0.22); display: block;"></span>
+              </span>
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.06em; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com</span>
+            </div>
+            <div style="position: relative; flex: 1; min-height: 210px; background: linear-gradient(160deg, #F3E9D2, #FFD9CF); overflow: hidden;">
+              <pre style="margin: 0; padding: 8px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8.6px; color: rgba(20,20,20,0.42); white-space: pre; letter-spacing: 0.02em;">@@88@@88@@88@@8@@88@@88@@8@@88@@88@@8@@88@@88@@8@@88@@88@@88@@8@@88@@88@@8@@88@@88@@8@@88@@88@@88@@8@@88@@88@@
+@88@@8@@88@@88@@88@@8@@88@@88@@8@@88@@88@@8@@88@@88@@88@88@@88@@88@@8@@88@@88@@8@@88@@88@@8@@88@@88@@88@@8@@88
+.,,..,,..,,..,..,,..,,..,,.,,..,,..,,.,,..,,..,,..,..,,..,,..,,.,,..,,..,,.,,..,,..,,.,,..,,..,,..,..,,..,,..,
+,,..,,.,,..,,..,,..,..,,..,,..,,.,,..,,..,,.,,..,,..,,..,..,,..,,..,,.,,..,,..,,.,,..,,..,,..,..,,..,,..,,.,,.
+0G08GG00GG0GCG0CCGGCLGCLLCLfLCffLLtfLfttftittiiti;ii;:ii::;;::;:,::,,::.,:,.,:..,,..,. .,. .,  ,. .,. .,  ,, .
+LGGLLCCfLCLfLLffLfttftitfiitt;iti;ii;:i;::;:,:;:,::,,:,.,:,.,,..,, .,. .,. ,. .,. .,. ,, .,. .,..,,..:,.,:,,:;
+Lfttftittiiti;it;;ii::;;::;:,:;,,::.,:,.,:..,,..,. .,. .,  ,. .,. .,  ,, .,. ,,..,,.,:,.,:,,:;,:;;:;i;:ii;;ii;
+;:ii::;;,:;:,::,,::.,:,.,,..,, .,. .,. ,,  ,. .,. ., .,, .,..,,..:,.,:,,::,,;;,:;;:;i;:ii;;ti;itiitfttfftfLffL
+,:,.,:..,,..,, .,. .,  ,. .,. .,. ,, .,. ,,..,,..:,.,:,,:;,:;;::i;:;i;;ii;itiitftiffttLftfLffLCfLCCLCGCLGGCCGG
+,. ,,  ,. .,. ., .,, .,..,,..:,.,:,.::,,;;,:;;:;i;:ii;;ti;itiitfttfftfLftLLffCCLLCCLCGCCGGCC0GCG0GG00GG80G080G
+ .,. .,..,,..:,.,:,,:;,,;;::i;:;i;;ii;itiitftiffttLftfLffLCfLCCLCGCLGGCCGGCG0GC00GG00GG80G080G880088G080G88008
+.,..,,..,, .,. ,,..,, .,. ,,..,, .,. ,,..,,..,. .,. ,,..,, .,. ,,..,, .,. ,,..,, .,. .,..,,..,, .,. ,,..,, .,.
+,..,. .,. ,,..,, .,. ,,..,, .,. ,,..,, .,. .,..,,..,, .,. ,,..,, .,. ,,..,, .,. ,,..,,..,. .,. ,,..,, .,. ,,..
+LGGCCGGCCGGLCGCCGGCCGG,:;;:;i;;ii;ittitfttffCCGCLCGCCGGCCGGLCGCLGG::;;:;i;;itiittitfttfLCCGGCCGGLCGCCGGCCGGLCG
+LLffCLfLCffLLffCLfLCLf;;::i;:;ii;itiittitfftLCffLLffCLfLCLfLLffCLf:;::;i;;ii;itiitfttfftfCLfLCffLLffCLfLCLfLCf
+titftiffitftitftiffttf:,:i;:ii;;tt;ittitfttffitftitftiffttftitftif;::;;:;i;;itiittitfftfftiffitftitftiffttffit
+;ii;;ti;it;;ii;;ti;it;,;;::ii:;ti;ttiiffitLf;it;;ii;;ti;it;;ii;;ii,:;::;i;;ii;ittitfttff;;ti;it;;ii;;ti;it;;ii
+;::;i;:ii;;tiitftiffttGGLCGCLGGCCGGLCGCLGGCC;;::i;:;i;;ttiiftitfttGGCCGGLCGCLGGCCGGCCGCL:;::;i:;ii;itiitfitfft
+::;;:;i;;iti;ttiifftfLLfLCffCLfLCLfLCffLLfLC:,;;::ii;;ti;itiiffttLLfLCLfLCffCLfLCLfLCffL;,:i;:;i;;itiittitfttf
+:;::;i;;ii;ittitftiffttffitftiffttffitftifft,;;::i;:iti;ttiiftitLfiffttffitftiffttffitft,:;::ii;;ti;itiitfttff
+;::;;:;ii;itiittitfftft;;ii;;ii;iti;ii;;ii;;;::;i;:ii;itiitftiffttii;it;;ii;;ii;;ti;ii;;;;::i;:;i;;ttiiftitftt
+CCGCLGGCCGGCCGCLCGCCGG,:;;:;i;;it;ittitfttfLCCGGCCGCLGGCCGGCCGGLCG:,;;::ii;iti;ttiiffttLCLGGCCGGCCGGLCGCCGGCCG
+.,. ,, .,. .,. ,, .,. .,. ,,  ,. .,. .,  ,. .,. .,. ,, .,. .,. ,, .,. .,. .,  ,. .,. .,. ,, .,. .,. ,, .,. .,.
+. .,. .,. ,, .,. .,. ,, .,. .,. .,  ,. .,. .,. ,, .,. .,. ,, .,. .,. ,,  ,. .,. .,  ,. .,. .,. ,, .,. .,. ,, .
+fLLffLLffLftLLffLLffLLtfLffLLffLLffLffLLffLLffLftLLffLLffLLtLLffLLffLLffLffLLffLLffLffLLffLLffLftLLffLLffLLtfL
+ffttfttffttffttfftffttffttffttfttffttffttfttffttffttfftffttffttfftffttffttffttfttffttffttfttffttffttfftffttfft
+iittiittiittittiittiittittiittiittittiittiittiittittiittiittittiittiittittiittiittiitiittiittiittittiittiittit
+;ii;;ti;ii;;ii;;ti;it;;ii;;ti;it;;ii;;ii;iti;ii;;ii;;ti;it;;ii;;ti;it;;ii;;ii;iti;ii;;ii;;ti;it;;ii;;ti;it;;ii
+i;:;i::;;:;i;:;i::;;::i;:;i::;;::i;:;i;:;i::i;:;i;:;i::;;::i;:;i::;;::i;:;i;:;;::i;:;i;:;i::;;::i;:;i::;;::i;:
+,,;:,:;:,:;,,;:,:;:,:;,,::,,;:,:;:,:;,,;:,:;:,:;,,;:,:;:,:;,,::,,;:,:;:,:;,,;:,:;:,:;,,;:,:;:,:;,,;:,:;:,:;,,:</pre>
+              <span style="position: absolute; left: 0; right: 0; height: 2px; background: #FF5A1F; box-shadow: 0 0 10px rgba(255,90,31,0.55); animation: irisScan 2.8s linear infinite;"></span>
+            </div>
+          </div>
+
+          <div style="position: relative; min-height: 250px; min-width: 0; padding: 8px; box-sizing: border-box; border: 1px solid rgba(20,20,20,0.1);">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+              <path d="M 10 50 C 24 50, 26 26, 42 26" fill="none" stroke="#FF5A1F" stroke-width="0.45" opacity="0.9"></path>
+              <path d="M 10 50 C 24 50, 26 74, 42 74" fill="none" stroke="#141414" stroke-width="0.35" opacity="0.5"></path>
+              <path d="M 50 26 C 62 26, 64 30, 75 30" fill="none" stroke="#FF5A1F" stroke-width="0.45" opacity="0.9"></path>
+              <path d="M 50 74 C 62 74, 64 70, 70 70" fill="none" stroke="#FF5A1F" stroke-width="0.45" opacity="0.9"></path>
+            </svg>
+
+            <span style="position: absolute; left: 10%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 7px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; color: #141414; background: #FAF7F2; border: 1px solid rgba(20,20,20,0.2); padding: 4px 7px; white-space: nowrap;">
+              /
+            </span>
+
+            <span style="position: absolute; left: 46%; top: 26%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 7px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; color: #FF5A1F; background: #FAF7F2; border: 1px solid #FF5A1F; padding: 4px 7px; white-space: nowrap;">
+              /collections/jackets<span style="font-size: 8px; letter-spacing: 0.1em; color: #FF5A1F; opacity: 0.85;">JOURNEY 1</span>
+            </span>
+
+            <span style="position: absolute; left: 46%; top: 74%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 7px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; color: #141414; background: #FAF7F2; border: 1px solid rgba(20,20,20,0.2); padding: 4px 7px; white-space: nowrap;">
+              /products/alpine-shell
+            </span>
+
+            <span style="position: absolute; right: 2%; top: 30%; transform: translateY(-50%); display: flex; align-items: center; gap: 7px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; color: #FF5A1F; background: #FAF7F2; border: 1px solid #FF5A1F; padding: 4px 7px; white-space: nowrap;">
+              /cart<span style="font-size: 8px; letter-spacing: 0.1em; color: #FF5A1F; opacity: 0.85;">JOURNEY 2</span>
+            </span>
+
+            <span style="position: absolute; right: 2%; top: 70%; transform: translateY(-50%); display: flex; align-items: center; gap: 7px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; color: #FF5A1F; background: #FAF7F2; border: 1px solid #FF5A1F; padding: 4px 7px; white-space: nowrap;">
+              /checkout<span style="font-size: 8px; letter-spacing: 0.1em; color: #FF5A1F; opacity: 0.85;">JOURNEY 3</span>
+            </span>
+          </div>
+
+        </div>
+
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #8A8580;">12 PAGES · 3 JOURNEYS</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sessionCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:0,&quot;max&quot;:99,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const n = this.props.sessionCount ?? 8;
+    return { counter: "[ " + n + " SESSION" + (n === 1 ? "" : "S") + " ]" };
+  }
+}
+</script>
+</body>
+</html>
