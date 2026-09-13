@@ -62,8 +62,9 @@ generated from the category plus the offending element pulled from the event tra
 on fixtures with no keys.
 
 **A front end that plays without a backend.** The React app folds a stream of typed items into state through
-a pure reducer. Today a Player replays an authored script; a websocket can replace it without touching a screen.
-That is also the stage fallback: if Steel or the network dies on stage, the show still runs.
+a pure reducer. Today a Player replays an authored per-target script (IKEA Canada, Zara, or a fictional store);
+a websocket can replace it without touching a screen. That is also the stage fallback: if Steel or the network
+dies on stage, the show still runs.
 
 ### Metrics
 
@@ -75,7 +76,7 @@ That is also the stage fallback: if Steel or the network dies on stage, the show
 | Failure taxonomy | 11 categories · 5 attribution axes |
 | Live runs verified on Steel | Browser Use baseline journey completed · Claude CU baseline completed · 3-config wave (baseline, mobile, returning) all completed |
 | Backend tests | 102 passing in ~1 s, zero credits, zero keys |
-| Front-end tests | 20 unit tests across 17 files, plus a Playwright end-to-end run that plays all 5 stages and screenshots each |
+| Front-end tests | 23 unit tests across 17 files, plus a Playwright end-to-end run that plays all 5 stages and screenshots each |
 | Per-session budget | 12 min wall clock, 25-step cap for DOM agent, 40 for vision, 120 s inactivity release |
 | Front end | React 19, Vite 8, Tailwind 4, deployed on Vercel |
 
@@ -143,9 +144,14 @@ npm run e2e          # builds, previews on :4173, plays the show, screenshots in
 npm run build
 ```
 
-URL parameters for rehearsal: `?speed=6` plays the show faster, `?stage=run` seeks to a stage marker
-(`explore`, `run`, `score`, `done`), `?demo=cached` shows the cached-mode pill. Deploy with
-`vercel --prod --yes`; `vercel.json` pins the Vite build.
+The front end ships three hard-coded demo targets, picked by the hostname typed on the input screen:
+**IKEA Canada** (`ikea.com`, `ikea.ca`), **Zara** (`zara.com`), and the fictional **Northwind Outfitters** for any
+other URL. Each has its own research quotes, site map, personas, findings and choreography script in
+`web/src/data/targets/`. Quick-pick chips on the input screen select them.
+
+URL parameters for rehearsal: `?target=ikea` loads a target directly, `?speed=6` plays the show faster,
+`?stage=run` seeks to a stage marker (`explore`, `run`, `score`, `done`), `?demo=cached` shows the cached-mode
+pill. Deploy with `vercel --prod --yes`; `vercel.json` pins the Vite build.
 
 ### 3. Keys
 
@@ -216,7 +222,7 @@ the Runner without `--fake` unless you have been handed a session budget.
 | Browser Use engine, Claude computer-use engine | Done, each completed a live journey on Steel |
 | Scorer: classify, attribute, score, fixes | Done, on fixtures |
 | Cloudflare static-score contrast | Fallback only; no confirmed public endpoint, panel hides when `None` |
-| Front end: five screens, player, reducer, e2e | Done, deployed |
+| Front end: five screens, player, reducer, 3 demo targets, e2e | Done, deployed |
 | Consumer research + site explorer | In progress |
 | Test-brief generation (8 personas, matched pair) | In progress |
 | FastAPI + websocket, orchestrator, `--dry-run` | In progress |
