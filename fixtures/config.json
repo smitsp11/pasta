@@ -1,0 +1,30 @@
+[
+  {
+    "device": "desktop",
+    "identity": "fresh",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "baseline"
+  },
+  {
+    "device": "mobile",
+    "identity": "fresh",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "mobile"
+  },
+  {
+    "device": "desktop",
+    "identity": "returning",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "returning"
+  },
+  {
+    "device": "desktop",
+    "identity": "fresh",
+    "country": "CA",
+    "engine": "browser_use",
+    "label": "country:CA"
+  }
+]

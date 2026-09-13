@@ -1,0 +1,19 @@
+{
+  "type": "run_event",
+  "run_id": "find_product__baseline",
+  "session_id": "sess-1",
+  "journey_id": "find_product",
+  "config": {
+    "device": "desktop",
+    "identity": "fresh",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "baseline"
+  },
+  "step_index": 2,
+  "timestamp": "2026-09-13T01:58:24.245768Z",
+  "action": "click_element_by_index(index=2, text='Accept cookies')",
+  "observation": "https://demo-store.example/",
+  "screenshot_ref": "fake/sess-1/002.png",
+  "outcome": "step_ok"
+}

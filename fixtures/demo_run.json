@@ -1,0 +1,3217 @@
+{
+  "site_model": {
+    "url": "https://demo-store.example",
+    "brand": "Northwind Outfitters",
+    "category": "ecommerce / apparel",
+    "description": "Mid-size Shopify-style clothing store with a cookie consent modal and a mobile hamburger nav.",
+    "audience_guess": [
+      "outdoor apparel shoppers",
+      "returning customers with accounts"
+    ],
+    "journeys": [
+      {
+        "id": "find_product",
+        "name": "Find a product",
+        "goal": "From the home page, open the 'All products' collection and open the first product's page.",
+        "entry_url": "https://demo-store.example/"
+      },
+      {
+        "id": "add_to_cart",
+        "name": "Add to cart",
+        "goal": "Open any product page, add it to the cart, and open the cart page.",
+        "entry_url": "https://demo-store.example/collections/all"
+      },
+      {
+        "id": "reach_checkout",
+        "name": "Reach checkout",
+        "goal": "With one item in the cart, proceed to checkout and stop at the payment step. Do not pay.",
+        "entry_url": "https://demo-store.example/cart"
+      }
+    ]
+  },
+  "events": [
+    {
+      "type": "stage",
+      "name": "explore",
+      "timestamp": "2026-09-13T01:58:24.245440Z"
+    },
+    {
+      "type": "stage",
+      "name": "run",
+      "timestamp": "2026-09-13T01:58:24.245567Z"
+    },
+    {
+      "type": "session_started",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-1/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-1",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-1/hls",
+      "timestamp": "2026-09-13T01:58:24.245693Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.245714Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-1/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.245768Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-1/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.245776Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-1/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.245781Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-1/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.245785Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-1/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__baseline",
+      "session_id": "sess-1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.245789Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "find_product__baseline",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "session_id": "sess-1",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "find_product__baseline",
+          "session_id": "sess-1",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.245714Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-1/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__baseline",
+          "session_id": "sess-1",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.245768Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-1/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__baseline",
+          "session_id": "sess-1",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.245776Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-1/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__baseline",
+          "session_id": "sess-1",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.245781Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-1/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__baseline",
+          "session_id": "sess-1",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.245785Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-1/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__baseline",
+          "session_id": "sess-1",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.245789Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-1",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-1/hls",
+      "final_screenshot_ref": "fake/sess-1/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 0.000115,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-2/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-2",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-2/hls",
+      "timestamp": "2026-09-13T01:58:24.245861Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.245868Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-2/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.245874Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-2/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.245878Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-2/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.245883Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-2/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.245888Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-2/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__baseline",
+      "session_id": "sess-2",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.245892Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "add_to_cart__baseline",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "session_id": "sess-2",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__baseline",
+          "session_id": "sess-2",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.245868Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-2/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__baseline",
+          "session_id": "sess-2",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.245874Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-2/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__baseline",
+          "session_id": "sess-2",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.245878Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-2/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__baseline",
+          "session_id": "sess-2",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.245883Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-2/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__baseline",
+          "session_id": "sess-2",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.245888Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-2/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__baseline",
+          "session_id": "sess-2",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.245892Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-2",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-2/hls",
+      "final_screenshot_ref": "fake/sess-2/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 4.3e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-3/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-3",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-3/hls",
+      "timestamp": "2026-09-13T01:58:24.245926Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.245931Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-3/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.245936Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-3/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.245939Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-3/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.245942Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-3/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.245947Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-3/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__baseline",
+      "session_id": "sess-3",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.245951Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "reach_checkout__baseline",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "baseline"
+      },
+      "session_id": "sess-3",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__baseline",
+          "session_id": "sess-3",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.245931Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-3/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__baseline",
+          "session_id": "sess-3",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.245936Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-3/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__baseline",
+          "session_id": "sess-3",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.245939Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-3/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__baseline",
+          "session_id": "sess-3",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.245942Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-3/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__baseline",
+          "session_id": "sess-3",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.245947Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-3/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__baseline",
+          "session_id": "sess-3",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "baseline"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.245951Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-3",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-3/hls",
+      "final_screenshot_ref": "fake/sess-3/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 3.2e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-4/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-4",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-4/hls",
+      "timestamp": "2026-09-13T01:58:24.245975Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.245978Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-4/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.245983Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-4/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.245986Z",
+      "action": "scroll(down=500)",
+      "observation": "https://demo-store.example/\noverlay still present",
+      "screenshot_ref": "fake/sess-4/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.245989Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-4/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.245992Z",
+      "action": "done",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": null,
+      "outcome": "stalled"
+    },
+    {
+      "type": "run_result",
+      "run_id": "find_product__mobile",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "session_id": "sess-4",
+      "outcome": "stalled",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "find_product__mobile",
+          "session_id": "sess-4",
+          "journey_id": "find_product",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.245978Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-4/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__mobile",
+          "session_id": "sess-4",
+          "journey_id": "find_product",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.245983Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": "fake/sess-4/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__mobile",
+          "session_id": "sess-4",
+          "journey_id": "find_product",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.245986Z",
+          "action": "scroll(down=500)",
+          "observation": "https://demo-store.example/\noverlay still present",
+          "screenshot_ref": "fake/sess-4/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__mobile",
+          "session_id": "sess-4",
+          "journey_id": "find_product",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.245989Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": "fake/sess-4/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__mobile",
+          "session_id": "sess-4",
+          "journey_id": "find_product",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.245992Z",
+          "action": "done",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": null,
+          "outcome": "stalled"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-4",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-4/hls",
+      "final_screenshot_ref": "fake/sess-4/004.png",
+      "failure_step_index": 4,
+      "replay_offset_s": 2.2e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-5/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-5",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-5/hls",
+      "timestamp": "2026-09-13T01:58:24.246022Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.246025Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-5/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.246030Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-5/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.246033Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-5/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.246036Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-5/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.246040Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-5/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__country:CA",
+      "session_id": "sess-5",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.246043Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "find_product__country:CA",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "session_id": "sess-5",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "find_product__country:CA",
+          "session_id": "sess-5",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.246025Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-5/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__country:CA",
+          "session_id": "sess-5",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.246030Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-5/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__country:CA",
+          "session_id": "sess-5",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.246033Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-5/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__country:CA",
+          "session_id": "sess-5",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.246036Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-5/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__country:CA",
+          "session_id": "sess-5",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.246040Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-5/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__country:CA",
+          "session_id": "sess-5",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.246043Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-5",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-5/hls",
+      "final_screenshot_ref": "fake/sess-5/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 2.7e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "add_to_cart__mobile",
+      "session_id": "sess-6",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-6/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-6",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-6/hls",
+      "timestamp": "2026-09-13T01:58:24.246062Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__mobile",
+      "session_id": "sess-6",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.246065Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-6/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__mobile",
+      "session_id": "sess-6",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.246069Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-6/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__mobile",
+      "session_id": "sess-6",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.246072Z",
+      "action": "scroll(down=500)",
+      "observation": "https://demo-store.example/\noverlay still present",
+      "screenshot_ref": "fake/sess-6/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__mobile",
+      "session_id": "sess-6",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.246075Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-6/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__mobile",
+      "session_id": "sess-6",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.246078Z",
+      "action": "done",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": null,
+      "outcome": "stalled"
+    },
+    {
+      "type": "run_result",
+      "run_id": "add_to_cart__mobile",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "session_id": "sess-6",
+      "outcome": "stalled",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__mobile",
+          "session_id": "sess-6",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.246065Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-6/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__mobile",
+          "session_id": "sess-6",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.246069Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": "fake/sess-6/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__mobile",
+          "session_id": "sess-6",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.246072Z",
+          "action": "scroll(down=500)",
+          "observation": "https://demo-store.example/\noverlay still present",
+          "screenshot_ref": "fake/sess-6/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__mobile",
+          "session_id": "sess-6",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.246075Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": "fake/sess-6/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__mobile",
+          "session_id": "sess-6",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.246078Z",
+          "action": "done",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": null,
+          "outcome": "stalled"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-6",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-6/hls",
+      "final_screenshot_ref": "fake/sess-6/004.png",
+      "failure_step_index": 4,
+      "replay_offset_s": 2.1e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-7/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-7",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-7/hls",
+      "timestamp": "2026-09-13T01:58:24.246102Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.246105Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-7/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.246110Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-7/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.246113Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-7/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.246118Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-7/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.246121Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-7/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__country:CA",
+      "session_id": "sess-7",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.246124Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "add_to_cart__country:CA",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "session_id": "sess-7",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__country:CA",
+          "session_id": "sess-7",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.246105Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-7/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__country:CA",
+          "session_id": "sess-7",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.246110Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-7/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__country:CA",
+          "session_id": "sess-7",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.246113Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-7/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__country:CA",
+          "session_id": "sess-7",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.246118Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-7/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__country:CA",
+          "session_id": "sess-7",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.246121Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-7/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__country:CA",
+          "session_id": "sess-7",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.246124Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-7",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-7/hls",
+      "final_screenshot_ref": "fake/sess-7/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 2.7e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "reach_checkout__mobile",
+      "session_id": "sess-8",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-8/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-8",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-8/hls",
+      "timestamp": "2026-09-13T01:58:24.246141Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__mobile",
+      "session_id": "sess-8",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.246145Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-8/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__mobile",
+      "session_id": "sess-8",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.246149Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-8/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__mobile",
+      "session_id": "sess-8",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.246152Z",
+      "action": "scroll(down=500)",
+      "observation": "https://demo-store.example/\noverlay still present",
+      "screenshot_ref": "fake/sess-8/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__mobile",
+      "session_id": "sess-8",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.246155Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-8/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__mobile",
+      "session_id": "sess-8",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.246159Z",
+      "action": "done",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": null,
+      "outcome": "stalled"
+    },
+    {
+      "type": "run_result",
+      "run_id": "reach_checkout__mobile",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "session_id": "sess-8",
+      "outcome": "stalled",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__mobile",
+          "session_id": "sess-8",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.246145Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-8/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__mobile",
+          "session_id": "sess-8",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.246149Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": "fake/sess-8/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__mobile",
+          "session_id": "sess-8",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.246152Z",
+          "action": "scroll(down=500)",
+          "observation": "https://demo-store.example/\noverlay still present",
+          "screenshot_ref": "fake/sess-8/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__mobile",
+          "session_id": "sess-8",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.246155Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": "fake/sess-8/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__mobile",
+          "session_id": "sess-8",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "mobile",
+            "identity": "fresh",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "mobile"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.246159Z",
+          "action": "done",
+          "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+          "screenshot_ref": null,
+          "outcome": "stalled"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-8",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-8/hls",
+      "final_screenshot_ref": "fake/sess-8/004.png",
+      "failure_step_index": 4,
+      "replay_offset_s": 2.2e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-9/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-9",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-9/hls",
+      "timestamp": "2026-09-13T01:58:24.246182Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.246186Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-9/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.246192Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-9/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.246198Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-9/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.246203Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-9/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.246208Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-9/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__country:CA",
+      "session_id": "sess-9",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.246212Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "reach_checkout__country:CA",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "fresh",
+        "country": "CA",
+        "engine": "browser_use",
+        "label": "country:CA"
+      },
+      "session_id": "sess-9",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__country:CA",
+          "session_id": "sess-9",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.246186Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-9/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__country:CA",
+          "session_id": "sess-9",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.246192Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-9/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__country:CA",
+          "session_id": "sess-9",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.246198Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-9/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__country:CA",
+          "session_id": "sess-9",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.246203Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-9/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__country:CA",
+          "session_id": "sess-9",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.246208Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-9/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__country:CA",
+          "session_id": "sess-9",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "fresh",
+            "country": "CA",
+            "engine": "browser_use",
+            "label": "country:CA"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.246212Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-9",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-9/hls",
+      "final_screenshot_ref": "fake/sess-9/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 3.6e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-10/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-10",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-10/hls",
+      "timestamp": "2026-09-13T01:58:24.256999Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.257008Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-10/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.257020Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-10/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.257025Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-10/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.257029Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-10/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.257033Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-10/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__returning",
+      "session_id": "sess-10",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.257037Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "find_product__returning",
+      "journey_id": "find_product",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "session_id": "sess-10",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "find_product__returning",
+          "session_id": "sess-10",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.257008Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-10/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__returning",
+          "session_id": "sess-10",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.257020Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-10/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__returning",
+          "session_id": "sess-10",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.257025Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-10/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__returning",
+          "session_id": "sess-10",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.257029Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-10/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__returning",
+          "session_id": "sess-10",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.257033Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-10/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "find_product__returning",
+          "session_id": "sess-10",
+          "journey_id": "find_product",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.257037Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-10",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-10/hls",
+      "final_screenshot_ref": "fake/sess-10/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 5.5e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-11/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-11",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-11/hls",
+      "timestamp": "2026-09-13T01:58:24.257071Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.257076Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-11/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.257082Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-11/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.257085Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-11/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.257089Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-11/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.257093Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-11/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "add_to_cart__returning",
+      "session_id": "sess-11",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.257099Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "add_to_cart__returning",
+      "journey_id": "add_to_cart",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "session_id": "sess-11",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__returning",
+          "session_id": "sess-11",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.257076Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-11/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__returning",
+          "session_id": "sess-11",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.257082Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-11/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__returning",
+          "session_id": "sess-11",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.257085Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-11/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__returning",
+          "session_id": "sess-11",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.257089Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-11/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__returning",
+          "session_id": "sess-11",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.257093Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-11/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "add_to_cart__returning",
+          "session_id": "sess-11",
+          "journey_id": "add_to_cart",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.257099Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-11",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-11/hls",
+      "final_screenshot_ref": "fake/sess-11/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 3.5e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "session_started",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "viewer_url": "https://app.steel.dev/sessions/sess-12/debug?interactive=false",
+      "replay_url": "https://app.steel.dev/sessions/sess-12",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-12/hls",
+      "timestamp": "2026-09-13T01:58:24.257124Z"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.257127Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-12/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.257132Z",
+      "action": "click_element_by_index(index=2, text='Accept cookies')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-12/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.257135Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/collections/all",
+      "screenshot_ref": "fake/sess-12/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.257138Z",
+      "action": "click_element_by_index(index=12, text='Trail Jacket')",
+      "observation": "https://demo-store.example/products/trail-jacket",
+      "screenshot_ref": "fake/sess-12/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.257142Z",
+      "action": "click_element_by_index(index=21, text='Add to cart')",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": "fake/sess-12/005.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "reach_checkout__returning",
+      "session_id": "sess-12",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "step_index": 6,
+      "timestamp": "2026-09-13T01:58:24.257145Z",
+      "action": "done",
+      "observation": "https://demo-store.example/cart",
+      "screenshot_ref": null,
+      "outcome": "completed"
+    },
+    {
+      "type": "run_result",
+      "run_id": "reach_checkout__returning",
+      "journey_id": "reach_checkout",
+      "config": {
+        "device": "desktop",
+        "identity": "returning",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "returning"
+      },
+      "session_id": "sess-12",
+      "outcome": "completed",
+      "attempt": 1,
+      "events": [
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__returning",
+          "session_id": "sess-12",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 1,
+          "timestamp": "2026-09-13T01:58:24.257127Z",
+          "action": "go_to_url(url='https://demo-store.example/')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-12/001.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__returning",
+          "session_id": "sess-12",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 2,
+          "timestamp": "2026-09-13T01:58:24.257132Z",
+          "action": "click_element_by_index(index=2, text='Accept cookies')",
+          "observation": "https://demo-store.example/",
+          "screenshot_ref": "fake/sess-12/002.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__returning",
+          "session_id": "sess-12",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 3,
+          "timestamp": "2026-09-13T01:58:24.257135Z",
+          "action": "click_element_by_index(index=7, text='All products')",
+          "observation": "https://demo-store.example/collections/all",
+          "screenshot_ref": "fake/sess-12/003.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__returning",
+          "session_id": "sess-12",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 4,
+          "timestamp": "2026-09-13T01:58:24.257138Z",
+          "action": "click_element_by_index(index=12, text='Trail Jacket')",
+          "observation": "https://demo-store.example/products/trail-jacket",
+          "screenshot_ref": "fake/sess-12/004.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__returning",
+          "session_id": "sess-12",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 5,
+          "timestamp": "2026-09-13T01:58:24.257142Z",
+          "action": "click_element_by_index(index=21, text='Add to cart')",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": "fake/sess-12/005.png",
+          "outcome": "step_ok"
+        },
+        {
+          "type": "run_event",
+          "run_id": "reach_checkout__returning",
+          "session_id": "sess-12",
+          "journey_id": "reach_checkout",
+          "config": {
+            "device": "desktop",
+            "identity": "returning",
+            "country": "US",
+            "engine": "browser_use",
+            "label": "returning"
+          },
+          "step_index": 6,
+          "timestamp": "2026-09-13T01:58:24.257145Z",
+          "action": "done",
+          "observation": "https://demo-store.example/cart",
+          "screenshot_ref": null,
+          "outcome": "completed"
+        }
+      ],
+      "replay_url": "https://app.steel.dev/sessions/sess-12",
+      "hls_url": "https://api.steel.dev/v1/sessions/sess-12/hls",
+      "final_screenshot_ref": "fake/sess-12/005.png",
+      "failure_step_index": null,
+      "replay_offset_s": 2.8e-05,
+      "harness_reason": null,
+      "stall_hint": null
+    },
+    {
+      "type": "stage",
+      "name": "score",
+      "timestamp": "2026-09-13T01:58:24.257237Z"
+    },
+    {
+      "type": "stage",
+      "name": "done",
+      "timestamp": "2026-09-13T01:58:24.257263Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "f1",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "category": "cookie_wall",
+      "description": "On mobile, the consent modal intercepts every click and its accept button is off-screen; the agent never reaches the collection page.",
+      "attributed_to": "device",
+      "engine_consensus": false,
+      "session_id": "sess-4",
+      "step_index": 4,
+      "replay_url": "https://app.steel.dev/sessions/sess-4",
+      "replay_offset_s": 2.2e-05,
+      "proposed_fix": "Make the consent modal's Accept button visible in the mobile viewport, first in DOM order, and give the dialog role=\"dialog\" with aria-label=\"Cookie consent\"."
+    }
+  ],
+  "scorecard": {
+    "overall": 80.0,
+    "static_score": 85.0,
+    "per_journey": [
+      {
+        "journey_id": "find_product",
+        "score": 80.0,
+        "completed": 3,
+        "stalled": 1,
+        "harness_errors": 0
+      },
+      {
+        "journey_id": "add_to_cart",
+        "score": 80.0,
+        "completed": 3,
+        "stalled": 1,
+        "harness_errors": 0
+      },
+      {
+        "journey_id": "reach_checkout",
+        "score": 80.0,
+        "completed": 3,
+        "stalled": 1,
+        "harness_errors": 0
+      }
+    ]
+  }
+}

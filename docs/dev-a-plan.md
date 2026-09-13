@@ -329,12 +329,22 @@ Keep a running total in `runs/credits.log` (the Runner appends `credits_used` fr
 
 ---
 
-## 9. VERIFY log (fill in during the spikes)
+## 9. VERIFY log
 
-- [ ] Session lifetime kwarg on the installed `steel-sdk`: `api_timeout` or `timeout` → ______
-- [ ] Browser Use class for CDP attach and its `Agent` kwarg: `Browser`/`browser` or `BrowserSession`/`browser_session` → ______; pinned version ______
-- [ ] Profile status call and time to READY after release → ______ / ______ s
-- [ ] Proxy enabled on the account after the plan upgrade (CA, DE, GB tested) → ______
+Settled from the installed SDKs on Sept 12 (steel-sdk 0.19.0, browser-use 0.13.10, anthropic 0.76.0, Python 3.12.13):
+
+- [x] Session lifetime kwarg: **`api_timeout`** (ms). `timeout` on `sessions.create` is the HTTP request timeout. `inactivity_timeout` also exists.
+- [x] Browser Use CDP attach: **`Browser(cdp_url=...)`** passed as **`browser=`**; `Agent.run(max_steps, on_step_start, on_step_end)`; history exposes `urls`, `model_actions`, `model_thoughts`, `is_done`, `is_successful`, `final_result`, `errors`, `screenshot_paths`. Pinned `browser-use==0.13.10`.
+- [x] Profile status: **`client.profiles.get(profile_id).status`** (`ProfileGetResponse`). Time to READY: measured by `scripts/spike_profile.py` → ______ s
+- [x] Anthropic SDK: `computer_20251124` tool type present; `beta.messages.create` accepts `output_config` and `betas` natively; `fallbacks` is passed via `extra_body`.
+- [ ] Proxy enabled on the account (CA, DE, GB tested by `scripts/spike_variants.py`) → ______
 - [ ] Mobile session `dimensions` as reported by Steel → ______
 - [ ] HLS endpoint plays in D's player and seeks to `replay_offset_s` → ______ (tell D by 11:00)
 - [ ] Booth: concurrency granted ______, Steel Computer access ______
+
+## 10. Build status
+
+- `crucible/steel.py`, `crucible/engines/{base,guard,browser_use,claude_cu,fake}.py`, `crucible/runner/` (matrix, outcomes, scheduler, CLI), `crucible/testing.py`: written, 41 unit tests green with zero Steel credits.
+- `fixtures/` generated from the fake pipeline (`scripts/make_fixtures.py`), including `demo_run.json` for D and C.
+- Spikes written (`scripts/spike_*.py`), **not yet run**: they need `STEEL_API_KEY` in `.env`.
+- M1 (one live Browser Use journey on Steel) is the next step and needs `STEEL_API_KEY` + `ANTHROPIC_API_KEY`.

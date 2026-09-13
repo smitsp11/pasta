@@ -1,0 +1,27 @@
+{
+  "overall": 80.0,
+  "static_score": 85.0,
+  "per_journey": [
+    {
+      "journey_id": "find_product",
+      "score": 80.0,
+      "completed": 3,
+      "stalled": 1,
+      "harness_errors": 0
+    },
+    {
+      "journey_id": "add_to_cart",
+      "score": 80.0,
+      "completed": 3,
+      "stalled": 1,
+      "harness_errors": 0
+    },
+    {
+      "journey_id": "reach_checkout",
+      "score": 80.0,
+      "completed": 3,
+      "stalled": 1,
+      "harness_errors": 0
+    }
+  ]
+}

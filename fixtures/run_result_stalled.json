@@ -1,0 +1,119 @@
+{
+  "type": "run_result",
+  "run_id": "find_product__mobile",
+  "journey_id": "find_product",
+  "config": {
+    "device": "mobile",
+    "identity": "fresh",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "mobile"
+  },
+  "session_id": "sess-4",
+  "outcome": "stalled",
+  "attempt": 1,
+  "events": [
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 1,
+      "timestamp": "2026-09-13T01:58:24.245978Z",
+      "action": "go_to_url(url='https://demo-store.example/')",
+      "observation": "https://demo-store.example/",
+      "screenshot_ref": "fake/sess-4/001.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 2,
+      "timestamp": "2026-09-13T01:58:24.245983Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-4/002.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 3,
+      "timestamp": "2026-09-13T01:58:24.245986Z",
+      "action": "scroll(down=500)",
+      "observation": "https://demo-store.example/\noverlay still present",
+      "screenshot_ref": "fake/sess-4/003.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 4,
+      "timestamp": "2026-09-13T01:58:24.245989Z",
+      "action": "click_element_by_index(index=7, text='All products')",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": "fake/sess-4/004.png",
+      "outcome": "step_ok"
+    },
+    {
+      "type": "run_event",
+      "run_id": "find_product__mobile",
+      "session_id": "sess-4",
+      "journey_id": "find_product",
+      "config": {
+        "device": "mobile",
+        "identity": "fresh",
+        "country": "US",
+        "engine": "browser_use",
+        "label": "mobile"
+      },
+      "step_index": 5,
+      "timestamp": "2026-09-13T01:58:24.245992Z",
+      "action": "done",
+      "observation": "https://demo-store.example/\nclick intercepted by overlay #consent-modal",
+      "screenshot_ref": null,
+      "outcome": "stalled"
+    }
+  ],
+  "replay_url": "https://app.steel.dev/sessions/sess-4",
+  "hls_url": "https://api.steel.dev/v1/sessions/sess-4/hls",
+  "final_screenshot_ref": "fake/sess-4/004.png",
+  "failure_step_index": 4,
+  "replay_offset_s": 2.2e-05,
+  "harness_reason": null,
+  "stall_hint": null
+}

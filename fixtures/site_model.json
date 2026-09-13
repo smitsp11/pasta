@@ -1,0 +1,30 @@
+{
+  "url": "https://demo-store.example",
+  "brand": "Northwind Outfitters",
+  "category": "ecommerce / apparel",
+  "description": "Mid-size Shopify-style clothing store with a cookie consent modal and a mobile hamburger nav.",
+  "audience_guess": [
+    "outdoor apparel shoppers",
+    "returning customers with accounts"
+  ],
+  "journeys": [
+    {
+      "id": "find_product",
+      "name": "Find a product",
+      "goal": "From the home page, open the 'All products' collection and open the first product's page.",
+      "entry_url": "https://demo-store.example/"
+    },
+    {
+      "id": "add_to_cart",
+      "name": "Add to cart",
+      "goal": "Open any product page, add it to the cart, and open the cart page.",
+      "entry_url": "https://demo-store.example/collections/all"
+    },
+    {
+      "id": "reach_checkout",
+      "name": "Reach checkout",
+      "goal": "With one item in the cart, proceed to checkout and stop at the payment step. Do not pay.",
+      "entry_url": "https://demo-store.example/cart"
+    }
+  ]
+}

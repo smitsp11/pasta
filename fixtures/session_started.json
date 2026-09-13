@@ -1,0 +1,17 @@
+{
+  "type": "session_started",
+  "run_id": "find_product__baseline",
+  "session_id": "sess-1",
+  "journey_id": "find_product",
+  "config": {
+    "device": "desktop",
+    "identity": "fresh",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "baseline"
+  },
+  "viewer_url": "https://app.steel.dev/sessions/sess-1/debug?interactive=false",
+  "replay_url": "https://app.steel.dev/sessions/sess-1",
+  "hls_url": "https://api.steel.dev/v1/sessions/sess-1/hls",
+  "timestamp": "2026-09-13T01:58:24.245693Z"
+}

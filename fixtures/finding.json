@@ -1,0 +1,20 @@
+{
+  "id": "f1",
+  "journey_id": "find_product",
+  "config": {
+    "device": "mobile",
+    "identity": "fresh",
+    "country": "US",
+    "engine": "browser_use",
+    "label": "mobile"
+  },
+  "category": "cookie_wall",
+  "description": "On mobile, the consent modal intercepts every click and its accept button is off-screen; the agent never reaches the collection page.",
+  "attributed_to": "device",
+  "engine_consensus": false,
+  "session_id": "sess-4",
+  "step_index": 4,
+  "replay_url": "https://app.steel.dev/sessions/sess-4",
+  "replay_offset_s": 2.2e-05,
+  "proposed_fix": "Make the consent modal's Accept button visible in the mobile viewport, first in DOM order, and give the dialog role=\"dialog\" with aria-label=\"Cookie consent\"."
+}
