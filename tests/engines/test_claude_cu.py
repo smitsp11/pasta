@@ -93,3 +93,16 @@ def test_prune_images_keeps_newest():
     assert len(kept) == 2
     assert msgs[1]["content"][0]["content"][0]["type"] == "text"      # oldest pruned
     assert msgs[-1]["content"][0]["content"][0]["type"] == "image"    # newest kept
+
+
+async def test_scale_maps_screenshot_px_to_css_px():
+    log = []
+    await engine()._do(fake_page(log), {"action": "left_click", "coordinate": [300, 600]}, 1000, 2000, scale=(0.5, 0.5))
+    assert log == [("click", 150, 300, "left", 1)]
+
+
+def test_png_size():
+    from crucible.engines.claude_cu import _png_size
+    ihdr = b"\x89PNG\r\n\x1a\n" + b"\x00\x00\x00\rIHDR" + (508).to_bytes(4, "big") + (1074).to_bytes(4, "big")
+    assert _png_size(ihdr + b"\x00" * 8) == (508, 1074)
+    assert _png_size(b"nope") == (0, 0)

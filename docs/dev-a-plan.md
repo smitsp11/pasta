@@ -335,10 +335,11 @@ Settled from the installed SDKs on Sept 12 (steel-sdk 0.19.0, browser-use 0.13.1
 
 - [x] Session lifetime kwarg: **`api_timeout`** (ms). `timeout` on `sessions.create` is the HTTP request timeout. `inactivity_timeout` also exists.
 - [x] Browser Use CDP attach: **`Browser(cdp_url=...)`** passed as **`browser=`**; `Agent.run(max_steps, on_step_start, on_step_end)`; history exposes `urls`, `model_actions`, `model_thoughts`, `is_done`, `is_successful`, `final_result`, `errors`, `screenshot_paths`. Pinned `browser-use==0.13.10`.
-- [x] Profile status: **`client.profiles.get(profile_id).status`** (`ProfileGetResponse`). Time to READY: measured by `scripts/spike_profile.py` → ______ s
+- [x] Profile status: **`client.profiles.get(profile_id).status`** (`ProfileGetResponse`). Time to READY after release: **0 s** (already READY on first poll). `profile_id` is returned at session creation. localStorage persisted into session B; a session cookie (no `expires`) did not, which is normal Chrome behaviour, so real consent cookies with an expiry will carry over.
 - [x] Anthropic SDK: `computer_20251124` tool type present; `beta.messages.create` accepts `output_config` and `betas` natively; `fallbacks` is passed via `extra_body`.
-- [ ] Proxy enabled on the account (CA, DE, GB tested by `scripts/spike_variants.py`) → ______
-- [ ] Mobile session `dimensions` as reported by Steel → ______
+- [x] Proxies: **blocked**. `use_proxy` returns 403 "Launch requires at least $10 in paid balance to use CAPTCHA solving or Steel proxies". Country variants are `harness_error` until credits are added (or a `proxy_url` BYO proxy is passed).
+- [x] Mobile session: Steel reports `dimensions` **508×1074**, UA `Android 13; CPH2651`. The page's layout viewport was 1509×2949 on a page without a viewport meta tag (mobile Chrome's 980px-style layout), and `'ontouchstart' in window` was **False**. Claude CU therefore declares the real screenshot size to the model and scales coordinates to CSS pixels.
+- [x] Session facts: `websocket_url` already carries `?sessionId=…&token=…`, so the CDP URL appends `&apiKey=`; `debug_url` is `https://api.steel.dev/v1/sessions/{id}/player`; desktop 1280×800 window gives a 1275×709 inner viewport; create takes ~0.5 s; a second `release` returns "Session already released" with `success=True` (no exception).
 - [ ] HLS endpoint plays in D's player and seeks to `replay_offset_s` → ______ (tell D by 11:00)
 - [ ] Booth: concurrency granted ______, Steel Computer access ______
 
@@ -346,5 +347,5 @@ Settled from the installed SDKs on Sept 12 (steel-sdk 0.19.0, browser-use 0.13.1
 
 - `crucible/steel.py`, `crucible/engines/{base,guard,browser_use,claude_cu,fake}.py`, `crucible/runner/` (matrix, outcomes, scheduler, CLI), `crucible/testing.py`: written, 41 unit tests green with zero Steel credits.
 - `fixtures/` generated from the fake pipeline (`scripts/make_fixtures.py`), including `demo_run.json` for D and C.
-- Spikes written (`scripts/spike_*.py`), **not yet run**: they need `STEEL_API_KEY` in `.env`.
-- M1 (one live Browser Use journey on Steel) is the next step and needs `STEEL_API_KEY` + `ANTHROPIC_API_KEY`.
+- Spikes run against the live account (results above). Sessions, mobile mode, and profiles work; proxies need $10 paid balance.
+- M1 (one live Browser Use journey on Steel) is the next step and needs `ANTHROPIC_API_KEY`.

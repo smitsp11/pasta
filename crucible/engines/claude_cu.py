@@ -40,6 +40,13 @@ SYSTEM = (
 )
 
 
+def _png_size(png: bytes) -> tuple[int, int]:
+    """Width/height from the PNG IHDR chunk (no image library needed)."""
+    if len(png) >= 24 and png[:8] == b"\x89PNG\r\n\x1a\n":
+        return int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")
+    return (0, 0)
+
+
 def _key_combo(text: str) -> str:
     parts = [p.strip() for p in re.split(r"[+\-]", text) if p.strip()] or [text]
     mapped = [KEYMAP.get(p.lower(), p if len(p) > 1 else p) for p in parts]
@@ -65,14 +72,19 @@ class ClaudeComputerUseEngine:
 
     # -- action dispatch ---------------------------------------------------
 
-    async def _do(self, page, inp: dict[str, Any], w: int, h: int) -> str | None:
-        """Execute one computer-tool action. Returns an error string or None."""
+    async def _do(self, page, inp: dict[str, Any], w: int, h: int,
+                  scale: tuple[float, float] = (1.0, 1.0)) -> str | None:
+        """Execute one computer-tool action. Returns an error string or None.
+
+        `w`/`h` are the screenshot dimensions the model sees; `scale` converts screenshot
+        pixels to CSS pixels for Playwright (mobile sessions render at a device pixel ratio).
+        """
         act = inp.get("action")
         coord = inp.get("coordinate")
         x, y = (None, None)
         if isinstance(coord, (list, tuple)) and len(coord) == 2:
-            x = min(max(int(coord[0]), 0), w - 1)
-            y = min(max(int(coord[1]), 0), h - 1)
+            x = round(min(max(int(coord[0]), 0), w - 1) * scale[0])
+            y = round(min(max(int(coord[1]), 0), h - 1) * scale[1])
         try:
             if act == "screenshot":
                 return None
@@ -87,8 +99,9 @@ class ClaudeComputerUseEngine:
                     return "coordinate required"
                 await page.mouse.move(x, y)
             elif act == "left_click_drag":
-                sc = inp.get("start_coordinate") or [x, y]
-                await page.mouse.move(int(sc[0]), int(sc[1]))
+                sc = inp.get("start_coordinate")
+                sx, sy = (round(int(sc[0]) * scale[0]), round(int(sc[1]) * scale[1])) if sc else (x, y)
+                await page.mouse.move(sx, sy)
                 await page.mouse.down()
                 await page.mouse.move(x, y, steps=10)
                 await page.mouse.up()
@@ -143,20 +156,26 @@ class ClaudeComputerUseEngine:
         client = self._client()
 
         await page.goto(journey.entry_url, wait_until="domcontentloaded", timeout=30_000)
-        try:
-            w, h = await page.evaluate("[window.innerWidth, window.innerHeight]")
-            w, h = int(w), int(h)
-        except Exception:  # noqa: BLE001
-            w, h = session.dimensions
-        tool = {"type": "computer_20251124", "name": "computer",
-                "display_width_px": w, "display_height_px": h, "display_number": 1}
 
-        async def shot(step: int) -> tuple[str, str | None]:
+        async def shot(step: int) -> tuple[str, str | None, bytes]:
             png = await page.screenshot()
             ref = session.save_screenshot_bytes(step, png)
-            return base64.b64encode(png).decode(), ref
+            return base64.b64encode(png).decode(), ref, png
 
-        b64, ref0 = await shot(0)
+        # The model sees screenshot pixels; Playwright wants CSS pixels. Measure both once.
+        b64, ref0, png0 = await shot(0)
+        w, h = _png_size(png0)
+        try:
+            css_w, css_h = await page.evaluate("[window.innerWidth, window.innerHeight]")
+            css_w, css_h = int(css_w), int(css_h)
+        except Exception:  # noqa: BLE001
+            css_w, css_h = w, h
+        if not w or not h:
+            w, h = css_w, css_h
+        scale = (css_w / w if w else 1.0, css_h / h if h else 1.0)
+        log.info("claude_cu display %sx%s px, css %sx%s, scale %.3f/%.3f", w, h, css_w, css_h, *scale)
+        tool = {"type": "computer_20251124", "name": "computer",
+                "display_width_px": w, "display_height_px": h, "display_number": 1}
         messages: list[dict[str, Any]] = [{"role": "user", "content": [
             {"type": "text", "text": f"Task: {journey.goal}\nYou start at {journey.entry_url}. "
                                      f"The screen is {w}x{h} pixels. Here is the current screenshot."},
@@ -202,8 +221,8 @@ class ClaudeComputerUseEngine:
             for tu in tool_uses:
                 step += 1
                 inp = tu.get("input") or {}
-                err = await self._do(page, inp, w, h)
-                b64, ref = await shot(step)
+                err = await self._do(page, inp, w, h, scale)
+                b64, ref, _ = await shot(step)
                 desc = inp.get("action", "?")
                 if inp.get("coordinate"):
                     desc += f" @{tuple(inp['coordinate'])}"
@@ -220,5 +239,5 @@ class ClaudeComputerUseEngine:
             messages.append({"role": "user", "content": results})
             self._prune_images(messages)
 
-        b64, ref = await shot(step + 1)
+        _, ref, _ = await shot(step + 1)
         yield ctx.event(step + 1, "done", final_text or page.url, screenshot_ref=ref, outcome=outcome)  # type: ignore[arg-type]
