@@ -13,6 +13,21 @@ uv pip install --python .venv/bin/python -e ".[dev]"
 cp .env.example .env                                 # STEEL_API_KEY, ANTHROPIC_API_KEY
 ```
 
+Python 3.12 is required. `crucible/schemas.py` uses `list[str]` / `X | None` annotations, so an older
+interpreter (e.g. a conda 3.8 on your PATH) fails at import with a pydantic `TypeError`. Always run
+through `.venv/bin/python`, never bare `python`.
+
+### Keys: who needs what
+
+| Key | Used by | Needed for |
+|---|---|---|
+| `STEEL_API_KEY` | `crucible/steel.py` | Any live session: Runner without `--fake`, spikes, Explore on a real site |
+| `ANTHROPIC_API_KEY` | Browser Use engine (`ChatAnthropic`), Claude CU engine, Scorer LLM classifier, Explore summariser | Any live run, plus the LLM pass in `score()` and `explore()` |
+| `OPENAI_API_KEY` | `engines/openai_cu.py` (stretch only) | Only if the third engine is built |
+
+Tests, fixtures, the API stub, and the React views need **no keys**. Dev C and Dev D can work all day
+on `fixtures/` without a Steel or Anthropic account.
+
 ## Layout
 
 ```
@@ -26,7 +41,7 @@ crucible/testing.py      fakes for tests / dry runs
 ## Run
 
 ```bash
-.venv/bin/python -m pytest -q                                   # 41 tests, ~1s
+.venv/bin/python -m pytest -q                                   # 43 tests, ~1s
 .venv/bin/python scripts/make_fixtures.py                       # regenerate fixtures/
 .venv/bin/python -m crucible.runner --url https://x --journey "Add a product to the cart" --fake --configs mvp
 .venv/bin/python -m crucible.runner --url https://x --journey "..." --configs baseline --step-cap 12   # M1, live
@@ -34,6 +49,27 @@ crucible/testing.py      fakes for tests / dry runs
 .venv/bin/python -m crucible.steel --list            # live sessions
 .venv/bin/python -m crucible.steel --release-all     # panic button
 ```
+
+## Getting started (Dev B / C / D)
+
+The M0 contracts are on `main`: `crucible/schemas.py` and every example in `fixtures/`. Nothing before
+hour 7 in `docs/plan.md` is a hard block on Dev A, so start from the fixtures, not from live runs.
+
+1. `git pull origin main`, then the Setup block above.
+2. `.venv/bin/python -m pytest -q` must pass before you touch anything.
+3. Build against the fixtures:
+   - **Dev B** — `api/` stub serves `fixtures/demo_run.json`; the websocket replays its `events`
+     list with small delays. `explore/` returns a `SiteModel` shaped like `fixtures/site_model.json`.
+   - **Dev C** — `scorer/` takes `fixtures/run_result_*.json` in and produces `Finding`s shaped like
+     `fixtures/finding.json` and a `ScoreCard` shaped like `fixtures/scorecard.json`. Put tests in
+     `tests/scorer/`.
+   - **Dev D** — read `fixtures/demo_run.json` (`site_model`, `events`, `findings`, `scorecard`)
+     until B's API stub is up, then point at the stub.
+4. Every fixture validates against its schema class; `fixtures/config.json` is a **list** of configs.
+   If you change `schemas.py`, regenerate with `scripts/make_fixtures.py` and tell the whole team;
+   schema changes need everyone in the room.
+5. Live runs, Steel credits, and the call to fall back to cached mode belong to Dev A. Do not run the
+   Runner without `--fake` unless A has handed you a session budget.
 
 ## Contracts (M0)
 
