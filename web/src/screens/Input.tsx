@@ -14,19 +14,20 @@ export function Input({ onRun, collapsed = false }: { onRun: (url: string) => vo
         {!collapsed && <img src="/assets/computer-globe-monitor.png" alt="" style={{ position: "absolute", left: "50%", bottom: "calc(100% + 14px)", transform: "translateX(-50%)", height: "min(150px, 26vh)", width: "auto", maxWidth: "100%", opacity: 0.2, imageRendering: "pixelated", pointerEvents: "none", userSelect: "none" }} />}
         <Serif size={collapsed ? 28 : "clamp(40px, 6vw, 76px)"} style={{ position: "relative", zIndex: 1, textAlign: "center", lineHeight: 0.96 }}>Send your customers in first.</Serif>
         <form style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 580, display: "flex", flexWrap: "wrap", gap: 10 }} onSubmit={e => { e.preventDefault(); onRun(url || placeholder); }}>
-          <input value={url} onChange={e => setUrl(e.target.value)} placeholder={placeholder} disabled={collapsed}
+          <input value={url} onChange={e => setUrl(e.target.value)} placeholder={placeholder} disabled={collapsed} aria-label="Site to scan" className="url-input"
             style={{ flex: "1 1 300px", minWidth: 0, boxSizing: "border-box", fontFamily: "var(--font-mono)", fontSize: 16, color: "#141414", background: "#FFFFFF", border: "1px solid rgba(20,20,20,0.22)", padding: "15px 18px", outline: "none" }}
-            onFocus={e => { e.currentTarget.style.borderColor = "#FF5A1F"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,90,31,0.12)"; }}
+            onFocus={e => { e.currentTarget.style.borderColor = "var(--scan)"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,90,31,0.12)"; }}
             onBlur={e => { e.currentTarget.style.borderColor = "rgba(20,20,20,0.22)"; e.currentTarget.style.boxShadow = "none"; }} />
-          <button type="submit" disabled={collapsed} style={{ flex: "0 0 auto", fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500, letterSpacing: "0.14em", color: "#FFFFFF", background: collapsed ? "#8A8580" : "#FF5A1F", border: "none", padding: "15px 28px", cursor: collapsed ? "default" : "pointer", whiteSpace: "nowrap" }}>RUN IRIS →</button>
+          <button type="submit" disabled={collapsed} className="btn-primary" style={{ flex: "0 0 auto", fontFamily: "var(--font-mono)", fontSize: 13, fontWeight: 500, letterSpacing: "0.14em", color: "#FFFFFF", background: collapsed ? "var(--muted)" : "var(--scan-deep)", border: "none", padding: "15px 28px", cursor: collapsed ? "default" : "pointer", whiteSpace: "nowrap" }}>RUN IRIS →</button>
         </form>
         {!collapsed && picks.length > 0 && (
           <div style={{ position: "relative", zIndex: 1, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}>
-            {picks.map(t => (
-              <button key={t.id} type="button" onClick={() => setUrl(t.demo.url)}
-                style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8A8580", background: "transparent", border: "1px solid rgba(20,20,20,0.18)", padding: "5px 9px", cursor: "pointer" }}>
+            <span className="mono" style={{ fontSize: 10, fontWeight: 500, color: "var(--muted)", alignSelf: "center" }}>TRY</span>
+            {picks.map(t => { const on = url === t.demo.url; return (
+              <button key={t.id} type="button" onClick={() => setUrl(t.demo.url)} aria-pressed={on} className="target-chip"
+                style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: on ? "var(--scan-ink)" : "var(--muted)", background: "transparent", border: `1px solid ${on ? "var(--scan)" : "var(--line-soft)"}`, padding: "5px 9px", cursor: "pointer" }}>
                 {t.label}
-              </button>))}
+              </button>); })}
           </div>)}
       </div>
     </motion.section>);

@@ -14,8 +14,8 @@ export function WorldDots({ personas }: { personas: Persona[] }) {
       {pins.map((p, i) => (
         <motion.span key={p.id} initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.3, duration: 0.3 }}
           style={{ position: "absolute", left: p.left, top: p.top, transform: "translate(-50%, -50%)", display: "flex", flexDirection: p.above ? "column-reverse" : "column", alignItems: "center", gap: 3 }}>
-          <span style={{ width: 9, height: 9, background: "#FF5A1F", borderRadius: "50%", display: "block", animation: `irisBlip 2s ease-in-out ${i * 0.15}s infinite` }} />
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", color: "#FF5A1F" }}>{p.country}</span>
+          <span style={{ width: 9, height: 9, background: "var(--scan)", borderRadius: "50%", display: "block", animation: `irisBlip 2s ease-in-out ${i * 0.15}s infinite` }} />
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.1em", color: "var(--scan-ink)" }}>{p.country}</span>
         </motion.span>))}
     </div>);
 }
