@@ -1,10 +1,10 @@
-# Crucible — Flow, pages and frames
+# Iris — Flow, pages and frames
 
 This is the agreed product flow and what every screen must achieve. It is written for the whole team: each stage says **what it does**, **what the user sees**, and **why it exists**, with a tag telling you whether it is a Steel feature we are showcasing, a decision we made, or an LLM call.
 
-**One line:** companies pay for case studies and user research to learn how customers behave on their site. Crucible automates that: it researches the company's real customers, sends a swarm of evidence-backed AI personas through the live site on real cloud browsers, and hands back the issues and flags for the company to fix.
+**One line:** companies pay for case studies and user research to learn how customers behave on their site. Iris automates that: it researches the company's real customers, sends a swarm of evidence-backed AI personas through the live site on real cloud browsers, and hands back the issues and flags for the company to fix.
 
-**The foil:** DataDab's Agent Audit sends one generic agent to your homepage with three fixed B2B tasks and emails you a PDF. Crucible learns who your customers are, sends eight of them on the devices, countries and identities those customers actually use, and shows you the frame where each one gave up.
+**The foil:** DataDab's Agent Audit sends one generic agent to your homepage with three fixed B2B tasks and emails you a PDF. Iris learns who your customers are, sends eight of them on the devices, countries and identities those customers actually use, and shows you the frame where each one gave up.
 
 ### Tags used below
 

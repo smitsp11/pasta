@@ -1,4 +1,4 @@
-# Crucible — Design brief and Claude Design frame prompts
+# Iris — Design brief and Claude Design frame prompts
 
 Companion to `docs/ui-flow.md` (what each screen does and why). This file is *how it looks and moves*, plus one ready-to-paste prompt per frame for Claude Design. Animations are described so they can be coded after the sketches exist; Claude Design only needs to show the resting and mid-motion states.
 
@@ -55,7 +55,7 @@ Light, warm, textured, and alive. Firecrawl's paper-and-ink base with a single o
 | light-up | a dot on the map goes from grid-grey to `scan` with a 300ms pulse | persona countries, match markers |
 
 **Persistent frame (every screen)**
-Top bar: wordmark `Crucible` (serif) · stage bar with five steps `LEARN · BRIEF · SWARM · FINDINGS · REPORT` (mono, current step in `scan`) · right side: `[ 8 SESSIONS ]` counter and a `[ CACHED ]` pill when in fallback mode.
+Top bar: wordmark `Iris` (serif) · stage bar with five steps `LEARN · BRIEF · SWARM · FINDINGS · REPORT` (mono, current step in `scan`) · right side: `[ 8 SESSIONS ]` counter and a `[ CACHED ]` pill when in fallback mode.
 Navigation model: **one vertical page that grows** as stages complete; the stage bar scrolls you. No wizard, no clicking to advance. On stage, the presenter never has to find a button.
 
 **Stage constraints**
@@ -65,13 +65,13 @@ Readable from the back of a room: minimum 16px body, 20px in panels, headline �
 
 ## 3. Frames
 
-Sample data for every frame (use exactly this so frames match): brand **Northwind Outfitters**, a mid-size outdoor-clothing store. Journeys: *find a jacket*, *add it to the cart*, *reach checkout*. Cloudflare static score 85. Crucible score 58.
+Sample data for every frame (use exactly this so frames match): brand **Northwind Outfitters**, a mid-size outdoor-clothing store. Journeys: *find a jacket*, *add it to the cart*, *reach checkout*. Cloudflare static score 85. Iris score 58.
 
 ### Frame 1 — Input
 
 Layout: full-viewport hero on grid paper. Centre: serif headline, one wide input, one small optional input, one `scan` button. Behind, at 30% opacity, a dithered illustration of a retro computer whose screen shows a dot-matrix globe (the Browserbase computer, ours). Mono annotations in the corners: `[ READY ]`, `[ 0 SESSIONS ]`, `[ STEEL · CONNECTED ]`.
 
-Copy: headline *"Send your customers in first."* sub *"Paste a URL. We'll learn who your customers are and map your site at the same time."* input placeholder `https://northwindoutfitters.com` · optional `what does the company do? (optional)` · button `Run Crucible`.
+Copy: headline *"Send your customers in first."* sub *"Paste a URL. We'll learn who your customers are and map your site at the same time."* input placeholder `https://northwindoutfitters.com` · optional `what does the company do? (optional)` · button `Run Iris`.
 
 Motion: globe on the computer screen rotates slowly; on submit, pixel-dissolve into Frame 2.
 
@@ -109,7 +109,7 @@ Motion: reticle roams the wall, pausing on whichever card just emitted an event;
 
 ### Frame 5 — Report
 
-Layout: calm. Serif headline *"What broke, for whom, and why."* Then the contrast block: two huge numbers side by side, mono captions: left `85` muted, caption `CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers`; right `58` in `scan`, caption `CRUCIBLE MEASURED · 8 real agents, 3 journeys`. Under it, a one-line mono strip: `1 RUN EXCLUDED · TOOLING ERROR`.
+Layout: calm. Serif headline *"What broke, for whom, and why."* Then the contrast block: two huge numbers side by side, mono captions: left `85` muted, caption `CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers`; right `58` in `scan`, caption `IRIS MEASURED · 8 real agents, 3 journeys`. Under it, a one-line mono strip: `1 RUN EXCLUDED · TOOLING ERROR`.
 
 Then the flags list (left third) and the flag detail (right two-thirds).
 
@@ -130,10 +130,10 @@ Wordmark · stage bar (five mono labels, current in `scan`, completed with a ✓
 Each prompt assumes the system above is attached or pasted first. Ask for a desktop frame 1440×900 unless noted.
 
 **System prompt to paste before any frame:**
-> Design system: warm off-white paper `#FAF7F2` with a 24px grid-paper background at 6% ink; ink `#141414` text; one accent orange `#FF5A1F` used only for "live/searching" and primary actions; pastel gradient cards `#FFD9CF #F3E9D2 #E5DDF5 #D8ECE3`; success `#1F9D55`, stall `#D93025`, muted `#8A8580`. Type: Instrument Serif for headlines (56–96px), Inter for UI, Geist Mono for chips, counters, logs and annotations like `[ READY ]`. All images are rendered as ASCII-character textures (mono glyphs on pastel gradients) or Bayer-dithered pixel art in the palette; never flat photos. Tone: Firecrawl's technical playfulness meets God's Eye's "searching everything" motion. Panels can be dense; the page stays calm and readable from the back of a room. Persistent top bar: serif wordmark "Crucible", a five-step mono stage bar LEARN · BRIEF · SWARM · FINDINGS · REPORT with the current step in orange, and a `[ 8 SESSIONS ]` counter on the right.
+> Design system: warm off-white paper `#FAF7F2` with a 24px grid-paper background at 6% ink; ink `#141414` text; one accent orange `#FF5A1F` used only for "live/searching" and primary actions; pastel gradient cards `#FFD9CF #F3E9D2 #E5DDF5 #D8ECE3`; success `#1F9D55`, stall `#D93025`, muted `#8A8580`. Type: Instrument Serif for headlines (56–96px), Inter for UI, Geist Mono for chips, counters, logs and annotations like `[ READY ]`. All images are rendered as ASCII-character textures (mono glyphs on pastel gradients) or Bayer-dithered pixel art in the palette; never flat photos. Tone: Firecrawl's technical playfulness meets God's Eye's "searching everything" motion. Panels can be dense; the page stays calm and readable from the back of a room. Persistent top bar: serif wordmark "Iris", a five-step mono stage bar LEARN · BRIEF · SWARM · FINDINGS · REPORT with the current step in orange, and a `[ 8 SESSIONS ]` counter on the right.
 
 **Frame 1 prompt:**
-> Frame 1, "Input". Full-viewport hero on grid paper. Centred serif headline "Send your customers in first." Sub-line in Inter: "Paste a URL. We'll learn who your customers are and map your site at the same time." One wide input with placeholder https://northwindoutfitters.com, a smaller optional input "what does the company do? (optional)", and an orange button "Run Crucible". Behind the form at 30% opacity, a Bayer-dithered illustration of a retro desktop computer (Browserbase style) whose screen shows a dot-matrix globe. Mono annotations in the four corners: [ READY ] [ 0 SESSIONS ] [ STEEL · CONNECTED ] [ v0.1 ]. Stage bar shows LEARN as upcoming.
+> Frame 1, "Input". Full-viewport hero on grid paper. Centred serif headline "Send your customers in first." Sub-line in Inter: "Paste a URL. We'll learn who your customers are and map your site at the same time." One wide input with placeholder https://northwindoutfitters.com, a smaller optional input "what does the company do? (optional)", and an orange button "Run Iris". Behind the form at 30% opacity, a Bayer-dithered illustration of a retro desktop computer (Browserbase style) whose screen shows a dot-matrix globe. Mono annotations in the four corners: [ READY ] [ 0 SESSIONS ] [ STEEL · CONNECTED ] [ v0.1 ]. Stage bar shows LEARN as upcoming.
 
 **Frame 2 prompt:**
 > Frame 2, "Learning", stage LEARN active. Serif headline "Learning your customers and your site." Two equal columns. LEFT, mono label [ RESEARCH ]: a 3×3 wall of source cards (Trustpilot, Google Reviews, Reddit r/Outdoors, App Store, Help Centre, Competitor: Arc'teryx, plus three more), each an ASCII-textured thumbnail on a pastel gradient with the source name in mono; a square-bracket reticle sits on the Reddit card; three already-read cards show an orange quote strip underneath, e.g. "checkout resets on my phone every time" — Trustpilot. Counter under the wall in mono: 14 PIECES OF EVIDENCE · 5 SOURCES. RIGHT, mono label [ SITE MAP ]: a browser frame showing a live view of northwindoutfitters.com rendered as ASCII texture with a thin orange scan-line across it, and beside it a node graph drawing itself: nodes /, /collections/jackets, /products/alpine-shell, /cart, /checkout connected by thin ink lines, with three nodes highlighted orange and labelled JOURNEY 1–3. Counter: 12 PAGES · 3 JOURNEYS.
@@ -145,10 +145,10 @@ Each prompt assumes the system above is attached or pasted first. Ask for a desk
 > Frame 4, "Swarm", stage SWARM active. Serif headline "Watch them try." Mono header line: 6 RUNNING · 1 DONE · 1 STALLED. A 4×2 wall of live-feed cards, one per persona: persona name and three chips on top; a browser frame showing the store page as ASCII texture; a status pill top-right; a mono narration line at the bottom showing only the latest step. Show five cards RUNNING (orange pill, thin orange scan-line across the feed, narration like "looking for the cart… the ＋ button has no label… trying again"), one DONE (feed replaced by a solid green tint with a large ✓), one STALLED (solid red tint, narration "overlay keeps intercepting clicks"), one ERROR (muted grey, label TOOLING ERROR · EXCLUDED). A square-bracket reticle sits on one running card.
 
 **Frame 5 prompt:**
-> Frame 5, "Report", stage REPORT active. Calm layout. Serif headline "What broke, for whom, and why." Contrast block: two huge mono numbers side by side, left "85" in muted grey with caption CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers; right "58" in orange with caption CRUCIBLE MEASURED · 8 real agents, 3 journeys. A thin mono strip: 1 RUN EXCLUDED · TOOLING ERROR. Below, left third: a flags list of four rows, each with category (Cookie wall, Icon-only cart button, Geo-blocked pricing, Hidden mobile nav), an attribution badge (FAILS ONLY ON MOBILE in soft orange, or FAILS FOR EVERYONE in soft red), an optional black pill EVERY ENGINE, a row of tiny ASCII portraits for affected personas, and a customers-affected label like ~41% OF SHOPPERS. Right two-thirds, the first flag open: description in Inter 24px "A consent overlay covers the page and its OK button is 16px on mobile."; two columns: left a customer quote card (ASCII-textured Trustpilot thumbnail, the quote, a link), right a replay frame (browser frame, ASCII-textured store page, an orange reticle locked on a tiny OK button, mono caption STEP 4 · 00:41 · sess-mobile-cart); below, a green box PROPOSED FIX: "Give the dialog role=\"dialog\" and an aria-label; make the accept button at least 44×44px on mobile." and two buttons "Open replay ↗" and "Copy fix".
+> Frame 5, "Report", stage REPORT active. Calm layout. Serif headline "What broke, for whom, and why." Contrast block: two huge mono numbers side by side, left "85" in muted grey with caption CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers; right "58" in orange with caption IRIS MEASURED · 8 real agents, 3 journeys. A thin mono strip: 1 RUN EXCLUDED · TOOLING ERROR. Below, left third: a flags list of four rows, each with category (Cookie wall, Icon-only cart button, Geo-blocked pricing, Hidden mobile nav), an attribution badge (FAILS ONLY ON MOBILE in soft orange, or FAILS FOR EVERYONE in soft red), an optional black pill EVERY ENGINE, a row of tiny ASCII portraits for affected personas, and a customers-affected label like ~41% OF SHOPPERS. Right two-thirds, the first flag open: description in Inter 24px "A consent overlay covers the page and its OK button is 16px on mobile."; two columns: left a customer quote card (ASCII-textured Trustpilot thumbnail, the quote, a link), right a replay frame (browser frame, ASCII-textured store page, an orange reticle locked on a tiny OK button, mono caption STEP 4 · 00:41 · sess-mobile-cart); below, a green box PROPOSED FIX: "Give the dialog role=\"dialog\" and an aria-label; make the accept button at least 44×44px on mobile." and two buttons "Open replay ↗" and "Copy fix".
 
 **Component prompt (top bar):**
-> A persistent top bar on paper: serif wordmark "Crucible" left; centre, five mono steps LEARN · BRIEF · SWARM · FINDINGS · REPORT where completed steps have a small ✓, the current step is orange, upcoming steps are muted; right, a mono counter [ 8 SESSIONS ] and, in one variant, an additional muted pill [ CACHED ].
+> A persistent top bar on paper: serif wordmark "Iris" left; centre, five mono steps LEARN · BRIEF · SWARM · FINDINGS · REPORT where completed steps have a small ✓, the current step is orange, upcoming steps are muted; right, a mono counter [ 8 SESSIONS ] and, in one variant, an additional muted pill [ CACHED ].
 
 ---
 
