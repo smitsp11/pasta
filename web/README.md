@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# Iris — front end
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Fixture-driven, single-page React app that plays the five-stage show (Input → Learning → Brief → Swarm → Report).
+No backend calls: a `Player` replays an authored demo script (`src/data/iris_demo.json` → `src/data/script.ts`)
+through a pure reducer, and every screen renders from `RunState`. A live websocket can replace the Player later
+without touching the screens.
 
-Currently, two official plugins are available:
+Production: https://iris-tau-two.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev          # http://localhost:5173
+npm test             # vitest unit tests (reducer, script, textures, screens)
+npm run e2e          # playwright: builds, previews on :4173, plays the show, screenshots each stage into e2e/screens/
+npm run build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## URL parameters
+
+| Param | Effect |
+|---|---|
+| `?speed=6` | Play the show 6× faster (any number; default 1, ~60s show). |
+| `?stage=run` | Seek instantly to a stage marker (`explore`, `run`, `score`, `done`) for rehearsal or screenshots. |
+| `?demo=cached` | Show the `[ CACHED ]` pill in the top bar (stage fallback mode). |
+
+## Deploy
+
+```bash
+vercel --prod --yes     # project smitsp11s-projects/iris; vercel.json pins framework=vite, output=dist
+```
+
+## Design sources
+
+Tokens, motion vocabulary and choreography timings are in `docs/design-brief.md`; verbatim per-frame styles are in
+`design/EXTRACTION.md`, extracted from the Claude Design exports in `design/frames/*.dc.html` (the `.dc.html` wins on
+conflict). The implementation plan is `docs/superpowers/plans/2026-09-13-iris-frontend.md`.
