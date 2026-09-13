@@ -1,10 +1,12 @@
 import type { DemoData } from "../../types";
 import northwind from "../iris_demo.json";
+import ikea from "./ikea.json";
 
 export interface Target { id: string; label: string; hosts: string[]; demo: DemoData }
 
 /** Hardcoded demo targets. The URL typed on screen 1 is matched by hostname; anything else plays the fictional store. */
 export const TARGETS: Target[] = [
+  { id: "ikea", label: "IKEA Canada", hosts: ["ikea.com", "ikea.ca"], demo: ikea as unknown as DemoData },
   { id: "northwind", label: "Northwind Outfitters (fictional)", hosts: ["northwindoutfitters.com"], demo: northwind as unknown as DemoData },
 ];
 

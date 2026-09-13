@@ -1,0 +1,116 @@
+{
+  "url": "https://www.ikea.com/ca/en/",
+  "site_model": {
+    "url": "https://www.ikea.com/ca/en/", "brand": "IKEA", "category": "ecommerce / furniture and home",
+    "description": "IKEA Canada's store: OneTrust consent banner (Ok / Cookies settings), a postal-code dialog in the header that gates delivery and stock information, a cart with an in-place login-or-guest interstitial, and a checkout whose first step asks for a postal code again.",
+    "audience_guess": ["first-time online furniture buyers", "returning IKEA Family members", "shoppers outside major-city delivery zones", "cross-border and UK shoppers comparing sites"],
+    "journeys": [
+      {"id": "find_product", "name": "Find a bed frame", "goal": "From the Beds & mattresses category open the MALM bed frame (high, white, Queen) product page.", "entry_url": "https://www.ikea.com/ca/en/cat/beds-mattresses-bm001/"},
+      {"id": "add_to_cart", "name": "Add it to the cart", "goal": "On the MALM bed frame page add the bed frame to the cart, open the shopping cart and confirm it lists the MALM bed frame.", "entry_url": "https://www.ikea.com/ca/en/p/malm-bed-frame-high-white-90249483/"},
+      {"id": "reach_checkout", "name": "Reach checkout", "goal": "With one item in the cart, continue to checkout as a guest, enter a postal code on the Delivery step and stop before payment.", "entry_url": "https://www.ikea.com/ca/en/shoppingcart/"}
+    ]
+  },
+  "nodes": [
+    {"path": "/ca/en/", "parent": null, "journey": null},
+    {"path": "/ca/en/cat/products-products/", "parent": "/ca/en/", "journey": null},
+    {"path": "/ca/en/cat/beds-mattresses-bm001/", "parent": "/ca/en/cat/products-products/", "journey": 1},
+    {"path": "/ca/en/p/malm-bed-frame-high-white-90249483/", "parent": "/ca/en/cat/beds-mattresses-bm001/", "journey": 2},
+    {"path": "/ca/en/shoppingcart/", "parent": "/ca/en/p/malm-bed-frame-high-white-90249483/", "journey": 3},
+    {"path": "/ca/en/order/delivery/", "parent": "/ca/en/shoppingcart/", "journey": null},
+    {"path": "/ca/en/customer-service/services/delivery/", "parent": "/ca/en/", "journey": null},
+    {"path": "/ca/en/rooms/", "parent": "/ca/en/", "journey": null}
+  ],
+  "sources": [
+    {"id": "help", "name": "IKEA Help Centre (CA + UK)", "kind": "help", "pastel": 4, "thumbnail": null},
+    {"id": "trustpilot", "name": "Trustpilot ikea.ca", "kind": "reviews", "pastel": 2, "thumbnail": null},
+    {"id": "trustpilot_uk", "name": "Trustpilot ikea.co.uk", "kind": "reviews", "pastel": 2, "thumbnail": null},
+    {"id": "trustpilot_global", "name": "Trustpilot www.ikea.com", "kind": "reviews", "pastel": 3, "thumbnail": null},
+    {"id": "appstore", "name": "App Store (Canada)", "kind": "appstore", "pastel": 3, "thumbnail": null},
+    {"id": "mumsnet", "name": "Mumsnet forum", "kind": "forum", "pastel": 1, "thumbnail": null},
+    {"id": "sitejabber", "name": "Sitejabber", "kind": "reviews", "pastel": 4, "thumbnail": null},
+    {"id": "reddit", "name": "Reddit r/IKEA", "kind": "forum", "pastel": 1, "thumbnail": null},
+    {"id": "competitor", "name": "Competitor: Wayfair.ca", "kind": "competitor", "pastel": 1, "thumbnail": null}
+  ],
+  "reads": [
+    {"source_id": "help", "quotes": [
+      {"source_id": "help", "text": "if you cannot checkout with your desired items, they are either out of stock, or there is no delivery options for your area at this time.", "date": "Sep 2026", "url": "https://www.ikea.com/ca/en/customer-service/knowledge/articles/0dg6ffcc-1d1f-4df5-9579-306gde1108b1.html"},
+      {"source_id": "help", "text": "Postcodes not being recognised is normally an indication that the stock you have added to your basket isn't available by your selected delivery method.", "date": "Sep 2026", "url": "https://www.ikea.com/gb/en/customer-service/knowledge/articles/053c189e-fe13-47gc-8f76-be5fg162g8gd.html"},
+      {"source_id": "help", "text": "there is a 30 minute timeout while going through the checkout, which can result in the order disappearing", "date": "Sep 2026", "url": "https://www.ikea.com/ca/en/customer-service/knowledge/articles/c9ce9007-5215-4b1g-be7g-848e49c7cee3.html"}
+    ]},
+    {"source_id": "trustpilot", "quotes": [
+      {"source_id": "trustpilot", "text": "The website says that delivery is available in AS IS products at SOME stores? WHICH STORES?", "date": "Aug 2026", "url": "https://www.trustpilot.com/review/ikea.ca"},
+      {"source_id": "trustpilot", "text": "So I tried there online however half the things I liked they don't sell online. What's the point of your online website", "date": "Oct 2025", "url": "https://www.trustpilot.com/review/ikea.ca?search=website"}
+    ]},
+    {"source_id": "trustpilot_uk", "quotes": [
+      {"source_id": "trustpilot_uk", "text": "apparently my postcode does not recognise on their system.", "date": "Jun 2024", "url": "https://www.trustpilot.com/review/ikea.co.uk?search=postcode"},
+      {"source_id": "trustpilot_uk", "text": "My postcode doesnt exist on their system, even though the house has been built for over 60 years", "date": "Jan 2024", "url": "https://www.trustpilot.com/review/ikea.co.uk?search=postcode"},
+      {"source_id": "trustpilot_uk", "text": "I entered my quantity of 2, continued but noted my quantity had reverted to one.", "date": "Oct 2025", "url": "https://www.trustpilot.com/review/ikea.co.uk?search=postcode"}
+    ]},
+    {"source_id": "trustpilot_global", "quotes": [
+      {"source_id": "trustpilot_global", "text": "An article is available for shipping as long as you don't enter your postal code. The moment you do, it becomes...", "date": "Aug 2022", "url": "https://www.trustpilot.com/review/www.ikea.com?search=postal%20code"},
+      {"source_id": "trustpilot_global", "text": "The website shipping availability is very deceiving. It will show items are available for shipping to my zip code...", "date": "Sep 2022", "url": "https://www.trustpilot.com/review/www.ikea.com?search=postal%20code"},
+      {"source_id": "trustpilot_global", "text": "according to their website the item's were available for delivery to my postcode...", "date": "Jun 2024", "url": "https://www.trustpilot.com/review/www.ikea.com?search=postal%20code"}
+    ]},
+    {"source_id": "appstore", "quotes": [
+      {"source_id": "appstore", "text": "When something I'm ordering is out of stock it doesn't tell me until after I'm in the checkout process", "date": "May 2020", "url": "https://apps.apple.com/ca/app/ikea/id1452164827"},
+      {"source_id": "appstore", "text": "I don't want the items delivered, but that's the only choice I'm given!!", "date": "May 2020", "url": "https://apps.apple.com/ca/app/ikea/id1452164827"}
+    ]},
+    {"source_id": "mumsnet", "quotes": [
+      {"source_id": "mumsnet", "text": "The IKEA product page shows the item in stock for my postcode, but when I move to checkout it suddenly says it's not available for delivery.", "date": "Apr 2025", "url": "https://www.mumsnet.com/talk/property/3735106-Ikea-delivery-website-says-item-is-available-to-deliver-but-at-order-stage-cant-get-message-that-it-is-not"},
+      {"source_id": "mumsnet", "text": "when I try to order and enter my postcode, I get a message saying item is not available for delivery.", "date": "Nov 2019", "url": "https://www.mumsnet.com/talk/property/3735106-Ikea-delivery-website-says-item-is-available-to-deliver-but-at-order-stage-cant-get-message-that-it-is-not"}
+    ]},
+    {"source_id": "sitejabber", "quotes": [
+      {"source_id": "sitejabber", "text": "Second delivery date comes and the order doesn't arrive. The Ikea website just says it's 'getting ready'.", "date": "Sep 2023", "url": "https://www.sitejabber.com/reviews/ikea.com"}
+    ]},
+    {"source_id": "reddit", "quotes": []},
+    {"source_id": "competitor", "quotes": []}
+  ],
+  "personas": [
+    {"id": "p1", "segment": "First-time mobile shopper, Canada", "config": {"device": "mobile", "identity": "fresh", "country": "CA", "engine": "browser_use", "label": "mobile"}, "journey_id": "add_to_cart", "goal": "Add the MALM bed frame to the cart and check the cart lists it.", "evidence": {"source_id": "trustpilot_uk", "text": "I entered my quantity of 2, continued but noted my quantity had reverted to one.", "date": "Oct 2025", "url": "https://www.trustpilot.com/review/ikea.co.uk?search=postcode"}, "pastel": 1, "run_id": "r1", "pair_id": null},
+    {"id": "p2", "segment": "Cross-border browser, United States", "config": {"device": "desktop", "identity": "returning", "country": "US", "engine": "browser_use", "label": "returning"}, "journey_id": "find_product", "goal": "Find the MALM bed frame from the Beds & mattresses category.", "evidence": {"source_id": "trustpilot_global", "text": "The website shipping availability is very deceiving. It will show items are available for shipping to my zip code...", "date": "Sep 2022", "url": "https://www.trustpilot.com/review/www.ikea.com?search=postal%20code"}, "pastel": 3, "run_id": "r2", "pair_id": null},
+    {"id": "p3", "segment": "Remote-region shopper (Iqaluit), Canada", "config": {"device": "desktop", "identity": "fresh", "country": "CA", "engine": "browser_use", "label": "country:CA"}, "journey_id": "reach_checkout", "goal": "Check out as a guest, enter my postal code and see a delivery option before payment.", "evidence": {"source_id": "help", "text": "if you cannot checkout with your desired items, they are either out of stock, or there is no delivery options for your area at this time.", "date": "Sep 2026", "url": "https://www.ikea.com/ca/en/customer-service/knowledge/articles/0dg6ffcc-1d1f-4df5-9579-306gde1108b1.html"}, "pastel": 2, "run_id": "r3", "pair_id": "p4"},
+    {"id": "p4", "segment": "Remote-region shopper (Iqaluit), Canada", "config": {"device": "desktop", "identity": "fresh", "country": "GB", "engine": "browser_use", "label": "country:GB"}, "journey_id": "reach_checkout", "goal": "Check out as a guest, enter my postal code and see a delivery option before payment.", "evidence": {"source_id": "help", "text": "if you cannot checkout with your desired items, they are either out of stock, or there is no delivery options for your area at this time.", "date": "Sep 2026", "url": "https://www.ikea.com/ca/en/customer-service/knowledge/articles/0dg6ffcc-1d1f-4df5-9579-306gde1108b1.html"}, "pastel": 2, "run_id": "r4", "pair_id": "p3"},
+    {"id": "p5", "segment": "Comparison shopper, Germany", "config": {"device": "desktop", "identity": "fresh", "country": "DE", "engine": "claude_cu", "label": "country:DE"}, "journey_id": "find_product", "goal": "Open the MALM bed frame page and read the delivery availability block.", "evidence": {"source_id": "trustpilot_global", "text": "An article is available for shipping as long as you don't enter your postal code. The moment you do, it becomes...", "date": "Aug 2022", "url": "https://www.trustpilot.com/review/www.ikea.com?search=postal%20code"}, "pastel": 3, "run_id": "r5", "pair_id": null},
+    {"id": "p6", "segment": "UK shopper checking the Canadian site, United Kingdom", "config": {"device": "mobile", "identity": "fresh", "country": "GB", "engine": "claude_cu", "label": "country:GB"}, "journey_id": "add_to_cart", "goal": "Add the MALM bed frame to the cart from a phone.", "evidence": {"source_id": "mumsnet", "text": "The IKEA product page shows the item in stock for my postcode, but when I move to checkout it suddenly says it's not available for delivery.", "date": "Apr 2025", "url": "https://www.mumsnet.com/talk/property/3735106-Ikea-delivery-website-says-item-is-available-to-deliver-but-at-order-stage-cant-get-message-that-it-is-not"}, "pastel": 1, "run_id": "r6", "pair_id": null},
+    {"id": "p7", "segment": "Returning mobile buyer, United States", "config": {"device": "mobile", "identity": "returning", "country": "US", "engine": "claude_cu", "label": "mobile"}, "journey_id": "reach_checkout", "goal": "Get from the cart to the delivery step without creating an account.", "evidence": {"source_id": "appstore", "text": "When something I'm ordering is out of stock it doesn't tell me until after I'm in the checkout process", "date": "May 2020", "url": "https://apps.apple.com/ca/app/ikea/id1452164827"}, "pastel": 4, "run_id": "r7", "pair_id": null},
+    {"id": "p8", "segment": "Returning IKEA Family member, Toronto, Canada", "config": {"device": "desktop", "identity": "returning", "country": "CA", "engine": "claude_cu", "label": "returning"}, "journey_id": "add_to_cart", "goal": "Add the MALM bed frame and confirm the cart shows delivery to my saved postal code.", "evidence": {"source_id": "trustpilot", "text": "The website says that delivery is available in AS IS products at SOME stores? WHICH STORES?", "date": "Aug 2026", "url": "https://www.trustpilot.com/review/ikea.ca"}, "pastel": 4, "run_id": "r8", "pair_id": null}
+  ],
+  "stress_tests": [
+    {"probe": "postal-code gate with a valid but unserved code", "why": "help centre: no delivery options for your area; reviewers say availability flips once a code is entered", "source": "Help centre, Trustpilot"},
+    {"probe": "add-to-cart on the MALM product page", "why": "two 'Add to cart' buttons on one page; quantity and item reports on Trustpilot", "source": "Trustpilot ikea.co.uk"},
+    {"probe": "guest checkout from the cart", "why": "app reviewers report stock and delivery surprises only inside checkout", "source": "App Store"},
+    {"probe": "consent banner on mobile", "why": "CA banner offers only Ok / Cookies settings", "source": "Site analysis"}
+  ],
+  "runs": [
+    {"run_id": "r1", "persona_id": "p1", "session_id": "sess-r1", "start_url": "https://www.ikea.com/ca/en/p/malm-bed-frame-high-white-90249483/", "outcome": "stalled", "failure_step_index": 3,
+     "steps": [["tapped Ok on the cookie banner… MALM bed frame page, three Add to cart buttons", "/ca/en/p/malm-bed-frame-high-white-90249483/"], ["tapped the first Add to cart… header says Shopping cart, 1 items", "/ca/en/p/malm-bed-frame-high-white-90249483/"], ["cart lists ÅKREHAMN foam mattress $499.00, not the MALM bed frame… cannot find the bed", "/ca/en/shoppingcart/"]]},
+    {"run_id": "r2", "persona_id": "p2", "session_id": "sess-r2", "start_url": "https://www.ikea.com/ca/en/cat/beds-mattresses-bm001/", "outcome": "completed", "failure_step_index": null,
+     "steps": [["Beds and Mattresses category, cookies already accepted from last visit", "/ca/en/cat/beds-mattresses-bm001/"], ["found MALM bed frame, high, white, Queen… opening it", "/ca/en/p/malm-bed-frame-high-white-90249483/"], ["product page open: How to get it — Delivery: Check availability", "/ca/en/p/malm-bed-frame-high-white-90249483/"]]},
+    {"run_id": "r3", "persona_id": "p3", "session_id": "sess-r3", "start_url": "https://www.ikea.com/ca/en/shoppingcart/", "outcome": "stalled", "failure_step_index": 3,
+     "steps": [["cart shows 1 item, Shipping costs are calculated at checkout… clicking Continue to checkout", "/ca/en/shoppingcart/"], ["URL did not change… a Choose how you'd like to checkout panel… chose Continue as guest", "/ca/en/order/delivery/"], ["entered X0A 0H0 and Show delivery and pickup options… Deliver to X0A0H0: Information currently unavailable, no error, no delivery option to pick", "/ca/en/order/delivery/"]]},
+    {"run_id": "r4", "persona_id": "p4", "session_id": "sess-r4", "start_url": "https://www.ikea.com/ca/en/shoppingcart/", "outcome": "completed", "failure_step_index": null,
+     "steps": [["cart shows 1 item… Continue to checkout, then Continue as guest", "/ca/en/shoppingcart/"], ["Delivery or Click & collect step: Add your postal code to see available delivery and Pick-up locations", "/ca/en/order/delivery/"], ["entered M5V 3L9… Deliver to M5V3L9 From $39.00, Earliest between Sep 21 - Sep 22… Payment: Not yet available, stopping here", "/ca/en/order/delivery/"]]},
+    {"run_id": "r5", "persona_id": "p5", "session_id": "sess-r5", "start_url": "https://www.ikea.com/ca/en/cat/beds-mattresses-bm001/", "outcome": "completed", "failure_step_index": null,
+     "steps": [["clicked Ok on You are in control of cookies used", "/ca/en/cat/beds-mattresses-bm001/"], ["opened MALM bed frame… Delivery: Check availability, Store: Select store for availability", "/ca/en/p/malm-bed-frame-high-white-90249483/"]]},
+    {"run_id": "r6", "persona_id": "p6", "session_id": "sess-r6", "start_url": "https://www.ikea.com/ca/en/p/malm-bed-frame-high-white-90249483/", "outcome": "harness_error", "failure_step_index": null,
+     "steps": [["mobile session disconnected before the first screenshot", "/ca/en/p/malm-bed-frame-high-white-90249483/"]]},
+    {"run_id": "r7", "persona_id": "p7", "session_id": "sess-r7", "start_url": "https://www.ikea.com/ca/en/shoppingcart/", "outcome": "stalled", "failure_step_index": 3,
+     "steps": [["cart shows 1 item… tapping Continue to checkout", "/ca/en/shoppingcart/"], ["still on the cart URL… screen now says Choose how you'd like to checkout, Join for free or log in", "/ca/en/shoppingcart/"], ["I was asked not to create an account… no guest option visible in the viewport… tapping Continue to checkout again shows the same panel", "/ca/en/shoppingcart/"]]},
+    {"run_id": "r8", "persona_id": "p8", "session_id": "sess-r8", "start_url": "https://www.ikea.com/ca/en/p/malm-bed-frame-high-white-90249483/", "outcome": "completed", "failure_step_index": null,
+     "steps": [["header shows M5V3L9 · IKEA Toronto Downtown from my profile… clicking the Add to cart under the price", "/ca/en/p/malm-bed-frame-high-white-90249483/"], ["cart: Deliver to M5V3L9 From $39.00 or $29.00 with IKEA Family, Available for home delivery", "/ca/en/shoppingcart/"]]}
+  ],
+  "findings": [
+    {"id": "f1", "journey_id": "add_to_cart", "config": {"device": "mobile", "identity": "fresh", "country": "CA", "engine": "browser_use", "label": "mobile"}, "category": "ambiguous_cta", "description": "The MALM product page has more than one button labelled \"Add to cart\"; the first one in DOM order adds the ÅKREHAMN mattress ($499) instead of the bed frame, with no confirmation naming the item added.", "attributed_to": "site", "engine_consensus": true, "session_id": "sess-r1", "step_index": 3, "replay_url": "https://app.steel.dev/sessions/sess-r1", "replay_offset_s": 27, "proposed_fix": "Give each add button an aria-label that names the product (\"Add MALM bed frame to cart\" / \"Add ÅKREHAMN mattress to cart\") and show a confirmation toast that names the item added."},
+    {"id": "f2", "journey_id": "reach_checkout", "config": {"device": "desktop", "identity": "fresh", "country": "CA", "engine": "browser_use", "label": "country:CA"}, "category": "geo_block", "description": "A valid but unserved Canadian postal code (X0A 0H0) is accepted silently: the delivery step shows \"Information currently unavailable\" with no error, no explanation and no delivery option, so the shopper cannot proceed. The same shopper from GB with a served code reaches the delivery options.", "attributed_to": "country", "engine_consensus": false, "session_id": "sess-r3", "step_index": 3, "replay_url": "https://app.steel.dev/sessions/sess-r3", "replay_offset_s": 52, "proposed_fix": "When no delivery service covers the postal code, render an explicit role=\"alert\" message (\"Home delivery is not available for X0A 0H0\") next to the input and surface the Click & collect / pick-up-point alternative as the primary action."},
+    {"id": "f3", "journey_id": "reach_checkout", "config": {"device": "mobile", "identity": "returning", "country": "US", "engine": "claude_cu", "label": "mobile"}, "category": "hidden_nav", "description": "\"Continue to checkout\" does not navigate; it injects a \"Choose how you'd like to checkout\" login panel at the same URL, and on a phone the \"Continue as guest\" link sits below the fold under the loyalty pitch.", "attributed_to": "device", "engine_consensus": false, "session_id": "sess-r7", "step_index": 3, "replay_url": "https://app.steel.dev/sessions/sess-r7", "replay_offset_s": 38, "proposed_fix": "Route Continue to checkout to /ca/en/order/delivery/ with a URL change, or render the guest option as a visible button above the loyalty benefits with role=\"dialog\" and focus moved to it."}
+  ],
+  "affected": {
+    "f1": {"persona_ids": ["p1", "p6", "p8", "p5"], "share": 0.52},
+    "f2": {"persona_ids": ["p3", "p8"], "share": 0.24},
+    "f3": {"persona_ids": ["p7", "p3", "p4"], "share": 0.38}
+  },
+  "scorecard": {"overall": 61, "static_score": 20, "per_journey": [
+    {"journey_id": "find_product", "score": 100.0, "completed": 2, "stalled": 0, "harness_errors": 0},
+    {"journey_id": "add_to_cart", "score": 50.0, "completed": 1, "stalled": 1, "harness_errors": 1},
+    {"journey_id": "reach_checkout", "score": 33.3, "completed": 1, "stalled": 2, "harness_errors": 0}]}
+}

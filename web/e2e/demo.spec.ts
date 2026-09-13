@@ -34,3 +34,13 @@ test("seek to a stage renders it instantly (rehearsal / screenshot mode)", async
   await expect(page.getByText("What broke, for whom, and why.")).toBeVisible();
   await expect(page.getByText(/OF SHOPPERS/)).toHaveCount(4);
 });
+
+for (const id of ["ikea", "zara", "frontier", "northwind"]) {
+  test(`target ${id}: seek to done renders its report`, async ({ page }) => {
+    const res = await page.goto(`/?target=${id}&stage=done`);
+    expect(res?.ok()).toBeTruthy();
+    await expect(page.getByText("What broke, for whom, and why.")).toBeVisible();
+    await expect(page.getByText("PROPOSED FIX")).toBeVisible();
+    await page.screenshot({ path: `e2e/screens/report-${id}.png`, fullPage: true });
+  });
+}
