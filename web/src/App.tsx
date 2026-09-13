@@ -12,7 +12,8 @@ import { Report } from "./screens/Report";
 
 function Stage({ id, children }: { id: string; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => { ref.current?.scrollIntoView?.({ behavior: "smooth", block: "start" }); }, []);
+  // Wait for the hero to finish collapsing (0.6s) before scrolling, or the target shifts under the sticky bar.
+  useEffect(() => { const id = setTimeout(() => ref.current?.scrollIntoView?.({ behavior: "smooth", block: "start" }), 650); return () => clearTimeout(id); }, []);
   return (
     <motion.div ref={ref} id={id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} style={{ scrollMarginTop: 64 }}>
       <PixelDissolve trigger={id} duration={0.6}>{children}</PixelDissolve>
