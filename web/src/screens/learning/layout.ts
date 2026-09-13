@@ -11,7 +11,9 @@ export function layoutNodes(nodes: SiteNode[]): Record<string, Pos> {
   const pos: Record<string, Pos> = {};
   Object.entries(cols).forEach(([k, paths]) => {
     const x = maxD === 0 ? 10 : 10 + (68 * Number(k)) / maxD;
-    paths.forEach((p, i) => { pos[p] = { x, y: paths.length === 1 ? 50 : 12 + (76 * i) / (paths.length - 1) }; });
+    // Lone nodes zigzag by depth so a chain of single children does not overlap horizontally.
+    const lone = Number(k) === 0 ? 50 : Number(k) % 2 ? 34 : 66;
+    paths.forEach((p, i) => { pos[p] = { x, y: paths.length === 1 ? lone : 12 + (76 * i) / (paths.length - 1) }; });
   });
   return pos;
 }
