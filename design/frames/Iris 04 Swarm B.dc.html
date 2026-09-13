@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: #FAF7F2;
+    background-image:
+      radial-gradient(ellipse 72% 46% at 50% 58%, #FAF7F2 0%, rgba(250,247,242,0.9) 48%, rgba(250,247,242,0) 80%),
+      url("assets/dot-field.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 56%, center top;
+    background-size: auto, 100% auto;
+    background-attachment: fixed, fixed;
+  }
+  a { color: #FF5A1F; text-decoration: none; }
+  a:hover { color: #141414; }
+  @keyframes irisPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @keyframes irisScan { 0% { top: 2%; } 100% { top: 96%; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; color: #141414;">
+
+  <div style="position: sticky; top: 0; z-index: 5; backdrop-filter: blur(2px); border-bottom: 1px solid rgba(20,20,20,0.1);">
+    <div style="display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 0 28px; min-height: 64px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="position: relative; width: 12px; height: 12px; display: block; flex-shrink: 0;">
+          <span style="position: absolute; top: 0; left: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; top: 0; right: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; left: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+        </span>
+        <span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1;">Iris</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 2px; min-width: 0; overflow: hidden; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;">
+        <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;"><span style="color: #1F9D55; font-size: 11px;">✓</span>LEARN</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;"><span style="color: #1F9D55; font-size: 11px;">✓</span>BRIEF</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="display: flex; align-items: center; gap: 6px; color: #FF5A1F; background: rgba(255,90,31,0.08); padding: 6px 9px; white-space: nowrap; flex-shrink: 0;">
+          <span style="width: 5px; height: 5px; background: #FF5A1F; border-radius: 50%; display: block; animation: irisPulse 1.4s ease-in-out infinite;"></span>SWARM
+        </span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">FINDINGS</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">REPORT</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: nowrap; gap: 10px; flex-shrink: 0;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 6px 10px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto;">{{ counter }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 24px; padding: 32px 32px 40px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto;">
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <h1 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 68px); line-height: 0.98; letter-spacing: -0.015em; margin: 0;">Watch them try.</h1>
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.16em; color: #8A8580;">3 RUNNING · 3 DONE · 1 STALLED · 1 ERROR</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: stretch; grid-auto-rows: 1fr;">
+
+      <div style="display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">First-time mobile shopper, Canada</span>
+          <span style="display: flex; align-items: center; gap: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #FF5A1F; border: 1px solid #FF5A1F; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;"><span style="width: 4px; height: 4px; background: #FF5A1F; border-radius: 50%; display: block; animation: irisPulse 1.4s ease-in-out infinite;"></span>RUNNING</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">MOBILE</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">CA</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">NEW</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(20,20,20,0.12); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/collections/jackets</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #FFD9CF, #F3E9D2); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; left: 0; right: 0; height: 1px; background: #FF5A1F; box-shadow: 0 0 8px rgba(255,90,31,0.5); animation: irisScan 2.2s linear infinite;"></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #FF5A1F; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">found the jacket… adding to cart</span>
+        </div>
+      </div>
+
+      <div style="position: relative; display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">Returning gear buyer, United States</span>
+          <span style="display: flex; align-items: center; gap: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #FF5A1F; border: 1px solid #FF5A1F; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;"><span style="width: 4px; height: 4px; background: #FF5A1F; border-radius: 50%; display: block; animation: irisPulse 1.4s ease-in-out infinite;"></span>RUNNING</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">DESKTOP</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">US</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">RETURNING</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(20,20,20,0.12); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/products/alpine-shell</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #E5DDF5, #D8ECE3); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; left: 0; right: 0; height: 1px; background: #FF5A1F; box-shadow: 0 0 8px rgba(255,90,31,0.5); animation: irisScan 2.6s linear infinite;"></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #FF5A1F; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">cart shows 1 item… opening checkout</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">Coupon hunter, United States</span>
+          <span style="display: flex; align-items: center; gap: 4px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #1F9D55; border: 1px solid #1F9D55; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;">✓ DONE</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">DESKTOP</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">US</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">RETURNING</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(31,157,85,0.3); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/checkout/confirm</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #D8ECE3, #F3E9D2); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; inset: 0; background: rgba(31,157,85,0.32); display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 44px; line-height: 1; color: #FFFFFF;">✓</span>
+            </span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #1F9D55; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">promo code accepted on the third attempt</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(217,48,37,0.5); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">Coupon hunter, United States</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #D93025; border: 1px solid #D93025; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;">STALLED</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">MOBILE</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">US</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">RETURNING</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(217,48,37,0.3); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/cart</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #F3E9D2, #FFD9CF); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; inset: 0; background: rgba(217,48,37,0.3); display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; color: #FFFFFF;">STALLED</span>
+            </span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #D93025; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">overlay keeps intercepting clicks</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">Cold-weather researcher, Germany</span>
+          <span style="display: flex; align-items: center; gap: 4px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #1F9D55; border: 1px solid #1F9D55; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;">✓ DONE</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">DESKTOP</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">DE</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">NEW</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(31,157,85,0.3); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/checkout/confirm</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #D8ECE3, #F3E9D2); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; inset: 0; background: rgba(31,157,85,0.32); display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 44px; line-height: 1; color: #FFFFFF;">✓</span>
+            </span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #1F9D55; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">compared both shells and reached the size guide</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(31,157,85,0.5); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">Gift buyer, United Kingdom</span>
+          <span style="display: flex; align-items: center; gap: 4px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #1F9D55; border: 1px solid #1F9D55; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;">✓ DONE</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">MOBILE</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">GB</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">NEW</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(31,157,85,0.3); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/checkout/confirm</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #D8ECE3, #F3E9D2); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; inset: 0; background: rgba(31,157,85,0.32); display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 44px; line-height: 1; color: #FFFFFF;">✓</span>
+            </span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #1F9D55; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">reached order confirmation in 4 steps</span>
+        </div>
+      </div>
+
+      <div style="position: relative; display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em;">Price-sensitive local, Canada</span>
+          <span style="display: flex; align-items: center; gap: 5px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #FF5A1F; border: 1px solid #FF5A1F; padding: 3px 5px; white-space: nowrap; flex-shrink: 0;"><span style="width: 4px; height: 4px; background: #FF5A1F; border-radius: 50%; display: block; animation: irisPulse 1.4s ease-in-out infinite;"></span>RUNNING</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">MOBILE</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">CA</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 2px 5px;">RETURNING</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(20,20,20,0.12); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.22); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/cart</span>
+          </div>
+          <div style="position: relative; flex: 1; background: linear-gradient(150deg, #F3E9D2, #D8ECE3); overflow: hidden;">
+            <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.44); white-space: pre;">@@88@@8@@8@@88@88@@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88
+@8@@88@88@@8@@88@88@@8@@8@@88@@8@@8@@88@88@@8@@88@88@@8@@88@
+.,,.,,..,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.
+,..,,.,,.,,..,..,,.,,..,..,,.,,..,..,,.,,..,..,,.,,.,,..,..,
+LCGLLGCLGCLCGLC;::ii;ititfttLfLCCLCGLLGCLCCLC;:;i;;ttitfitLf
+LLfLLffLffLLfLL:;i;;ti;ttitftfLffLLfLLffLffLL,;i:;tiittifftf
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt
+:;:;ii;ttifLfLCLfCLfLCfL;::i;;ttitftLCLfCCfLCfLC:,;;:ititftt
+:,;i;;tiifftfftfLttLftff,:;:;tiitftfLttLftfftfft:;::ii;ttitL
+,;;:ii;ifttLiittittiitii;;:;i;ittiffittiitiittit:,;i;;tiifft
+LttLftfftfLttLftfftfftfLttLftfftfLttLftfftfLttLftfftfLttLftf
+;it;iti;ti;tt;itiiti;tt;itiiti;tt;itiiti;tt;it;iti;ti;tt;iti
+;;:;;:;i::;;:;;:;;::i;:;;:;;::i::;;:;;::i::;;:;;:;i::;;:;;:;
+ttftiffitfttfti;;:;i;itiifftfLitfttftiffitftt;;:ii;itiifttff
+:;:;ii;ttitfttLCLGCLCGLCGLLGCL;;:;i;;tiifftfLLLGCLCCLCGLCGCL
+;:;i;;tiittifftfLffLLfLLfLLffL::;i;itiiftifftLLffLffLLfLLffL
+ ,. ,, .,..,. ,, .,..,. ,, ., .,. ,. ., .,. ,. ,, .,..,. ,, 
+,..,. ,, .,..,. ,, ., .,. ,. ,, .,..,. ,, .,..,. ,, .,..,. ,
+fLCfLCLfCLfL;,:i;;ttifftLCLfCLfCCfLC,:;;;iiitftfCLfCLfLCfLCL
+LftfftfLttLf,;;:;tiifttfftfLttLftfft:;:;i;;ttifLtfLttLftfftf
+iitiittiitii;::ii;ititffittittiitiit:,;i:itiifftttiitiitiitt</pre>
+            <span style="position: absolute; left: 0; right: 0; height: 1px; background: #FF5A1F; box-shadow: 0 0 8px rgba(255,90,31,0.5); animation: irisScan 2.1s linear infinite;"></span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #FF5A1F; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #141414;">switched country to CA… prices still shown in USD</span>
+        </div>
+        <span style="position: absolute; inset: -5px; pointer-events: none;">
+          <span style="position: absolute; top: 0; left: 0; width: 13px; height: 13px; border-top: 2px solid #FF5A1F; border-left: 2px solid #FF5A1F;"></span>
+          <span style="position: absolute; top: 0; right: 0; width: 13px; height: 13px; border-top: 2px solid #FF5A1F; border-right: 2px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; left: 0; width: 13px; height: 13px; border-bottom: 2px solid #FF5A1F; border-left: 2px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; right: 0; width: 13px; height: 13px; border-bottom: 2px solid #FF5A1F; border-right: 2px solid #FF5A1F;"></span>
+        </span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px; border: 1px solid rgba(20,20,20,0.12); background: rgba(20,20,20,0.02); padding: 12px; min-width: 0;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 14px; line-height: 1.25; letter-spacing: -0.005em; color: #8A8580;">Club bulk buyer, United States</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #8A8580; border: 1px solid rgba(20,20,20,0.2); padding: 3px 5px; white-space: nowrap; flex-shrink: 0;">ERROR</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #8A8580; border: 1px solid rgba(20,20,20,0.14); padding: 2px 5px;">DESKTOP</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #8A8580; border: 1px solid rgba(20,20,20,0.14); padding: 2px 5px;">US</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.1em; color: #8A8580; border: 1px solid rgba(20,20,20,0.14); padding: 2px 5px;">RETURNING</span>
+        </div>
+        <div style="flex: none; aspect-ratio: 16 / 10; border: 1px solid rgba(20,20,20,0.1); display: flex; flex-direction: column; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 5px; padding: 5px 7px; border-bottom: 1px solid rgba(20,20,20,0.08);">
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.16); display: block;"></span>
+            <span style="width: 4px; height: 4px; background: rgba(20,20,20,0.16); display: block;"></span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: rgba(138,133,128,0.7); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com</span>
+          </div>
+          <div style="flex: 1; background: rgba(20,20,20,0.06); display: flex; align-items: center; justify-content: center; padding: 8px;">
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.12em; color: #8A8580; text-align: center;">TOOLING ERROR · EXCLUDED</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; color: #8A8580; flex-shrink: 0;">&gt;</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; line-height: 1.45; color: #8A8580;">session ended before the first step</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sessionCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:0,&quot;max&quot;:99,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const n = this.props.sessionCount ?? 8;
+    return { counter: "[ " + n + " SESSION" + (n === 1 ? "" : "S") + " ]" };
+  }
+}
+</script>
+</body>
+</html>

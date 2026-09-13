@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: #FAF7F2;
+    background-image:
+      radial-gradient(ellipse 74% 48% at 50% 58%, #FAF7F2 0%, rgba(250,247,242,0.9) 48%, rgba(250,247,242,0) 80%),
+      url("assets/dot-field.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 56%, center top;
+    background-size: auto, 100% auto;
+    background-attachment: fixed, fixed;
+  }
+  a { color: #FF5A1F; text-decoration: none; }
+  a:hover { color: #141414; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; color: #141414;">
+
+  <div style="position: sticky; top: 0; z-index: 5; backdrop-filter: blur(2px); border-bottom: 1px solid rgba(20,20,20,0.1);">
+    <div style="display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 0 28px; min-height: 64px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="position: relative; width: 12px; height: 12px; display: block; flex-shrink: 0;">
+          <span style="position: absolute; top: 0; left: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; top: 0; right: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; left: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+        </span>
+        <span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1;">Iris</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 2px; min-width: 0; overflow: hidden; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;">
+        <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;"><span style="color: #1F9D55; font-size: 11px;">✓</span>LEARN</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;"><span style="color: #1F9D55; font-size: 11px;">✓</span>BRIEF</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;"><span style="color: #1F9D55; font-size: 11px;">✓</span>SWARM</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="display: flex; align-items: center; gap: 5px; color: #141414; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;"><span style="color: #1F9D55; font-size: 11px;">✓</span>FINDINGS</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #FF5A1F; background: rgba(255,90,31,0.08); padding: 6px 9px; white-space: nowrap; flex-shrink: 0;">REPORT</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: nowrap; gap: 10px; flex-shrink: 0;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 6px 10px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto;">{{ counter }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 44px; padding: 48px 32px 72px; max-width: 1400px; width: 100%; box-sizing: border-box; margin: 0 auto;">
+
+    <h1 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 4.6vw, 68px); line-height: 0.98; letter-spacing: -0.015em; margin: 0; max-width: 900px;">What broke, for whom, and why.</h1>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; border-top: 1px solid rgba(20,20,20,0.16); border-bottom: 1px solid rgba(20,20,20,0.16); padding: 26px 0;">
+        <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: clamp(72px, 10vw, 132px); line-height: 0.86; letter-spacing: -0.04em; color: #8A8580;">85</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; line-height: 1.6; letter-spacing: 0.12em; color: #8A8580;">CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: clamp(72px, 10vw, 132px); line-height: 0.86; letter-spacing: -0.04em; color: #FF5A1F;">58</span>
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; line-height: 1.6; letter-spacing: 0.12em; color: #141414;">IRIS MEASURED · 8 real agents, 3 journeys</span>
+        </div>
+      </div>
+      <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #8A8580;">1 RUN EXCLUDED · TOOLING ERROR</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr); gap: 40px; align-items: start;">
+
+      <div style="display: flex; flex-direction: column; min-width: 0; border-top: 1px solid rgba(20,20,20,0.14);">
+
+        <div style="display: flex; flex-direction: column; gap: 9px; padding: 16px 0; border-bottom: 1px solid rgba(20,20,20,0.1); border-left: none; background: rgba(255,90,31,0.05);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 0 12px;">
+            <span style="font-size: 17px; letter-spacing: -0.01em;">Cookie wall</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.1em; color: #FF5A1F; background: rgba(255,90,31,0.12); padding: 3px 6px; white-space: nowrap;">FAILS ONLY ON MOBILE</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 0 12px;">
+            <span style="display: flex; gap: 4px;">
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #FFD9CF, #F3E9D2); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #E5DDF5, #D8ECE3); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #D8ECE3, #FFD9CF); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+            </span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: #8A8580;">~41% OF SHOPPERS</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px; padding: 16px 0; border-bottom: 1px solid rgba(20,20,20,0.1);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 0 12px;">
+            <span style="font-size: 17px; letter-spacing: -0.01em;">Icon-only cart button</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.1em; color: #D93025; background: rgba(217,48,37,0.1); padding: 3px 6px; white-space: nowrap;">FAILS FOR EVERYONE</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 0 12px;">
+            <span style="display: flex; gap: 4px;">
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #F3E9D2, #E5DDF5); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #FFD9CF, #E5DDF5); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #D8ECE3, #F3E9D2); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #E5DDF5, #FFD9CF); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #F3E9D2, #D8ECE3); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+            </span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: #8A8580;">~63% OF SHOPPERS</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px; padding: 16px 0; border-bottom: 1px solid rgba(20,20,20,0.1);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 0 12px;">
+            <span style="font-size: 17px; letter-spacing: -0.01em;">Geo-blocked pricing</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.1em; color: #D93025; background: rgba(217,48,37,0.1); padding: 3px 6px; white-space: nowrap;">FAILS FOR EVERYONE</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 0 12px;">
+            <span style="display: flex; gap: 4px;">
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #E5DDF5, #D8ECE3); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #FFD9CF, #F3E9D2); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+            </span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: #8A8580;">~18% OF SHOPPERS</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px; padding: 16px 0; border-bottom: 1px solid rgba(20,20,20,0.1);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 0 12px;">
+            <span style="font-size: 17px; letter-spacing: -0.01em;">Hidden mobile nav</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.1em; color: #FF5A1F; background: rgba(255,90,31,0.12); padding: 3px 6px; white-space: nowrap;">FAILS ONLY ON MOBILE</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 0 12px;">
+            <span style="display: flex; gap: 4px;">
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #D8ECE3, #E5DDF5); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #F3E9D2, #FFD9CF); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+              <span style="width: 22px; height: 22px; background: linear-gradient(150deg, #FFD9CF, #D8ECE3); overflow: hidden; display: block;"><pre style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 5px; line-height: 5px; color: rgba(20,20,20,0.5); white-space: pre;"> ;tt; 
+;fCCf;
+1LGGL1
+fCG0GC</pre></span>
+            </span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: #8A8580;">~29% OF SHOPPERS</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 24px; min-width: 0;">
+
+        <span style="font-size: 24px; line-height: 1.35; letter-spacing: -0.01em; max-width: 640px; text-wrap: pretty;">A consent overlay covers the page and its OK button is 16px on mobile.</span>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; align-items: stretch;">
+
+          <div style="display: flex; flex-direction: column; gap: 12px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 14px; min-width: 0;">
+            <div style="background: linear-gradient(150deg, #FFD9CF, #F3E9D2); border: 1px solid rgba(20,20,20,0.08); height: 84px; overflow: hidden;">
+              <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.42); white-space: pre;">fLftLLffCCLLGCLCGCCGGCG0GC00GG00G080G080G88G080G080G00GG00CG0GCGGCCGGLLCCfLCffLLtfLfttftittiiti;;i;:;i::;;,:;:
+CLCGCCG0CC00CG0GG08GG80G080G080G80GG80G00GC00CC0GCCGCLCGLLCCfLCftfLttffitftitti;ii;;i;:;i::;;::;:,:;:,::,,::,,
+G0GCG0GC00GG00GG0GC00GG0GCG0GCGGCCGGLCGCLCCLfLLffLLtfLttfftiftiiti;it;;ii:;i;:;i::;;::;:,:;:,;;,:;:,:;:,;;::;;
+GCCGGLCGCLGGLCGCLCGCLCCLLCCfLCLfLLftLLttLfttftittiitt;iti;it;;ii;;i;:ii;:ii:;i;:;i;:ii:;i;:;i;;ii;;ii;iti;ttii
+fCCffCLfLCffLLffLLtfLftfLttffttftitftiftiiftittiittiitt;iti;ttiitt;iti;itiitt;itiittiittiiftitftiffttffttLftfL
+LttffttLftfLttffttfftfLttffttffttfttffttffttfftffttffttffttfttffttffttfttffttffttLftfLttffttLftfLftfLttLftfLft
+tfLftLLtfLftfLffLLffLLfLCffLLffLLfLCLfLCffLLffCLfLCffLLffLLffLftLLffLftfLftfLttffttfftffttffitftitftitfiiftitf
+CLfCCLLCCLLGCLCGCLCGLCGCLCGCLCGLLGCLCGCLCCLLCCfLCLfLCffLLffLftfLttffttftitftittiitt;iti;it;;ii;;ti;ii;;ii;;ii;
+CG0GCG0GC00CG0GCG0CCGGCCGGLCGCLCCLLCCfLCLfLLffLLtfLfttftittiiti;iti;ii;;ii:;i;:;i::;;::;::;;::;;::i;:;i;:ii:;i
+00GG0GC00GC0GCCGCLCGCLCCLLCLfLLftfLttffitftitti;ti;;i;:;i::;;::;:,:;:,:;,,;:,:;:,:;,,;:,:;:,;;::ii:;ii;iti;tti
+CCGGLCGCLCCLfCLffLftfLttffiitt;it;;ii;:i;::;:,:;,,;:,,::,::,,::,,::,::,,::,,;:,:;::;i:;ii;iti;ttiiffitLftfLffL
+LLffLfttftitfiitt;iti:;i;:;;::;:,:;:,::,,::,,:,,::,,::,,;:,:;:,;;::;;:;i;;ii;;ti;iftiffttLftfLLfLCLLCCLCGCCG0C
+iitt;;ii;;i;:;i::;;::;:,:;:,::,,;:,:;:,:;,:;:,:;::;;::ii:;ii;itiittitftiffttLLffLLfLCLLCGLLGGCC0GCG0GC00GG00G0</pre>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: #8A8580;">TRUSTPILOT · JUN 2026</span>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.6; color: #141414;">"I tapped OK four times before it took. Gave up and bought elsewhere."</span>
+            <a href="#" style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: #FF5A1F;">READ THE REVIEW ↗</a>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; border: 1px solid rgba(20,20,20,0.14); background: #FAF7F2; padding: 14px; min-width: 0;">
+            <div style="border: 1px solid rgba(20,20,20,0.12); display: flex; flex-direction: column; overflow: hidden;">
+              <div style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-bottom: 1px solid rgba(20,20,20,0.1);">
+                <span style="width: 5px; height: 5px; background: rgba(20,20,20,0.22); display: block;"></span>
+                <span style="width: 5px; height: 5px; background: rgba(20,20,20,0.22); display: block;"></span>
+                <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #8A8580; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">northwindoutfitters.com/collections/jackets</span>
+              </div>
+              <div style="position: relative; height: 150px; background: linear-gradient(150deg, #F3E9D2, #FFD9CF); overflow: hidden;">
+                <pre style="margin: 0; padding: 6px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 7px; line-height: 8px; color: rgba(20,20,20,0.42); white-space: pre;">8@80@@88@@08@80@@88@@08@808@80@@08@808@80@@88@@08@80@@88@@08@808@80@@08@808@80@@08@808@80@@88@@08@80@@88@@08@8
+808@80@@88@@08@80@@88@@08@808@80@@08@808@80@@88@808@80@@88@@08@808@88@@08@808@80@@08@808@80@@88@@08@80@@88@@08
+.,. .,. ,,..,, .,. ,,..,, .,. ,,..,,..,. .,. ,,..,, .,. ,,..,, .,. ,,..,, .,. .,..,,..,, .,. ,,..,, .,. ,,..,,
+,..,. .,. ,,..,, .,. ,,..,, .,. ,,..,,..,. .,. ,,..,, .,. ,,..,, .,. ,,..,, .,. .,..,,..,. .,. ,,..,, .,. ,,..
+LCCLLGCLCGCLCGLLGCLC;::;i;;ii;itiitfttffLLGCLCGLLCCLLGCLCGCL;;::i;:;ti;ttiiffttLCLCGLLCCLLGCLCGCLCGL:;;:;i;;it
+CffLLffCLfLCffLLffCL,:;;:;i;;ti;iftiffttLLffCLfLCffLLffCLfLC:,;;:;ii;itiitfttfftLCLfLCffLLffCLfLCffL;::i;:;ii;
+tfLttffttLftfLttfftt;;:;i;:ii;;ttitfttfLttffttLftfLttffttLft:;::;i;;ii;ittitfttLfttLftfLttffttLftfLt,;;::ii;it
+ftitfiittiiftitfiitt,:;;:;i;;itiittitffttfiittiiftitfiittiif:,;i;:ii;;ttitftifftittiiftitfiittiiftit;::;i:;ii;
+,:;;:;i;;tt;iftitfttCCLLGCLCGCLCGLLGCLCG:,;i::ii;itiitftifftLGCLCGCLCGLLGCLCGCLC;::;;:;ii;itiitfitffLCGLLCCLLG
+;;:;i;:ii;;ttitfttfLffLLffCLfLCLfLCffCLf:;::;i;;ii;ittitfttfLffCLfLCffLLffCLfLCL,;;::ii;;ti;ttiiffttCLfLCffLLf
+::;;:;i;;itiittitfftfLttffttLftfLftffttL:,:i;:ii;;ttiiftiffttffttLftfLttffttLftf;::;i:;ii;itiitfttffttLftfLttf
+,,..,, .,. .,. ,, .,. .,. ,, .,. .,. ,,..,. .,. ,,..,, .,. .,. ,, .,. .,. ,, .,. .,. ,,..,, .,. .,. ,, .,. .,.
+. ,,..,, .,. .,. ,, .,. .,. ,, .,. .,. ,, .,. .,. ,,..,, .,. .,. ,, .,. .,. ,, .,. .,. ,,..,, .,. .,. ,, .,. .
+LCLfLCffCLfLCLfL;::;;:;ti;tftiffffCLfLCffLLffCLf:;::;i;;ttitfttfCffLLffCLfLCffLL,:;;:;i;;ttiifftLCLfLCffLLfLCL
+ftfLftffttLftfLf,:;::ii;itiitfttffttLftfLttffttL:,:i;:ii;ittitfftfLttffttLftfLtt:;::i;;itiitfttLftfLftfLttfftt
+iftitfiittiiftit;:,;i;;ii;iftifLiittiiftitfiitti,;;:;i;;itiifftfftitfiittiiftitf,,;;:;ii;itiifftiftitftitfiitt
+i;;ti;it;;ii;;ii,:;::ii;;ttitfttit;;ii;;ti;it;;i;,:;;:;ti;ttitff;iti;ii;;ii;;ti;:;::;i;;tiitfttfi;;ii;iti;ii;;
+,;;::ii;itiitfttCLfLCLfLCffCLfLC:,;;::ii;ittitftfLLffCLfLCLfLCff;:,:i;;itiittitLLfLCffLLffCLfLCL,;;::ii;itiitf
+;::;;:;ti;tftiffttLftfLftfLttLft:;::;i;;ttiifttfLttffttLftfLftff,:;;:;ii;ttiiffttLftfLttffttLftf;::;i:;ii;ifti
+,:;::ii;ittitfttttiiftitftittiit:,:i;:ii;;ttitffitfiittiiftitfii:;::i;;itiitfttftiiftitfiittiift,:;::ii;;ttitf
+;:,;i;;ii;iftifL;;ii;;ti;it;;ii;,;;:;i;;itiiffttti;it;;ii;;ti;it:,;;:;ii;ittifft;ii;;ti;it;;ii;;;:,;i;;it;ifti
+fLCLfLCffLLffCLf:;::;i;;tiitfttfCffCLfLCLfLCffLL,:;;:;i;;ttitfftLCLfLLffCLfLCLfL;::;;:;ti;tfttffffCLfLCffLLffC</pre>
+                <span style="position: absolute; left: 46%; top: 58%; width: 34px; height: 20px; border: 1px solid rgba(20,20,20,0.45); background: rgba(250,247,242,0.9); display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 8px; color: #141414;">OK</span>
+                <span style="position: absolute; left: 46%; top: 58%; width: 34px; height: 20px; margin: -7px 0 0 -7px; padding: 7px; pointer-events: none;">
+                  <span style="position: absolute; top: 0; left: 0; width: 9px; height: 9px; border-top: 2px solid #FF5A1F; border-left: 2px solid #FF5A1F;"></span>
+                  <span style="position: absolute; top: 0; right: 0; width: 9px; height: 9px; border-top: 2px solid #FF5A1F; border-right: 2px solid #FF5A1F;"></span>
+                  <span style="position: absolute; bottom: 0; left: 0; width: 9px; height: 9px; border-bottom: 2px solid #FF5A1F; border-left: 2px solid #FF5A1F;"></span>
+                  <span style="position: absolute; bottom: 0; right: 0; width: 9px; height: 9px; border-bottom: 2px solid #FF5A1F; border-right: 2px solid #FF5A1F;"></span>
+                </span>
+              </div>
+            </div>
+            <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.12em; color: #FF5A1F;">STEP 4 · 00:41</span>
+          </div>
+
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; border: 1px solid rgba(31,157,85,0.45); background: rgba(31,157,85,0.07); padding: 18px;">
+          <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; color: #1F9D55;">PROPOSED FIX</span>
+          <span style="font-size: 15px; line-height: 1.6; color: #141414; max-width: 640px; text-wrap: pretty;">Give the dialog role="dialog" and an aria-label; make the accept button at least 44×44px on mobile.</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #FFFFFF; background: #FF5A1F; border: none; padding: 13px 22px; cursor: pointer; white-space: nowrap;" style-hover="background: #E44B12;" style-active="transform: translateY(1px);">OPEN REPLAY ↗</button>
+            <button style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; background: transparent; border: 1px solid rgba(20,20,20,0.3); padding: 13px 22px; cursor: pointer; white-space: nowrap;" style-hover="border-color: #141414;" style-active="transform: translateY(1px);">COPY FIX</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sessionCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:0,&quot;max&quot;:99,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const n = this.props.sessionCount ?? 8;
+    return { counter: "[ " + n + " SESSION" + (n === 1 ? "" : "S") + " ]" };
+  }
+}
+</script>
+</body>
+</html>

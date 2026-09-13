@@ -1,10 +1,10 @@
-# Crucible — Flow, pages and frames
+# Iris — Flow, pages and frames
 
 This is the agreed product flow and what every screen must achieve. It is written for the whole team: each stage says **what it does**, **what the user sees**, and **why it exists**, with a tag telling you whether it is a Steel feature we are showcasing, a decision we made, or an LLM call.
 
-**One line:** companies pay for case studies and user research to learn how customers behave on their site. Crucible automates that: it researches the company's real customers, sends a swarm of evidence-backed AI personas through the live site on real cloud browsers, and hands back the issues and flags for the company to fix.
+**One line:** companies pay for case studies and user research to learn how customers behave on their site. Iris automates that: it researches the company's real customers, sends a swarm of evidence-backed AI personas through the live site on real cloud browsers, and hands back the issues and flags for the company to fix.
 
-**The foil:** DataDab's Agent Audit sends one generic agent to your homepage with three fixed B2B tasks and emails you a PDF. Crucible learns who your customers are, sends eight of them on the devices, countries and identities those customers actually use, and shows you the frame where each one gave up.
+**The foil:** DataDab's Agent Audit sends one generic agent to your homepage with three fixed B2B tasks and emails you a PDF. Iris learns who your customers are, sends eight of them on the devices, countries and identities those customers actually use, and shows you the frame where each one gave up.
 
 ### Tags used below
 
@@ -47,13 +47,13 @@ Five screens, in the same order: **Input → Learning (split screen) → Test br
 
 ## Screen 1 — Input
 
-**What it does.** Takes the company URL and an optional one-line context ("it's a shoe store", "B2B SaaS, sells to dentists").
+**What it does.** Takes the company URL. Nothing else.
 
-**What the user sees.** One big field, one optional field, one button. Under the button, a single sentence: *"We'll research your customers and map your site at the same time. About 4 minutes."*
+**What the user sees.** One headline, one field, one button. Nothing else.
 
 **Why.**
 - `DECISION` Zero-context is the promise. Nothing else is asked for, because the pitch is that we replace the case study, not that we make the company fill in a brief.
-- `DECISION` The context line exists for the stage: it lets us shortcut a slow exploration if the network is bad. It is optional and never required.
+- `DECISION` A hint for the stage fallback exists only as a URL parameter (`?hint=`). It is never a visible field; the screen stays minimal.
 
 <details><summary>Why not ask for logins or a task list?</summary>
 

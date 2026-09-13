@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: #FAF7F2;
+    background-image:
+      radial-gradient(ellipse 62% 46% at 50% 58%, #FAF7F2 0%, rgba(250,247,242,0.88) 45%, rgba(250,247,242,0) 78%),
+      url("assets/dot-field.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 56%, center top;
+    background-size: auto, 100% auto;
+    background-attachment: fixed, fixed;
+  }
+  a { color: #FF5A1F; text-decoration: none; }
+  a:hover { color: #141414; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; font-family: Inter, system-ui, sans-serif; color: #141414;">
+
+  <div style="position: sticky; top: 0; z-index: 5; backdrop-filter: blur(2px); border-bottom: 1px solid rgba(20,20,20,0.1);">
+    <div style="display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding: 0 28px; min-height: 64px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="position: relative; width: 12px; height: 12px; display: block; flex-shrink: 0;">
+          <span style="position: absolute; top: 0; left: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; top: 0; right: 0; width: 4px; height: 4px; border-top: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; left: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-left: 1.5px solid #FF5A1F;"></span>
+          <span style="position: absolute; bottom: 0; right: 0; width: 4px; height: 4px; border-bottom: 1.5px solid #FF5A1F; border-right: 1.5px solid #FF5A1F;"></span>
+        </span>
+        <span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; line-height: 1;">Iris</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 2px; min-width: 0; overflow: hidden; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em;">
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">LEARN</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">BRIEF</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">SWARM</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">FINDINGS</span>
+        <span style="color: rgba(20,20,20,0.22);">·</span>
+        <span style="color: #8A8580; padding: 6px 6px; white-space: nowrap; flex-shrink: 0;">REPORT</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: flex-end; flex-wrap: nowrap; gap: 10px; flex-shrink: 0;">
+        <span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #141414; border: 1px solid rgba(20,20,20,0.18); padding: 6px 10px; white-space: nowrap; word-break: keep-all; flex: 0 0 auto;">{{ counter }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; flex: 1; min-height: calc(100vh - 64px); box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 32px 32px 48px; overflow: hidden;">
+
+    <div style="position: relative; z-index: 2; width: 100%; max-width: 660px; display: flex; flex-direction: column; align-items: center; gap: 34px;">
+
+      <img src="assets/computer-globe-monitor.png" alt="" style="position: absolute; left: 50%; bottom: calc(100% + 14px); transform: translateX(-50%); height: min(150px, 26vh); width: auto; max-width: 100%; opacity: 0.2; image-rendering: pixelated; pointer-events: none; user-select: none;">
+
+      <h1 style="position: relative; z-index: 1; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 6vw, 76px); line-height: 0.96; letter-spacing: -0.015em; margin: 0; text-align: center; text-wrap: balance;">Send your customers in first.</h1>
+
+      <form style="position: relative; z-index: 1; width: 100%; max-width: 580px; display: flex; flex-wrap: wrap; gap: 10px;" onSubmit="{{ onSubmit }}">
+        <input type="text" value="{{ url }}" onChange="{{ onUrl }}" placeholder="https://northwindoutfitters.com" style="flex: 1 1 300px; min-width: 0; box-sizing: border-box; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 16px; color: #141414; background: #FFFFFF; border: 1px solid rgba(20,20,20,0.22); padding: 15px 18px; outline: none;" style-focus="border-color: #FF5A1F; box-shadow: 0 0 0 3px rgba(255,90,31,0.12);">
+        <button type="submit" style="flex: 0 0 auto; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; color: #FFFFFF; background: #FF5A1F; border: none; padding: 15px 28px; cursor: pointer; white-space: nowrap;" style-hover="background: #E44B12;" style-active="transform: translateY(1px);">RUN IRIS →</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sessionCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:99,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { url: "" };
+  renderVals() {
+    const n = this.props.sessionCount ?? 0;
+    return {
+      counter: "[ " + n + " SESSION" + (n === 1 ? "" : "S") + " ]",
+      url: this.state.url,
+      onUrl: (e) => this.setState({ url: e.target.value }),
+      onSubmit: (e) => e.preventDefault()
+    };
+  }
+}
+</script>
+</body>
+</html>
