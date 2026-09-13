@@ -1,0 +1,52 @@
+[
+  {
+    "id": "p_baseline",
+    "segment": "returning bargain hunter",
+    "journey_id": "reach_checkout",
+    "config": {
+      "device": "desktop",
+      "identity": "fresh",
+      "country": "US",
+      "engine": "browser_use",
+      "label": "baseline"
+    },
+    "goal": "Reach checkout on desktop.",
+    "evidence": null,
+    "matched_pair_id": "p_mobile"
+  },
+  {
+    "id": "p_mobile",
+    "segment": "returning bargain hunter",
+    "journey_id": "reach_checkout",
+    "config": {
+      "device": "mobile",
+      "identity": "fresh",
+      "country": "US",
+      "engine": "browser_use",
+      "label": "mobile"
+    },
+    "goal": "Reach checkout on mobile.",
+    "evidence": {
+      "id": "c1",
+      "quote": "Checkout resets when I switch to my phone halfway through.",
+      "url": "https://www.trustpilot.com/reviews/example",
+      "source": "Trustpilot"
+    },
+    "matched_pair_id": "p_baseline"
+  },
+  {
+    "id": "p_de_freeform",
+    "segment": "first-time shopper in Germany",
+    "journey_id": "find_product",
+    "config": {
+      "device": "desktop",
+      "identity": "fresh",
+      "country": "DE",
+      "engine": "browser_use",
+      "label": "country:DE"
+    },
+    "goal": "Find a product from Germany.",
+    "evidence": null,
+    "matched_pair_id": null
+  }
+]

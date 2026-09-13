@@ -56,6 +56,49 @@ class Config(BaseModel):
                 if getattr(self, f) != getattr(base, f)]
 
 
+# ----------------------------------------------------------------- Research ---
+# DRAFT, proposed on dev-c/research-schema-draft to match docs/ui-flow.md's Consumer
+# research / Test brief screens. Not yet agreed with the team -- schema changes are
+# all-hands per docs/plan.md. Every field below is additive with safe defaults so it
+# does not change the behavior of any code that doesn't pass personas/evidence in.
+
+class Complaint(BaseModel):
+    """One piece of evidence gathered in Consumer research (a quote + where it came from)."""
+    id: str
+    quote: str
+    url: str
+    source: str = ""
+
+
+class Segment(BaseModel):
+    """A customer segment surfaced by Consumer research, with the quotes that back it."""
+    name: str
+    evidence: list[Complaint] = Field(default_factory=list)
+
+
+class EvidencePack(BaseModel):
+    """Output of Consumer research (ui-flow.md Screen 2, left half)."""
+    segments: list[Segment] = Field(default_factory=list)
+    complaints: list[Complaint] = Field(default_factory=list)
+
+
+class Persona(BaseModel):
+    """One of the 8 cards on the Test brief (ui-flow.md Screen 3).
+
+    Matching a stalled RunResult back to the persona that produced it is exact on
+    (journey_id, config) -- not semantic -- since Config is frozen/hashable and the
+    Runner would launch one session per persona using exactly this config.
+    """
+    id: str
+    segment: str
+    journey_id: str
+    config: Config
+    goal: str
+    evidence: Complaint | None = None       # the quote that justifies this persona existing
+    matched_pair_id: str | None = None      # id of the other persona in this persona's
+                                             # matched pair, if it's one of the deliberate 2 of 8
+
+
 # ------------------------------------------------------------------ Runner ---
 
 Outcome = Literal["none", "step_ok", "completed", "stalled", "harness_error"]
@@ -123,6 +166,7 @@ FailureCategory = Literal[
     "geo_block", "infinite_scroll", "login_wall", "layout_shift", "timeout", "other",
 ]
 AttributedTo = Literal["device", "identity", "country", "engine", "site"]
+FindingTag = Literal["corroborated", "agent_readiness"]
 
 
 class Finding(BaseModel):
@@ -138,6 +182,12 @@ class Finding(BaseModel):
     replay_url: str | None = None
     replay_offset_s: float | None = None
     proposed_fix: str = ""
+    # DRAFT (dev-c/research-schema-draft), defaults keep every existing Finding valid:
+    tag: FindingTag = "agent_readiness"     # "corroborated" iff the persona that hit this
+                                             # was itself built from a real customer complaint
+    segment: str | None = None              # persona's customer segment, for "who it affects"
+    evidence_quote: str | None = None       # shown beside the replay when tag=="corroborated"
+    evidence_url: str | None = None
 
 
 class JourneyScore(BaseModel):

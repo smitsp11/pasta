@@ -7,7 +7,7 @@ import pytest
 from pydantic import BaseModel
 
 from crucible.runner.matrix import MVP_CONFIGS
-from crucible.schemas import Config, Finding, RunResult, ScoreCard, SiteModel
+from crucible.schemas import Config, EvidencePack, Finding, Persona, RunResult, ScoreCard, SiteModel
 
 FIXTURES_DIR = Path(__file__).resolve().parent.parent.parent / "fixtures"
 M = TypeVar("M", bound=BaseModel)
@@ -45,6 +45,17 @@ def golden_finding() -> Finding:
 @pytest.fixture
 def golden_scorecard() -> ScoreCard:
     return load_fixture("scorecard.json", ScoreCard)
+
+
+@pytest.fixture
+def evidence_pack() -> EvidencePack:
+    return load_fixture("evidence_pack.json", EvidencePack)
+
+
+@pytest.fixture
+def personas() -> list[Persona]:
+    raw = json.loads((FIXTURES_DIR / "personas.json").read_text())
+    return [Persona.model_validate(p) for p in raw]
 
 
 @dataclass

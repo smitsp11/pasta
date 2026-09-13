@@ -1,4 +1,4 @@
-from crucible.schemas import Config, RunResult
+from crucible.schemas import Config, Persona, RunResult
 from crucible.scorer.attribute import attribute
 
 BASELINE = Config(device="desktop", identity="fresh", country="US", engine="browser_use", label="baseline")
@@ -83,3 +83,38 @@ def test_site_attribution_and_engine_consensus_can_co_occur():
     out = attribute(rs, cats)
     assert out[rs[0].run_id] == ("site", True)
     assert out[rs[1].run_id] == ("site", True)
+
+
+# --- DRAFT (dev-c/research-schema-draft): matched-pair persona mode -----------------------
+
+
+def test_empty_personas_list_falls_back_to_baseline_mode():
+    rs = [result("j", BASELINE, "completed"), result("j", MOBILE, "stalled")]
+    out = attribute(rs, {rs[1].run_id: "cookie_wall"}, personas=[])
+    assert out[rs[1].run_id] == ("device", False)  # same as personas=None
+
+
+def test_matched_pair_stall_attributed_to_its_differing_axis(personas: list[Persona]):
+    base = result("reach_checkout", BASELINE, "completed", run_id="reach_checkout__baseline")
+    mobile = result("reach_checkout", MOBILE, "stalled", run_id="reach_checkout__mobile")
+    out = attribute([base, mobile], {mobile.run_id: "cookie_wall"}, personas=personas)
+    assert out[mobile.run_id] == ("device", False)
+
+
+def test_matched_pair_both_stall_is_site_not_the_axis(personas: list[Persona]):
+    base = result("reach_checkout", BASELINE, "stalled", run_id="reach_checkout__baseline")
+    mobile = result("reach_checkout", MOBILE, "stalled", run_id="reach_checkout__mobile")
+    out = attribute([base, mobile], {base.run_id: "timeout", mobile.run_id: "timeout"}, personas=personas)
+    assert out[base.run_id] == ("site", False) and out[mobile.run_id] == ("site", False)
+
+
+def test_freeform_persona_with_no_matched_pair_is_always_site(personas: list[Persona]):
+    de = result("find_product", Config(country="DE", label="country:DE"), "stalled")
+    out = attribute([de], {de.run_id: "geo_block"}, personas=personas)
+    assert out[de.run_id] == ("site", False)
+
+
+def test_stall_with_no_matching_persona_at_all_is_site(personas: list[Persona]):
+    unknown = result("find_product", Config(country="GB", label="country:GB"), "stalled")
+    out = attribute([unknown], {unknown.run_id: "timeout"}, personas=personas)
+    assert out[unknown.run_id] == ("site", False)

@@ -11,15 +11,21 @@ the reference formula in scripts/make_fixtures.py.
 Isolation: a bad classification, a bad fix-text generation, or a broken static fetch must never
 crash the whole call -- each is wrapped so one failure degrades just that piece ("other"
 category / empty fix text / static_score=None) instead of aborting the batch.
+
+DRAFT (dev-c/research-schema-draft): an optional `personas` argument threads through to
+attribute() (matched-pair attribution instead of the single-baseline matrix) and corroborate()
+(tags a Finding "corroborated" when the persona that hit it was built from a real customer
+complaint, per docs/ui-flow.md). Omitting it reproduces the original v3 behavior exactly.
 """
 from __future__ import annotations
 
 import asyncio
 import logging
 
-from ..schemas import Finding, RunResult, ScoreCard, SiteModel
+from ..schemas import Finding, Persona, RunResult, ScoreCard, SiteModel
 from .attribute import attribute
 from .classify import Classifier, classify
+from .corroborate import NOT_CORROBORATED, corroborate
 from .fixes import proposed_fix
 from .score import score_card
 from .static import fetch_static_score
@@ -28,7 +34,11 @@ log = logging.getLogger("crucible.scorer")
 
 
 async def score(
-    site: SiteModel, results: list[RunResult], *, classifier: Classifier | None = None
+    site: SiteModel,
+    results: list[RunResult],
+    *,
+    classifier: Classifier | None = None,
+    personas: list[Persona] | None = None,
 ) -> tuple[ScoreCard, list[Finding]]:
     stalled = [r for r in results if r.outcome == "stalled"]
 
@@ -41,7 +51,7 @@ async def score(
             res = ("other", "Automatic classification failed; needs manual review.")
         categories[r.run_id], descriptions[r.run_id] = res
 
-    attribution = attribute(results, categories)  # run_id -> (attributed_to, engine_consensus)
+    attribution = attribute(results, categories, personas=personas)  # run_id -> (attributed_to, engine_consensus)
 
     findings: list[Finding] = []
     for i, r in enumerate(stalled):
@@ -51,6 +61,11 @@ async def score(
         except Exception as e:  # noqa: BLE001 - a bad fix template must not drop the finding
             log.warning("proposed_fix failed for %s: %s", r.run_id, e)
             fix_text = ""
+        try:
+            corrob = corroborate(r, personas)
+        except Exception as e:  # noqa: BLE001 - a corroboration bug must not drop the finding
+            log.warning("corroborate failed for %s: %s", r.run_id, e)
+            corrob = NOT_CORROBORATED
         findings.append(
             Finding(
                 id=f"f{i + 1}",
@@ -65,6 +80,10 @@ async def score(
                 replay_url=r.replay_url,
                 replay_offset_s=r.replay_offset_s,
                 proposed_fix=fix_text,
+                tag=corrob.tag,
+                segment=corrob.segment,
+                evidence_quote=corrob.evidence_quote,
+                evidence_url=corrob.evidence_url,
             )
         )
 

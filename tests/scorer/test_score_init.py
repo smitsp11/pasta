@@ -85,3 +85,38 @@ async def test_no_env_vars_or_network_required_for_default_pipeline(monkeypatch)
     site, results = load_demo_run()
     card, findings = await score(site, results)
     assert len(findings) == 3 and card.overall == 80.0
+
+
+# --- DRAFT (dev-c/research-schema-draft): personas threaded through score() ---------------
+
+
+async def test_score_without_personas_never_tags_corroborated(completed_result, stalled_result):
+    site = SiteModel(url="https://demo-store.example", journeys=[Journey(
+        id="find_product", name="n", goal="g", entry_url="https://x")])
+    _, findings = await score(site, [completed_result, stalled_result])
+    assert findings[0].tag == "agent_readiness" and findings[0].segment is None
+
+
+async def test_score_with_personas_tags_corroborated_and_attaches_evidence(personas):
+    site = SiteModel(url="https://demo-store.example", journeys=[Journey(
+        id="reach_checkout", name="n", goal="g", entry_url="https://x")])
+    base = result("reach_checkout", Config(label="baseline"), "completed", run_id="reach_checkout__baseline")
+    mobile = result("reach_checkout", Config(device="mobile", label="mobile"), "stalled",
+                    run_id="reach_checkout__mobile",
+                    events=[ev(1, "click", "click intercepted by overlay #consent-modal")])
+    _, findings = await score(site, [base, mobile], personas=personas)
+    assert len(findings) == 1
+    f = findings[0]
+    assert f.tag == "corroborated"
+    assert f.segment == "returning bargain hunter"
+    assert "resets" in f.evidence_quote
+    assert f.attributed_to == "device"  # matched-pair attribution still fires alongside corroboration
+
+
+async def test_score_with_personas_freeform_persona_is_agent_readiness(personas):
+    site = SiteModel(url="https://demo-store.example", journeys=[Journey(
+        id="find_product", name="n", goal="g", entry_url="https://x")])
+    de = result("find_product", Config(country="DE", label="country:DE"), "stalled",
+               events=[ev(1, "go_to_url", "blocked in your region")])
+    _, findings = await score(site, [de], personas=personas)
+    assert findings[0].tag == "agent_readiness" and findings[0].segment == "first-time shopper in Germany"
