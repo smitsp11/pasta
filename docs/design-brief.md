@@ -4,7 +4,7 @@ Companion to `docs/ui-flow.md` (what each screen does and why). This file is *ho
 
 References (screenshots in `.context/design-refs/` and `.context/attachments/`):
 - **God's Eye** (Furious 7, Cantina Creative): the *motion* reference. Clip: youtube.com/watch?v=bTlK6eB4fV0 · breakdown: youtube.com/watch?v=aiaGDpFMTQk
-- **Firecrawl**: the *type and palette* reference. Warm off-white, ink type, one orange accent, grid paper, monospace annotations.
+- **Firecrawl**: the *type and palette* reference. Warm off-white, ink type, one orange accent, monospace annotations.
 - **Firecrawl-style ASCII cards** (attachment 1): images rendered as characters on pastel gradients, serif headlines. The *texture* reference.
 - **Browserbase**: the *illustration* reference. Dithered pixel art, highlighter-block headlines. The retro computer graphic (attachment 2).
 - **Reducto**: serif display face used sparingly.
@@ -13,7 +13,7 @@ References (screenshots in `.context/design-refs/` and `.context/attachments/`):
 
 ## 1. Direction in one paragraph
 
-Light, warm, textured, and alive. Firecrawl's paper-and-ink base with a single orange "scan" accent. Every image on the page (a persona, a site screenshot, a replay frame) is rendered as **ASCII texture** or **dithered pixels**, never as a flat photo, so the whole product looks like one machine drawing what it sees. Motion borrows God's Eye's "searching everything" choreography: reticles jumping across feeds, counters ticking, matches lighting up, a pixel-dissolve between stages. Dense texture lives *inside* panels; the page itself stays calm so it reads on a projector.
+Light, warm, textured, and alive. Firecrawl's paper-and-ink base with a single orange "scan" accent, over a dithered dot-field background instead of grid paper. Every image on the page (a persona, a site screenshot, a replay frame) is rendered as **ASCII texture** or **dithered pixels**, never as a flat photo, so the whole product looks like one machine drawing what it sees. Motion borrows God's Eye's "searching everything" choreography: reticles jumping across feeds, counters ticking, matches lighting up, a pixel-dissolve between stages. Dense texture lives *inside* panels; the page itself stays calm so it reads on a projector.
 
 ## 2. System
 
@@ -22,7 +22,7 @@ Light, warm, textured, and alive. Firecrawl's paper-and-ink base with a single o
 |---|---|---|
 | paper | `#FAF7F2` | page background |
 | ink | `#141414` | text, lines |
-| grid | ink at 6% | grid-paper lines, 24px cell |
+| dotfield | ink at 10–18% | dithered dot-field background (a dithered image resolved to ink dots on paper), dense at the top, fading out under content. Replaces grid paper. |
 | scan | `#FF5A1F` | live / searching / primary action (Firecrawl orange) |
 | scan-soft | `#FFE6DA` | ASCII card gradient top, highlights |
 | ok | `#1F9D55` | completed |
@@ -38,7 +38,7 @@ Light, warm, textured, and alive. Firecrawl's paper-and-ink base with a single o
 **Textures (all generated in code from a source image; Claude Design just draws the look)**
 - **ASCII image**: source image → luminance → character ramp `" .:;i1tfLCG08@"`, 8px mono glyphs, ink on a pastel gradient card. Used for persona portraits, site thumbnails, replay frames.
 - **Dither**: source image → Bayer 4×4 ordered dither to a 5-colour palette (paper, ink, scan, ok, pastel). Used for hero illustrations and the "computer" graphic.
-- **Grid paper**: 24px cell, 6% ink lines, on every page background.
+- **Dot field**: a source image (globe, landscape, or the target site itself) → Bayer dither → ink dots on paper at 10–18% opacity, fading to plain paper where content sits. On every page background. No grid lines anywhere.
 - **Dot-matrix map**: world map as a dot grid; dots light in `scan` for persona countries.
 
 **Chips (mono, 11px, uppercase)**
@@ -69,7 +69,7 @@ Sample data for every frame (use exactly this so frames match): brand **Northwin
 
 ### Frame 1 — Input
 
-Layout: full-viewport hero on grid paper. Centre: serif headline, one wide input, one small optional input, one `scan` button. Behind, at 30% opacity, a dithered illustration of a retro computer whose screen shows a dot-matrix globe (the Browserbase computer, ours). Mono annotations in the corners: `[ READY ]`, `[ 0 SESSIONS ]`, `[ STEEL · CONNECTED ]`.
+Layout: full-viewport hero on the dot-field background. Centre: serif headline, one wide input, one small optional input, one `scan` button. Behind, at 30% opacity, a dithered illustration of a retro computer whose screen shows a dot-matrix globe (the Browserbase computer, ours). Mono annotations in the corners: `[ READY ]`, `[ 0 SESSIONS ]`, `[ STEEL · CONNECTED ]`.
 
 Copy: headline *"Send your customers in first."* sub *"Paste a URL. We'll learn who your customers are and map your site at the same time."* input placeholder `https://northwindoutfitters.com` · optional `what does the company do? (optional)` · button `Run Iris`.
 
@@ -130,10 +130,10 @@ Wordmark · stage bar (five mono labels, current in `scan`, completed with a ✓
 Each prompt assumes the system above is attached or pasted first. Ask for a desktop frame 1440×900 unless noted.
 
 **System prompt to paste before any frame:**
-> Design system: warm off-white paper `#FAF7F2` with a 24px grid-paper background at 6% ink; ink `#141414` text; one accent orange `#FF5A1F` used only for "live/searching" and primary actions; pastel gradient cards `#FFD9CF #F3E9D2 #E5DDF5 #D8ECE3`; success `#1F9D55`, stall `#D93025`, muted `#8A8580`. Type: Instrument Serif for headlines (56–96px), Inter for UI, Geist Mono for chips, counters, logs and annotations like `[ READY ]`. All images are rendered as ASCII-character textures (mono glyphs on pastel gradients) or Bayer-dithered pixel art in the palette; never flat photos. Tone: Firecrawl's technical playfulness meets God's Eye's "searching everything" motion. Panels can be dense; the page stays calm and readable from the back of a room. Persistent top bar: serif wordmark "Iris", a five-step mono stage bar LEARN · BRIEF · SWARM · FINDINGS · REPORT with the current step in orange, and a `[ 8 SESSIONS ]` counter on the right.
+> Design system: warm off-white paper `#FAF7F2` with a dithered dot-field background (a landscape or globe image resolved into small ink dots at 10–18% opacity, denser at the top, fading to plain paper under content; no grid lines); ink `#141414` text; one accent orange `#FF5A1F` used only for "live/searching" and primary actions; pastel gradient cards `#FFD9CF #F3E9D2 #E5DDF5 #D8ECE3`; success `#1F9D55`, stall `#D93025`, muted `#8A8580`. Type: Instrument Serif for headlines (56–96px), Inter for UI, Geist Mono for chips, counters, logs and annotations like `[ READY ]`. All images are rendered as ASCII-character textures (mono glyphs on pastel gradients) or Bayer-dithered pixel art in the palette; never flat photos. Tone: Firecrawl's technical playfulness meets God's Eye's "searching everything" motion. Panels can be dense; the page stays calm and readable from the back of a room. Persistent top bar: serif wordmark "Iris", a five-step mono stage bar LEARN · BRIEF · SWARM · FINDINGS · REPORT with the current step in orange, and a `[ 8 SESSIONS ]` counter on the right.
 
 **Frame 1 prompt:**
-> Frame 1, "Input". Full-viewport hero on grid paper. Centred serif headline "Send your customers in first." Sub-line in Inter: "Paste a URL. We'll learn who your customers are and map your site at the same time." One wide input with placeholder https://northwindoutfitters.com, a smaller optional input "what does the company do? (optional)", and an orange button "Run Iris". Behind the form at 30% opacity, a Bayer-dithered illustration of a retro desktop computer (Browserbase style) whose screen shows a dot-matrix globe. Mono annotations in the four corners: [ READY ] [ 0 SESSIONS ] [ STEEL · CONNECTED ] [ v0.1 ]. Stage bar shows LEARN as upcoming.
+> Frame 1, "Input". Full-viewport hero on the dithered dot-field background (dense ink dots at the top fading to plain paper behind the form). Centred serif headline "Send your customers in first." Sub-line in Inter: "Paste a URL. We'll learn who your customers are and map your site at the same time." One wide input with placeholder https://northwindoutfitters.com, a smaller optional input "what does the company do? (optional)", and an orange button "Run Iris". Behind the form at 30% opacity, a Bayer-dithered illustration of a retro desktop computer (Browserbase style) whose screen shows a dot-matrix globe. Mono annotations in the four corners: [ READY ] [ 0 SESSIONS ] [ STEEL · CONNECTED ] [ v0.1 ]. Stage bar shows LEARN as upcoming.
 
 **Frame 2 prompt:**
 > Frame 2, "Learning", stage LEARN active. Serif headline "Learning your customers and your site." Two equal columns. LEFT, mono label [ RESEARCH ]: a 3×3 wall of source cards (Trustpilot, Google Reviews, Reddit r/Outdoors, App Store, Help Centre, Competitor: Arc'teryx, plus three more), each an ASCII-textured thumbnail on a pastel gradient with the source name in mono; a square-bracket reticle sits on the Reddit card; three already-read cards show an orange quote strip underneath, e.g. "checkout resets on my phone every time" — Trustpilot. Counter under the wall in mono: 14 PIECES OF EVIDENCE · 5 SOURCES. RIGHT, mono label [ SITE MAP ]: a browser frame showing a live view of northwindoutfitters.com rendered as ASCII texture with a thin orange scan-line across it, and beside it a node graph drawing itself: nodes /, /collections/jackets, /products/alpine-shell, /cart, /checkout connected by thin ink lines, with three nodes highlighted orange and labelled JOURNEY 1–3. Counter: 12 PAGES · 3 JOURNEYS.
@@ -148,7 +148,7 @@ Each prompt assumes the system above is attached or pasted first. Ask for a desk
 > Frame 5, "Report", stage REPORT active. Calm layout. Serif headline "What broke, for whom, and why." Contrast block: two huge mono numbers side by side, left "85" in muted grey with caption CLOUDFLARE STATIC SCORE · robots.txt, llms.txt, headers; right "58" in orange with caption IRIS MEASURED · 8 real agents, 3 journeys. A thin mono strip: 1 RUN EXCLUDED · TOOLING ERROR. Below, left third: a flags list of four rows, each with category (Cookie wall, Icon-only cart button, Geo-blocked pricing, Hidden mobile nav), an attribution badge (FAILS ONLY ON MOBILE in soft orange, or FAILS FOR EVERYONE in soft red), an optional black pill EVERY ENGINE, a row of tiny ASCII portraits for affected personas, and a customers-affected label like ~41% OF SHOPPERS. Right two-thirds, the first flag open: description in Inter 24px "A consent overlay covers the page and its OK button is 16px on mobile."; two columns: left a customer quote card (ASCII-textured Trustpilot thumbnail, the quote, a link), right a replay frame (browser frame, ASCII-textured store page, an orange reticle locked on a tiny OK button, mono caption STEP 4 · 00:41 · sess-mobile-cart); below, a green box PROPOSED FIX: "Give the dialog role=\"dialog\" and an aria-label; make the accept button at least 44×44px on mobile." and two buttons "Open replay ↗" and "Copy fix".
 
 **Component prompt (top bar):**
-> A persistent top bar on paper: serif wordmark "Iris" left; centre, five mono steps LEARN · BRIEF · SWARM · FINDINGS · REPORT where completed steps have a small ✓, the current step is orange, upcoming steps are muted; right, a mono counter [ 8 SESSIONS ] and, in one variant, an additional muted pill [ CACHED ].
+> A persistent top bar on paper (dot field faded to near-plain paper behind it): serif wordmark "Iris" left; centre, five mono steps LEARN · BRIEF · SWARM · FINDINGS · REPORT where completed steps have a small ✓, the current step is orange, upcoming steps are muted; right, a mono counter [ 8 SESSIONS ] and, in one variant, an additional muted pill [ CACHED ].
 
 ---
 
