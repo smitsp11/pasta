@@ -138,6 +138,20 @@ class SteelSession:
             except Exception as e:  # noqa: BLE001
                 # Already released (timeout, inactivity) is fine; anything else is logged, never raised.
                 log.warning("release of %s returned %s", self.session_id, e)
+            await self._log_credits()
+
+    async def _log_credits(self) -> None:
+        """Append credits/proxy usage to runs/credits.log so the budget is visible during the event."""
+        try:
+            s = await self._client.sessions.retrieve(self.session_id)
+            line = (f"{datetime.now(timezone.utc).isoformat(timespec='seconds')} {self.session_id} "
+                    f"credits={getattr(s, 'credits_used', '?')} proxy_bytes={getattr(s, 'proxy_bytes_used', '?')} "
+                    f"duration_ms={getattr(s, 'duration', '?')} reason={getattr(s, 'release_reason', '?')}\n")
+            RUNS_DIR.mkdir(parents=True, exist_ok=True)
+            with open(RUNS_DIR / "credits.log", "a") as f:
+                f.write(line)
+        except Exception as e:  # noqa: BLE001
+            log.debug("credits log for %s skipped: %s", self.session_id, e)
 
     @property
     def released(self) -> bool:

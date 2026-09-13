@@ -35,6 +35,8 @@ def _site_from_args(a) -> SiteModel:
 
 def _configs(a) -> list[Config]:
     cfgs = list(CONFIG_SETS[a.configs])
+    if a.engine:                      # run the whole set on another engine (e.g. a claude_cu smoke test)
+        cfgs = [c.model_copy(update={"engine": a.engine}) for c in cfgs if c.engine == "browser_use"]
     if a.only:
         keep = set(a.only.split(","))
         cfgs = [c for c in cfgs if c.label in keep or c.label == "baseline"]
@@ -91,6 +93,7 @@ def cli() -> int:
     ap.add_argument("--journey", action="append", help="journey goal (repeatable)")
     ap.add_argument("--configs", choices=CONFIG_SETS, default="baseline")
     ap.add_argument("--only", help="comma-separated config labels to keep (baseline always kept)")
+    ap.add_argument("--engine", choices=["browser_use", "claude_cu", "openai_cu"], help="override the engine for every config")
     ap.add_argument("--step-cap", type=int)
     ap.add_argument("--max-concurrency", type=int, default=8)
     ap.add_argument("--run-budget", type=float, default=600.0)

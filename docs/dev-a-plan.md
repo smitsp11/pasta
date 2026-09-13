@@ -343,9 +343,20 @@ Settled from the installed SDKs on Sept 12 (steel-sdk 0.19.0, browser-use 0.13.1
 - [ ] HLS endpoint plays in D's player and seeks to `replay_offset_s` → ______ (tell D by 11:00)
 - [ ] Booth: concurrency granted ______, Steel Computer access ______
 
-## 10. Build status
+## 10. Build status (Sept 13)
 
-- `crucible/steel.py`, `crucible/engines/{base,guard,browser_use,claude_cu,fake}.py`, `crucible/runner/` (matrix, outcomes, scheduler, CLI), `crucible/testing.py`: written, 41 unit tests green with zero Steel credits.
-- `fixtures/` generated from the fake pipeline (`scripts/make_fixtures.py`), including `demo_run.json` for D and C.
-- Spikes run against the live account (results above). Sessions, mobile mode, and profiles work; proxies need $10 paid balance.
-- M1 (one live Browser Use journey on Steel) is the next step and needs `ANTHROPIC_API_KEY`.
+| Item | Status |
+|---|---|
+| `crucible/steel.py` session lifecycle, kwargs mapping, profile wait, credits log, `--release-all` | done, live-tested |
+| `engines/browser_use.py` | done; **M1 passed** live on Steel (books.toscrape.com, 3 steps, 35 s) |
+| `engines/claude_cu.py` | done; live on Steel (2 clicks, 17 s); coordinates scaled from real screenshot size |
+| `runner/` matrix, two-phase scheduler, retries, caps, cancel-safe bus, CLI (`--fake`, `--engine`, `--only`) | done; live 3-config run (baseline ∥ mobile, then returning with the baseline's profile) all completed and released |
+| Unit tests | 47 green, zero credits |
+| `fixtures/` incl. `demo_run.json` | generated |
+| Proxies / country variants | **blocked on $10 Steel paid balance** |
+| OpenAI CU | not started (stretch; needs `OPENAI_API_KEY`) |
+| Fix loop | not started (stretch; needs Steel Computer access + B's demo store) |
+| Real target integration | waiting on B's target pick; engines validated on a public demo store |
+
+Live runs so far: 8 Steel sessions, all released (`python -m crucible.steel --list` is empty); Anthropic spend roughly $5.
+

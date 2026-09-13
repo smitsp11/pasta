@@ -45,6 +45,7 @@ crucible/testing.py      fakes for tests / dry runs
 .venv/bin/python scripts/make_fixtures.py                       # regenerate fixtures/
 .venv/bin/python -m crucible.runner --url https://x --journey "Add a product to the cart" --fake --configs mvp
 .venv/bin/python -m crucible.runner --url https://x --journey "..." --configs baseline --step-cap 12   # M1, live
+.venv/bin/python -m crucible.runner --url https://x --journey "..." --configs baseline --engine claude_cu    # vision engine
 .venv/bin/python -m crucible.runner --site-json targets/cache/shop.json --configs mvp --out runs/events.jsonl
 .venv/bin/python -m crucible.steel --list            # live sessions
 .venv/bin/python -m crucible.steel --release-all     # panic button

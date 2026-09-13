@@ -19,18 +19,45 @@ log = logging.getLogger("crucible.engines.browser_use")
 DEFAULT_MODEL = os.environ.get("CRUCIBLE_BROWSER_USE_MODEL", "claude-opus-5")
 
 
+def _element_label(el: Any) -> str:
+    """Human label for a Browser Use DOMInteractedElement: accessible name, else key attributes."""
+    if el is None:
+        return ""
+    name = (getattr(el, "ax_name", None) or "").strip()
+    attrs = getattr(el, "attributes", None) or {}
+    if not name and isinstance(attrs, dict):
+        for k in ("aria-label", "title", "alt", "placeholder", "name", "value"):
+            if attrs.get(k):
+                name = str(attrs[k]).strip()
+                break
+    tag = (getattr(el, "node_name", None) or "").lower()
+    href = attrs.get("href") if isinstance(attrs, dict) else None
+    bits = [b for b in (tag, f'"{name[:60]}"' if name else "", f"href={str(href)[:60]}" if href and not name else "") if b]
+    return " ".join(bits)
+
+
 def summarise_action(action: Any) -> str:
-    """Browser Use model_actions() items are dicts like {"click_element_by_index": {"index": 3}, "interacted_element": ...}."""
+    """model_actions() items look like {"click": {"index": 3}, "interacted_element": <DOMInteractedElement|None>}."""
     if not isinstance(action, dict):
         return str(action)[:200]
+    el = action.get("interacted_element")
     for k, v in action.items():
         if k == "interacted_element":
             continue
+        label = _element_label(el)
         if isinstance(v, dict):
             args = ", ".join(f"{a}={str(b)[:40]!r}" for a, b in v.items() if a not in ("interacted_element",))
-            return f"{k}({args})"
-        return f"{k}={str(v)[:60]}"
+            return f"{k}({args})" + (f" -> {label}" if label else "")
+        return f"{k}={str(v)[:60]}" + (f" -> {label}" if label else "")
     return "(no action)"
+
+
+def action_name(action: Any) -> str:
+    if isinstance(action, dict):
+        for k in action:
+            if k != "interacted_element":
+                return k
+    return ""
 
 
 class BrowserUseEngine:
@@ -82,6 +109,9 @@ class BrowserUseEngine:
             step += 1
             try:
                 actions = agent.history.model_actions()
+                if actions and action_name(actions[-1]) == "done":
+                    step -= 1
+                    return                                   # terminal event carries the result
                 last = summarise_action(actions[-1]) if actions else "(thinking)"
             except Exception:  # noqa: BLE001
                 last = "(unknown action)"
