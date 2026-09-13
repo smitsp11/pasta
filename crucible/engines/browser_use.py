@@ -12,7 +12,7 @@ from typing import Any, AsyncIterator
 
 from ..schemas import Config, Journey, RunEvent
 from ..steel import SteelSession
-from .base import PAYMENT_GUARD_PROMPT, RunContext
+from .base import PAYMENT_GUARD_PROMPT, RunContext, anthropic_headers
 
 log = logging.getLogger("crucible.engines.browser_use")
 
@@ -48,7 +48,7 @@ class BrowserUseEngine:
 
     def _llm(self):
         from browser_use import ChatAnthropic
-        return ChatAnthropic(model=self.model)
+        return ChatAnthropic(model=self.model, default_headers=anthropic_headers() or None)
 
     async def run_journey(self, session: SteelSession, journey: Journey, cfg: Config, step_cap: int,
                           ctx: RunContext) -> AsyncIterator[RunEvent]:

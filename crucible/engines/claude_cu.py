@@ -16,7 +16,7 @@ from typing import Any, AsyncIterator
 
 from ..schemas import Config, Journey, RunEvent
 from ..steel import SteelSession
-from .base import PAYMENT_GUARD_PROMPT, RunContext
+from .base import PAYMENT_GUARD_PROMPT, RunContext, anthropic_headers
 
 log = logging.getLogger("crucible.engines.claude_cu")
 
@@ -68,7 +68,7 @@ class ClaudeComputerUseEngine:
 
     def _client(self):
         import anthropic
-        return anthropic.AsyncAnthropic()
+        return anthropic.AsyncAnthropic(default_headers=anthropic_headers() or None)
 
     # -- action dispatch ---------------------------------------------------
 

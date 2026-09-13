@@ -7,6 +7,7 @@ Rules:
 """
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from typing import AsyncIterator, Protocol, runtime_checkable
 
@@ -46,3 +47,9 @@ class Engine(Protocol):
 
     def run_journey(self, session: SteelSession, journey: Journey, cfg: Config,
                     step_cap: int, ctx: RunContext) -> AsyncIterator[RunEvent]: ...
+
+
+def anthropic_headers() -> dict[str, str]:
+    """Extra headers for Anthropic clients. Org-level keys need `anthropic-workspace-id`."""
+    ws = os.environ.get("ANTHROPIC_WORKSPACE_ID", "").strip()
+    return {"anthropic-workspace-id": ws} if ws else {}
