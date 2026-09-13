@@ -1,6 +1,6 @@
-import type { Feed, RunState, StreamItem } from "../types";
+import type { Feed, RunState, Source, StreamItem } from "../types";
 
-export function initialState(demo: { url: string; sources: any[] }): RunState {
+export function initialState(demo: { url: string; sources: Source[] }): RunState {
   return { stage: "idle", url: demo.url, sources: demo.sources, read: {}, reading: null, site: null, nodes: [],
     personas: [], stress_tests: [], feeds: {}, focus: null, scorecard: null, findings: [], affected: {} };
 }

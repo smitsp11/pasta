@@ -1,15 +1,14 @@
-import demo from "../src/data/iris_demo.json";
-it("fixture is internally consistent", () => {
-  const personaIds = new Set(demo.personas.map(p => p.id));
-  const runIds = new Set(demo.runs.map(r => r.run_id));
-  expect(demo.personas).toHaveLength(8);
-  for (const p of demo.personas) expect(runIds.has(p.run_id)).toBe(true);
-  for (const r of demo.runs) expect(personaIds.has(r.persona_id)).toBe(true);
-  const pair = demo.personas.filter(p => p.pair_id);
-  expect(pair).toHaveLength(2);
-  const [a, b] = pair;
-  expect(a.config.device).not.toBe(b.config.device);
-  expect(a.config.identity).toBe(b.config.identity); expect(a.config.country).toBe(b.config.country);
-  for (const f of demo.findings) expect(Object.keys(demo.affected)).toContain(f.id);
-  expect(demo.sources.map(s => s.id)).toEqual(demo.reads.map(r => r.source_id));
+import { TARGETS, targetFor, hostOf } from "../src/data/targets";
+import { validateDemo } from "../src/data/validate";
+
+describe.each(TARGETS.map(t => [t.id, t] as const))("target %s", (_id, t) => {
+  it("is internally consistent", () => { expect(validateDemo(t.demo)).toEqual([]); });
+});
+
+it("matches typed urls to targets and falls back to the fictional store", () => {
+  expect(hostOf("zara.com/us")).toBe("zara.com");
+  expect(hostOf("https://www.ikea.com/ca/en/")).toBe("www.ikea.com");
+  expect(targetFor("https://northwindoutfitters.com").id).toBe("northwind");
+  expect(targetFor("https://example.org").id).toBe(TARGETS[0].id);
+  expect(targetFor("").id).toBe(TARGETS[0].id);
 });

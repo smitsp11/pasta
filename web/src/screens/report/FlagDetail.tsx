@@ -1,9 +1,9 @@
 import { AsciiImage } from "../../texture/AsciiImage";
 import { Reticle } from "../../primitives/Reticle";
 import { sourceName } from "../brief/PersonaCard";
-import type { Finding, Persona } from "../../types";
+import type { Finding, Persona, Source } from "../../types";
 const mmss = (s: number | null) => { const n = Math.max(0, Math.round(s ?? 0)); return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`; };
-export function FlagDetail({ f, persona }: { f: Finding; persona: Persona | undefined }) {
+export function FlagDetail({ f, persona, sources }: { f: Finding; persona: Persona | undefined; sources: Source[] }) {
   const url = (f.replay_url ?? "").replace(/^https?:\/\//, "");
   const q = persona?.evidence;
   return (
@@ -13,7 +13,7 @@ export function FlagDetail({ f, persona }: { f: Finding; persona: Persona | unde
         <div style={{ display: "flex", flexDirection: "column", gap: 12, border: "1px solid rgba(20,20,20,0.14)", background: "#FAF7F2", padding: 14, minWidth: 0 }}>
           <div style={{ background: "linear-gradient(150deg, #FFD9CF, #F3E9D2)", border: "1px solid rgba(20,20,20,0.08)", height: 84, overflow: "hidden" }}>
             <AsciiImage seed={q?.source_id ?? "evidence"} cols={110} rows={13} fontSize={7} style={{ background: "transparent", padding: 6, lineHeight: "8px", color: "rgba(20,20,20,0.42)" }} /></div>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.1em", color: "#8A8580", textTransform: "uppercase" }}>{q ? `${sourceName(q.source_id)} · ${q.date}` : "NO CUSTOMER QUOTE · AGENT-READINESS FLAG"}</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.1em", color: "#8A8580", textTransform: "uppercase" }}>{q ? `${sourceName(sources, q.source_id)} · ${q.date}` : "NO CUSTOMER QUOTE · AGENT-READINESS FLAG"}</span>
           {q && <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, lineHeight: 1.6, color: "#141414" }}>"{q.text}"</span>}
           {q?.url && <a href={q.url} target="_blank" rel="noreferrer" style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.1em", color: "#FF5A1F" }}>READ THE REVIEW ↗</a>}
         </div>
