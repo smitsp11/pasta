@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { AsciiImage } from "../../texture/AsciiImage";
+import { ReplayModal } from "./ReplayModal";
 import { Reticle } from "../../primitives/Reticle";
 import { sourceName } from "../brief/PersonaCard";
-import type { Finding, Persona, Source } from "../../types";
+import type { Feed, Finding, Persona, Source } from "../../types";
 const mmss = (s: number | null) => { const n = Math.max(0, Math.round(s ?? 0)); return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`; };
-export function FlagDetail({ f, persona, sources }: { f: Finding; persona: Persona | undefined; sources: Source[] }) {
+export function FlagDetail({ f, persona, sources, feed }: { f: Finding; persona: Persona | undefined; sources: Source[]; feed?: Feed }) {
+  const [open, setOpen] = useState(false);
   const url = (f.replay_url ?? "").replace(/^https?:\/\//, "");
   const q = persona?.evidence;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}>
+      {open && <ReplayModal f={f} feed={feed} persona={persona} onClose={() => setOpen(false)} />}
       <span style={{ fontSize: 24, lineHeight: 1.35, letterSpacing: "-0.01em", maxWidth: 640, textWrap: "pretty" }}>{f.description}</span>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, alignItems: "stretch" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 12, border: "1px solid rgba(20,20,20,0.14)", background: "#FAF7F2", padding: 14, minWidth: 0 }}>
@@ -35,7 +39,7 @@ export function FlagDetail({ f, persona, sources }: { f: Finding; persona: Perso
         <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, fontWeight: 500, letterSpacing: "0.16em", color: "#1F9D55" }}>PROPOSED FIX</span>
         <span style={{ fontSize: 15, lineHeight: 1.6, color: "#141414", maxWidth: 640, textWrap: "pretty" }}>{f.proposed_fix}</span>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-          <a href={f.replay_url ?? "#"} target="_blank" rel="noreferrer" className="btn-primary" style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 500, letterSpacing: "0.12em", color: "#FFFFFF", background: "#FF5A1F", border: "none", padding: "13px 22px", whiteSpace: "nowrap" }}>OPEN REPLAY ↗</a>
+          <button type="button" onClick={() => setOpen(true)} className="btn-primary" style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 500, letterSpacing: "0.12em", color: "#FFFFFF", background: "#FF5A1F", border: "none", padding: "13px 22px", whiteSpace: "nowrap", cursor: "pointer" }}>OPEN REPLAY ↗</button>
           <button onClick={() => navigator.clipboard?.writeText(f.proposed_fix)} className="btn-secondary" style={{ fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 500, letterSpacing: "0.12em", color: "#141414", background: "transparent", border: "1px solid rgba(20,20,20,0.3)", padding: "13px 22px", cursor: "pointer", whiteSpace: "nowrap" }}>COPY FIX</button>
         </div>
       </div>

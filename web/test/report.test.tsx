@@ -9,4 +9,8 @@ it("shows both scores, ranked flags, and switches detail on click", () => {
   fireEvent.click(screen.getByText("Cookie wall"));
   expect(screen.getByText(/OK button is 16px on mobile/)).toBeInTheDocument();
   expect(screen.getByText("STEP 4 · 00:41")).toBeInTheDocument();
+  fireEvent.click(screen.getByText("OPEN REPLAY ↗"));
+  expect(screen.getByRole("dialog", { name: "Session replay" })).toBeInTheDocument();
+  fireEvent.click(screen.getByText("CLOSE"));
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });

@@ -14,17 +14,18 @@ export function reduce(s: RunState, m: StreamItem): RunState {
     case "session_started": {
       const persona = s.personas.find(p => p.run_id === m.run_id);
       const feed: Feed = { run_id: m.run_id, session_id: m.session_id, persona_id: persona?.id ?? "", config: m.config, journey_id: m.journey_id,
-        viewer_url: m.viewer_url, last_action: "starting", last_observation: "", step: 0, status: "running", final_screenshot_ref: null };
+        viewer_url: m.viewer_url, last_action: "starting", last_observation: "", step: 0, status: "running", final_screenshot_ref: null, events: [] };
       return { ...s, feeds: { ...s.feeds, [m.run_id]: feed }, focus: m.run_id };
     }
     case "run_event": {
       const f = s.feeds[m.run_id]; if (!f) return s;
-      return { ...s, focus: m.run_id, feeds: { ...s.feeds, [m.run_id]: { ...f, last_action: m.action, last_observation: m.observation, step: m.step_index } } };
+      return { ...s, focus: m.run_id, feeds: { ...s.feeds, [m.run_id]: { ...f, last_action: m.action, last_observation: m.observation, step: m.step_index, events: [...f.events.filter(e => e.step !== m.step_index), { step: m.step_index, action: m.action, observation: m.observation }] } } };
     }
     case "run_result": {
       const f = s.feeds[m.run_id]; if (!f) return s;
       const last = m.events[m.events.length - 1];
-      return { ...s, focus: m.run_id, feeds: { ...s.feeds, [m.run_id]: { ...f, status: m.outcome, final_screenshot_ref: m.final_screenshot_ref,
+      const events = m.events.length ? m.events.map(e => ({ step: e.step_index, action: e.action, observation: e.observation })) : f.events;
+      return { ...s, focus: m.run_id, feeds: { ...s.feeds, [m.run_id]: { ...f, status: m.outcome, final_screenshot_ref: m.final_screenshot_ref, events,
         last_action: m.outcome === "harness_error" ? (m.harness_reason ?? "tooling error") : (last?.action ?? f.last_action) } } };
     }
     case "result": return { ...s, scorecard: m.scorecard, findings: m.findings, affected: m.affected };
